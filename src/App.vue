@@ -1,6 +1,14 @@
 <template>
-  <router-view :key="this.$route.fullPath" />
+  <Layout>
+    <router-view :key="this.$route.fullPath" />
+  </Layout>
 </template>
 <script>
-export default {}
+import './assets/style/common.less'
+import Layout from './components/common/Layout'
+export default {
+  components: {
+    Layout
+  }
+}
 </script>

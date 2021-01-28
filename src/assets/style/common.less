@@ -1,0 +1,107 @@
+/*
+* import stylesheets
+*/
+
+/*去掉input type=number的默认状态*/
+*{
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(255, 0, 0, 0); 
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+button,input{
+  -webkit-appearance: none;
+  margin: 0;
+  border:none;
+  outline:none;
+}
+body{
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #444;
+  background-color: #fff;
+  margin: 0;
+  font-weight: 400;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  font-family: 'patpat-medium', sans-serif;
+  font-weight: 400;
+  margin:0;
+  padding: 0;
+  color: inherit;
+}
+
+a {
+  color: #444;
+}
+
+ul,li,ol{padding: 0;margin: 0;list-style: none;}
+img{
+  display: block;
+  border: none;
+  width: 100%;
+  vertical-align: middle;
+}
+/*初始化select样式*/
+select{
+  border: 1px solid #ccc;
+  /*很关键：将默认的select选择框样式清除*/
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+
+  /*在选择框的最右侧中间显示小箭头图片*/
+  background-color: #fff !important;
+  outline: none;
+  border-radius:0;
+}
+
+select:focus,select:active,select:hover{
+  outline:none;
+}
+
+/* 浮动 */
+.left{
+  float:left;
+}
+.right{
+  float:right;
+}
+
+/*清除浮动*/
+.clearfix:before,
+.clearfix:after{
+  content: " ";
+  display: table;
+}
+.clearfix:after{
+  clear: both;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  font-style: normal;
+  text-decoration: none;
+}
+
+.w1200px {
+  display: block;
+  width: 1200px;
+  margin: auto;
+}

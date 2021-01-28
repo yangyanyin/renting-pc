@@ -1,0 +1,5 @@
+<template>
+  <footer>
+    网站底部
+  </footer>
+</template>
