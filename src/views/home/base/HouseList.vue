@@ -1,9 +1,9 @@
 <template>
-  <div class="home-house-list">
+  <div class="home-house-list w1200px mt80">
     <Title title="精选优质新房" :more="titleMore" />
     <div class="product-list clearfix">
-      <div class="item">
-        <router-link to="/" class="img">
+      <div class="item left" v-for="(i, k) in 8" :key="k">
+        <router-link to="/" class="a-img">
           <img src="https://cms.aicassets.com/images/default/5fa21282cb759.jpeg" alt="新加坡最新房产资讯" />
         </router-link>
         <router-link to="/" tag="h3">2019年最值得投资的楼盘，南峰雅苑</router-link>
@@ -12,7 +12,7 @@
       </div>
 
     </div>
-    <router-link class="view-all">查看全部</router-link>
+    <router-link to="/" class="view-all">查看全部</router-link>
   </div>
 </template>
 <script>
@@ -57,3 +57,65 @@ export default {
   }
 }
 </script>
+<style scoped lang="less">
+.product-list {
+  .item {
+    width: 285px;
+    margin: 0 20px 40px 0;
+    &:hover {
+      h3 {
+        color: #24A10F;
+      }
+      img {
+        transform: scale(1.1);
+      }
+    }
+    &:nth-child(4n) {
+      margin-right: 0;
+    }
+    .a-img {
+      display: block;
+      border-radius: 5px;
+      overflow: hidden;
+      img {
+        transition: .3s;
+      }
+    }
+    h3 {
+      font-size: 18px;
+      padding: 14px 0 8px;
+      transition: .3s;
+    }
+    p {
+      font-size: 12px;
+      color: #7C7C7C;
+    }
+    span {
+      display: block;
+      margin-top: 15px;
+      color: #BF3F3F;
+      font-size: 20px;
+      i {
+        font-size: 14px;
+      }
+    }
+  }
+}
+.view-all {
+  display: block;
+  width: 184px;
+  height: 50px;
+  margin: auto;
+  background: #FFFFFF;
+  border: 1px solid #24A10F;
+  color: #24A10F;
+  border-radius: 5px;
+  text-align: center;
+  line-height: 48px;
+  transition: .3s;
+  &:hover {
+    color: #fff;
+    background: #24A10F;
+  }
+}
+</style>
