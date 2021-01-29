@@ -39,9 +39,16 @@
     span {
       display: inline-block;
       margin: 0 30px 18px 0;
+      cursor: pointer;
+      &:hover {
+        color: #24A10F;
+      }
       &.t {
         margin-right: 60px;
         font-weight: bold;
+        &:hover {
+          color: #19191D;
+        }
       }
     }
   }
