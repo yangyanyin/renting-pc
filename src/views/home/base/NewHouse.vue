@@ -47,6 +47,9 @@ export default {
       width: 550px;
       padding-left: 236px;
       height: 122px;
+      &:hover {
+        color: #24A10F;
+      }
       &:last-child {
         margin-left: 50px;
       }
@@ -63,6 +66,7 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        transition: .3s;
       }
       p {
         height: 54px;

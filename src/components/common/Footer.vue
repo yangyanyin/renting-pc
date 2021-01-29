@@ -28,15 +28,19 @@
         </div>
       </div>
     </div>
+
+    <ReturnTop />
   </footer>
 </template>
 <script>
 import MessagePlate from '../base/MessagePlate'
 import Guarantee from '../base/Guarantee'
+import ReturnTop from '../../components/common/ReturnTop'
 export default {
   components: {
     MessagePlate,
-    Guarantee
+    Guarantee,
+    ReturnTop
   }
 }
 </script>

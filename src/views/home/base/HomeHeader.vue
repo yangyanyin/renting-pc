@@ -4,14 +4,14 @@
       <div class="logo left"></div>
       <div class="hotline right">
         客服热线
-        +65 88 139 139
+        <strong>+65 88 139 139</strong>
       </div>
       <div class="nav right">
         <router-link to="/">首页</router-link>
-        <router-link to="/">新楼盘</router-link>
-        <router-link to="/">二手公寓</router-link>
+        <router-link to="/new-real-estate">新楼盘</router-link>
+        <router-link to="second-hand-housing">二手公寓</router-link>
         <router-link to="/">我是业主</router-link>
-        <router-link to="/">狮城租房</router-link>
+        <router-link to="/renting">狮城租房</router-link>
         <router-link to="/">商业地产</router-link>
         <router-link to="/">关于我们</router-link>
       </div>
@@ -31,6 +31,15 @@
       display: inline-block;
       margin: 0 20px;
       color: #fff;
+    }
+  }
+  .hotline {
+    padding: 24px 0 0 16px;
+    color: #fff;
+    strong {
+      position: relative;
+      top: 3px;
+      font-size: 20px;
     }
   }
 }
