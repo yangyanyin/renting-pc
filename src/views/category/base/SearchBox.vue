@@ -21,7 +21,7 @@ export default {
 .category-search {
   background: #F5F5F5;
   .search-box {
-    padding: 25px 0;
+    padding: 25px 10px;
   }
 }
 </style>

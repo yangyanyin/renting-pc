@@ -24,11 +24,17 @@
       <span>独栋洋房</span>
       <span>半独立洋房</span>
     </div>
+
+    <div class="sort">
+      <span class="active">默认排序</span>
+      <span>按价格</span>
+      <span>按面积</span>
+    </div>
   </div>
 </template>
 <style scoped lang="less">
 .filter {
-  padding: 40px 0;
+  padding: 40px 10px;
   .tips {
     margin-bottom: 60px;
     text-align: center;
@@ -49,6 +55,22 @@
         &:hover {
           color: #19191D;
         }
+      }
+    }
+  }
+  .sort {
+    height: 36px;
+    margin-top: 70px;
+    border-bottom: 3px solid #24A10F;
+    span {
+      display: inline-block;
+      width: 84px;
+      line-height: 36px;
+      text-align: center;
+      cursor: pointer;
+      &.active {
+        background: #24A10F;
+        color: #fff;
       }
     }
   }
