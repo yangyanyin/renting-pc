@@ -7,22 +7,24 @@
         <strong>+65 88 139 139</strong>
       </div>
       <div class="nav right">
-        <router-link to="/">首页</router-link>
-        <router-link to="/">新楼盘</router-link>
-        <router-link to="/">二手公寓</router-link>
-        <router-link to="/">我是业主</router-link>
-        <router-link to="/">狮城租房</router-link>
-        <router-link to="/">商业地产</router-link>
-        <router-link to="/">关于我们</router-link>
+        <router-link :to="item.url" v-for="(item, key) in navDate" :key="key">
+          {{item.name}}
+        </router-link>
       </div>
     </div>
   </header>
 </template>
 <script>
+import navDate from '../../config/nav'
 export default {
   computed: {
     isHome () {
       return this.$route.name === 'home'
+    }
+  },
+  data () {
+    return {
+      navDate: navDate
     }
   }
 }

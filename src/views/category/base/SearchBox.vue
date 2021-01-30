@@ -1,6 +1,6 @@
 <template>
   <div class="category-search">
-    <BreadcrumbList />
+    <BreadcrumbList :breadcrumb="breadcrumb" />
     <div class="search-box w1200px clearfix">
       <span class="left">1223asdasd</span>
       <SearchBar class="right" />
@@ -14,7 +14,28 @@ export default {
   components: {
     BreadcrumbList,
     SearchBar
+  },
+  computed: {
+    breadcrumb () {
+      const name = this.$route.params.name
+      const list = {
+        renting: {
+          name: '狮城租房',
+          url: '/c/renting'
+        },
+        'real-estate': {
+          name: '新楼盘',
+          url: '/c/renting'
+        },
+        'second-hand-housing': {
+          name: '二手公寓',
+          url: '/c/second-hand-housing'
+        }
+      }
+      return list[name]
+    }
   }
+  
 }
 </script>
 <style scoped lang="less">

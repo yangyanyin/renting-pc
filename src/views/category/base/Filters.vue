@@ -1,6 +1,7 @@
 <template>
   <div class="filter w1200px">
     <p class="tips">全岛各地段海量租赁房源，系统自动于每日上午9时采集、更新房源信息，故无法做到全部房源数据实时同步展示。如有需求，请联系我们专业的房产顾问，最快24小时内安排现场看房!</p>
+    
     <div class="item">
       <span class="t">地区</span>
       <span>全部</span>
@@ -34,7 +35,7 @@
 </template>
 <style scoped lang="less">
 .filter {
-  padding: 40px 10px;
+  padding: 40px 10px 0;
   .tips {
     margin-bottom: 60px;
     text-align: center;
@@ -65,9 +66,12 @@
     span {
       display: inline-block;
       width: 84px;
-      line-height: 36px;
+      line-height: 33px;
       text-align: center;
       cursor: pointer;
+      &:hover {
+        color: #24A10F;
+      }
       &.active {
         background: #24A10F;
         color: #fff;

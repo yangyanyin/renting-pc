@@ -7,17 +7,23 @@
         <strong>+65 88 139 139</strong>
       </div>
       <div class="nav right">
-        <router-link to="/">首页</router-link>
-        <router-link to="/new-real-estate">新楼盘</router-link>
-        <router-link to="second-hand-housing">二手公寓</router-link>
-        <router-link to="/">我是业主</router-link>
-        <router-link to="/renting">狮城租房</router-link>
-        <router-link to="/">商业地产</router-link>
-        <router-link to="/">关于我们</router-link>
+        <router-link :to="item.url" v-for="(item, key) in navDate" :key="key">
+          {{item.name}}
+        </router-link>
       </div>
     </div>
   </header>
 </template>
+<script>
+import navDate from '../../../config/nav'
+export default {
+  data () {
+    return {
+      navDate: navDate
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 .home-header {
   position: absolute;
