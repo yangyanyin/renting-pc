@@ -2,7 +2,7 @@
   <div class="breadcrumb-list">
     <div class="w1200px">
       <router-link to="/">首页</router-link> >
-      <router-link v-if="breadcrumb" :to="breadcrumb.url"> {{ breadcrumb.name }} </router-link>
+      <router-link v-if="breadcrumb.name" :to="breadcrumb.url"> {{ breadcrumb.name }} </router-link>
     </div>
   </div>
 </template>
@@ -12,7 +12,7 @@ export default {
     breadcrumb: {
       type: Object,
       default: () => {
-        return false
+        return {}
       }
     }
   }
