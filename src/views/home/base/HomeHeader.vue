@@ -1,7 +1,9 @@
 <template>
   <header class="home-header">
     <div class="w1200px clearfix">
-      <div class="logo left"></div>
+      <div class="logo left">
+        <img src="../../../assets/image/logo-white.png" alt="新加坡看房网" />
+      </div>
       <div class="hotline right">
         客服热线
         <strong>+65 88 139 139</strong>

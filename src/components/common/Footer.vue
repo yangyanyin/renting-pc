@@ -7,11 +7,11 @@
         <div class="left">
           <p>新加坡看公寓网是新加坡最全的中文类房产新楼盘信息网，每日更新汇聚全岛最实时的房产信息，开发商直接销售团队，金牌团队专注服务中国客户，服务数百精英满意置业新加坡，是海外华人在新置业的必看网站。</p>
           <ul>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
+            <li><img src="../../assets/image/whats-icon.png"></li>
+            <li><img src="../../assets/image/weibo-icon.png"></li>
+            <li><img src="../../assets/image/fb-icon.png"></li>
+            <li><img src="../../assets/image/in-icon.png"></li>
+            <li><img src="../../assets/image/wechat-icon.png"></li>
           </ul>
           <div class="hotline">服务热线<h3>+65 88 139 139</h3></div>
           <span>© 2021 新加坡看公寓网 All Rights Reserved.</span>
@@ -49,7 +49,7 @@ export default {
   height: 440px;
   padding-top: 70px;
   color: #7C7C7C;
-  background: #1d1d1d;
+  background: #1d1d1d url('../../assets/image/footer-bg.png') no-repeat left center;
   .left {
     width: 460px;
     p {
