@@ -35,8 +35,14 @@ export default {
     }
     a {
       float: right;
+      padding-left: 30px;
       color: #7C7C7C;
       font-size: 14px;
+      background: url('../../../assets/image/clear-filter-icon.png') no-repeat left center;
+      background-size: 20px;
+      &:hover {
+        color: #24A10F;
+      }
     }
   }
   .list {

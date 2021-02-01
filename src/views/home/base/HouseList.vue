@@ -102,6 +102,7 @@ export default {
   }
 }
 .view-all {
+  position: relative;
   display: block;
   width: 184px;
   height: 50px;
@@ -113,9 +114,25 @@ export default {
   text-align: center;
   line-height: 48px;
   transition: .3s;
+  &::after {
+    content: '';
+    position: absolute;
+    top: 19px;
+    right: 45px;
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #24A10F;
+    border-right: 2px solid #24A10F;
+    border-radius: 2px;
+    transform: rotate(45deg);
+    transition: .3s;
+  }
   &:hover {
     color: #fff;
     background: #24A10F;
+    &:after {
+      border-color: #fff;
+    }
   }
 }
 </style>

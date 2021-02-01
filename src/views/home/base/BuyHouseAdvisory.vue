@@ -16,9 +16,15 @@ export default {
 </script>
 <style scoped lang="less">
 .home-advisory {
-  height: 240px;
   background: #FCFCFC;
-  padding-top: 90px;
+  background-size: 598px;
+  .w1200px {
+    height: 240px;
+    padding-top: 90px;
+    background: url('../../../assets/image/house-advisory.png') no-repeat;
+    background-position: 600px 10px;
+    background-size: 580px;
+  }
   h3 {
     font-size: 26px;
   }

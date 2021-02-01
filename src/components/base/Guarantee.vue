@@ -32,6 +32,9 @@
   flex-flow: row wrap;
   justify-content: space-between;
   text-align: center;
+  .list {
+    width: 180px;
+  }
   h3 {
     font-size: 18px;
     padding-bottom: 20px;

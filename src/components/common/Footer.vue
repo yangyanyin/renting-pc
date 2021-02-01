@@ -49,7 +49,8 @@ export default {
   height: 440px;
   padding-top: 70px;
   color: #7C7C7C;
-  background: #1d1d1d url('../../assets/image/footer-bg.png') no-repeat left center;
+  background: #1d1d1d url('../../assets/image/footer-bg.png') no-repeat top center;
+  background-size: auto 440px;
   .left {
     width: 460px;
     p {

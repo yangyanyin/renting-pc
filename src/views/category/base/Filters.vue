@@ -1,6 +1,6 @@
 <template>
   <div class="filter w1200px">
-    <p class="tips">全岛各地段海量租赁房源，系统自动于每日上午9时采集、更新房源信息，故无法做到全部房源数据实时同步展示。如有需求，请联系我们专业的房产顾问，最快24小时内安排现场看房!</p>
+    <div class="tips" v-if="showTips"><p>全岛各地段海量租赁房源，系统自动于每日上午9时采集、更新房源信息，故无法做到全部房源数据实时同步展示。如有需求，请联系我们专业的房产顾问，最快24小时内安排现场看房!</p></div>
     
     <div class="item">
       <span class="t">地区</span>
@@ -33,14 +33,40 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  computed: {
+    showTips () {
+      return this.$route.params.name === 'renting'
+    }
+  }
+}
+</script>
 <style scoped lang="less">
 .filter {
   padding: 40px 10px 0;
   .tips {
-    margin-bottom: 60px;
     text-align: center;
-    font-size: 12px;
-    color: #F7B964;
+    margin-bottom: 60px;
+    p {
+      display: inline-block;
+      position: relative;
+      padding-left: 20px;
+      font-size: 12px;
+      color: #F7B964;
+      &::after {
+        content: '!';
+        position: absolute;
+        left: 0;
+        top: 1px;
+        width: 14px;
+        height: 14px;
+        border-radius: 14px;
+        color: #fff;
+        line-height: 14px;
+        background: #F7B964;
+      }
+    }
   }
   .item {
     span {

@@ -1,12 +1,24 @@
 <template>
   <div class="banner">
-    <img src="https://waterlandcap.com/img/banner2.db1bca1d.jpg" />
+    <img class="b-img" src="../../../assets/image/home-banner.jpg"  alt="新加坡看公寓网" />
     <SearchBar class="search-banner" />
     <div class="integrity">
-      <span>诚信为本</span>
-      <span>实力铸造</span>
-      <span>真诚服务</span>
-      <span>100%真实房源</span>
+      <span>
+        <img src="../../../assets/image/integrity-icon.png" alt="诚信为本" />
+        诚信为本
+      </span>
+      <span>
+        <img src="../../../assets/image/strength-icon.png" alt="实力铸造" />
+        实力铸造
+      </span>
+      <span>
+        <img src="../../../assets/image/sincere-icon.png" alt="真诚服务" />
+        真诚服务
+      </span>
+      <span>
+        <img src="../../../assets/image/real-icon.png" alt="100%真实房源" />
+        100%真实房源
+      </span>
     </div>
   </div>
 </template>
@@ -22,8 +34,13 @@ export default {
 .banner {
   position: relative;
   height: 560px;
-  img {
-    height: 100%;
+  overflow: hidden;
+  .b-img {
+    position: absolute;
+    left: 50%;
+    width: auto;
+    height: 560px;
+    transform: translateX(-50%);
   }
   .integrity {
     position: absolute;
@@ -32,8 +49,15 @@ export default {
     width: 100%;
     text-align: center;
     span {
+      display: inline-block;
       padding: 0 20px;
+      line-height: 20px;
       color: #fff;
+      img {
+        float: left;
+        width: 20px;
+        margin-right: 7px;
+      }
     }
   }
 }

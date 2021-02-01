@@ -36,6 +36,10 @@ header {
   height: 80px;
   width: 100%;
   background: #fff;
+  .logo {
+    width: 140px;
+    margin-top: 20px;
+  }
   .nav {
     padding: 30px 0;
     a {

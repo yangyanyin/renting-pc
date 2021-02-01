@@ -33,6 +33,10 @@ export default {
   left: 0;
   top: 0;
   width: 100%;
+  .logo {
+    width: 130px;
+    margin-top: 20px;
+  }
   .nav {
     padding-top: 30px;
     a {
