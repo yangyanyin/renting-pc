@@ -1,6 +1,5 @@
 <template>
-  <div class="right">
-    <DetailsInfoBase />
+  <div class="details-side">
     <h3>新楼盘推荐</h3>
     <div class="recommend">
       <div class="item" v-for="(i, k) in 3" :key="k">
@@ -35,16 +34,9 @@
   </div>
 </template>
 <script>
-import DetailsInfoBase from './DetailsInfoBase'
-export default {
-  components: {
-    DetailsInfoBase
-  }
-}
 </script>
 <style lang="less" scoped>
-.right {
-  width: 444px;
+.details-side {
   h3 {
     margin-top: 40px;
     font-size: 20px;

@@ -17,7 +17,10 @@
         <DetailsMortgage />
         <DetailsUnitType />
       </div>
-      <DetailsRecommend />
+      <div class="right">
+        <DetailsInfoBase />
+        <DetailsRecommend />
+      </div>
     </div>
   </div>
 </template>
@@ -28,7 +31,9 @@ import DetailsPhoto from './base/DetailsPhoto'
 import DetailsMortgage from './base/DetailsMortgage'
 import DetailsUnitType from './base/DetailsUnitType'
 import DetalsIntroduction from './base/DetalsIntroduction'
-import DetailsRecommend from './base/DetailsRecommend'
+import DetailsInfoBase from './base/DetailsInfoBase'
+import DetailsRecommend from '../../components/base/DetailsRecommend'
+
 export default {
   components: {
     SearchBox,
@@ -37,6 +42,7 @@ export default {
     DetailsMortgage,
     DetailsUnitType,
     DetalsIntroduction,
+    DetailsInfoBase,
     DetailsRecommend
   }
 }
@@ -63,6 +69,9 @@ export default {
   }
   .left {
     width: 710px;
+  }
+  .right {
+    width: 444px;
   }
 }
 
