@@ -9,24 +9,49 @@
       <div class="left">
         <DetailsViewImg />
         <DetalsIntroduction />
+        <Conveniences />
       </div>
-      <div class="right"></div>
+      <div class="right">
+        <DetailsInfoBase />
+        <Consultant />
+      </div>
     </div>
   </div>
 </template>
 <script>
 import DetailsViewImg from '../../components/details/DetailsViewImg'
 import DetalsIntroduction from '../../components/details/DetalsIntroduction'
+import Conveniences from '../../components/details/Conveniences'
+import DetailsInfoBase from './base/DetailsInfoBase'
+import Consultant from '../../components/base/Consultant'
 
 export default {
   components: {
     DetailsViewImg,
-    DetalsIntroduction
+    DetalsIntroduction,
+    Conveniences,
+    Consultant,
+    DetailsInfoBase
   }
 }
 </script>
 <style lang="less" scoped>
 .details {
+  .banner-title {
+    height: 220px;
+    background: #000;
+    text-align: center;
+    color: #fff;
+    h3 {
+      padding-top: 60px;
+      font-size: 28px;
+    }
+    p {
+      display: inline-block;
+      padding-top: 15px;
+      font-size: 18px;
+    }
+  }
   .left {
     width: 710px;
   }
