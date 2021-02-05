@@ -5,8 +5,11 @@ const Category = () => import(/* webpackChunkName: "category" */ '../views/categ
 const CategoryDetails = () => import(/* webpackChunkName: "category-details" */ '../views/category/Details')
 const News = () => import(/* webpackChunkName: "News" */ '../views/news/News')
 const NewsDetails = () => import(/* webpackChunkName: "News" */ '../views/news/Details')
-const EstateIndex = () => import(/* webpackChunkName: "News" */ '../views/estate/EstateIndex')
-const EstateDetails = () => import(/* webpackChunkName: "News" */ '../views/estate/EstateDetails')
+const EstateIndex = () => import(/* webpackChunkName: "estate" */ '../views/estate/EstateIndex')
+const Business = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Business')
+const Building = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Building')
+const Shophouse = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Shophouse')
+const EstateDetails = () => import(/* webpackChunkName: "estate-details" */ '../views/estate/EstateDetails')
 
 
 Vue.use(VueRouter)
@@ -43,10 +46,27 @@ const routes = [
   {
     path: '/estate',
     name: 'estate-index',
-    component: EstateIndex
+    component: EstateIndex,
+    children: [
+      {
+        path: '/',
+        name: 'business',
+        component: Business
+      },
+      {
+        path: 'building',
+        name: 'building',
+        component: Building
+      },
+      {
+        path: 'shophouse',
+        name: 'shophouse',
+        component: Shophouse
+      }
+    ]
   },
   {
-    path: '/estate/:name',
+    path: '/estate/d/:name',
     name: 'estate-details',
     component: EstateDetails
   }

@@ -11,7 +11,7 @@
         <span>知名房企</span>
       </div>
       <div class="left">
-        <DetailsImage />
+        <DetailsViewImg />
         <DetalsIntroduction />
         <DetailsPhoto />
         <DetailsMortgage />
@@ -26,18 +26,18 @@
 </template>
 <script>
 import SearchBox from './base/SearchBox'
-import DetailsImage from './base/DetailsImage'
+import DetailsViewImg from '../../components/details/DetailsViewImg'
+import DetalsIntroduction from '../../components/details/DetalsIntroduction'
 import DetailsPhoto from './base/DetailsPhoto'
 import DetailsMortgage from './base/DetailsMortgage'
 import DetailsUnitType from './base/DetailsUnitType'
-import DetalsIntroduction from './base/DetalsIntroduction'
 import DetailsInfoBase from './base/DetailsInfoBase'
-import DetailsRecommend from '../../components/base/DetailsRecommend'
+import DetailsRecommend from '../../components/details/DetailsRecommend'
 
 export default {
   components: {
     SearchBox,
-    DetailsImage,
+    DetailsViewImg,
     DetailsPhoto,
     DetailsMortgage,
     DetailsUnitType,
@@ -74,7 +74,6 @@ export default {
     width: 444px;
   }
 }
-
 </style>
 <style lang="less">
 .details {

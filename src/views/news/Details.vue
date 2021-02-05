@@ -27,7 +27,7 @@
 </template>
 <script>
 import BreadcrumbList from '../../components/base/BreadcrumbList'
-import DetailsRecommend from '../../components/base/DetailsRecommend'
+import DetailsRecommend from '../../components/details/DetailsRecommend'
 import HotNews from './base/HotNews'
 import NewsItem from './base/NewsItem'
 
