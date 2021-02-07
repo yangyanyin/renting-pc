@@ -39,6 +39,11 @@ export default {
     showTips () {
       return this.$route.params.name === 'renting'
     }
+  },
+  methods: {
+    filterClick () {
+      
+    }
   }
 }
 </script>

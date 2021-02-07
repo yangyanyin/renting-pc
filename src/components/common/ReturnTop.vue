@@ -4,10 +4,30 @@
       <li>Whats App</li>
       <li>咨询</li>
       <li>微信</li>
-      <li>返回顶部</li>
+      <li @click="backTop">返回顶部</li>
     </ul>
   </div>
 </template>
+<script>
+export default {
+  methods: {
+    backTop () {
+      let scrTop = 0
+      let iSpeed = 0
+      let backTopTimer = null
+      backTopTimer = setInterval(function () {
+        scrTop = document.body.scrollTop || document.documentElement.scrollTop
+        iSpeed = scrTop / 6
+        if (scrTop === 0) {
+          clearInterval(backTopTimer)
+        }
+        document.body.scrollTop = scrTop - iSpeed
+        document.documentElement.scrollTop = scrTop - iSpeed
+      }, 8)
+    }
+  }
+}
+</script>
 <style scoped lang="less">
 .return-top {
   position: fixed;
