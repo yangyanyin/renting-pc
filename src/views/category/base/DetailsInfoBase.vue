@@ -58,9 +58,12 @@
       position: relative;
       top: -4px;
       margin-left: 20px;
-      padding: 0 10px;
+      padding: 0 10px 0 25px;
       line-height: 25px;
-      background: #EFF8EF;
+      background: #EFF8EF url('../../../assets/image/price-change-icon.png');
+      background-size: 11px;
+      background-position: 7px center;
+      background-repeat: no-repeat;
       border-radius: 2px;
       font-size: 12px;
       color: #24A10F;

@@ -14,6 +14,7 @@
         <DetailsViewImg />
         <DetalsIntroduction />
         <DetailsPhoto />
+        <DetailsDetailed />
         <DetailsMortgage />
         <DetailsUnitType />
       </div>
@@ -30,6 +31,7 @@ import DetailsViewImg from '../../components/details/DetailsViewImg'
 import DetalsIntroduction from '../../components/details/DetalsIntroduction'
 import DetailsPhoto from './base/DetailsPhoto'
 import DetailsMortgage from './base/DetailsMortgage'
+import DetailsDetailed from './base/DetailsDetailed'
 import DetailsUnitType from './base/DetailsUnitType'
 import DetailsInfoBase from './base/DetailsInfoBase'
 import DetailsRecommend from '../../components/details/DetailsRecommend'
@@ -40,6 +42,7 @@ export default {
     DetailsViewImg,
     DetailsPhoto,
     DetailsMortgage,
+    DetailsDetailed,
     DetailsUnitType,
     DetalsIntroduction,
     DetailsInfoBase,

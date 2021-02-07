@@ -53,8 +53,11 @@
   strong {
     display: block;
     margin-top: 40px;
+    padding-left: 20px;
     font-weight: bold;
     color: #7C7C7C;
+    background: url('../../../assets/image/disclaimer-icon.png') no-repeat left center;
+    background-size: 12px;
   }
   em {
     display: block;

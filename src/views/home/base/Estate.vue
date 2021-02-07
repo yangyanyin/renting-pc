@@ -3,10 +3,10 @@
     <Title title="商业地产" :more="titleMore" />
     <div class="estate-list clearfix">
       <div class="item left" v-for="(i, k) in 3" :key="k">
-        <router-link to="/" class="a-img">
+        <router-link to="/estate/d/sad" class="a-img">
           <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="商业地产" />
         </router-link>
-        <router-link to="/" tag="h3">Asia Square | 亚洲广场</router-link>
+        <router-link to="/estate/d/sad" tag="h3">Asia Square | 亚洲广场</router-link>
         <p>12 Marina View Singapore 018961</p>
       </div>
     </div>
@@ -24,7 +24,7 @@ export default {
       titleMore: [
         {
           text: '查看更多',
-          url: '/'
+          url: '/estate'
         }
       ]
     }

@@ -3,10 +3,10 @@
     <Title title="精选优质新房" :more="titleMore" />
     <div class="product-list clearfix">
       <div class="item left" v-for="(i, k) in 8" :key="k">
-        <router-link to="/" class="a-img">
+        <router-link to="/c/d/qwe" class="a-img">
           <img src="https://cms.aicassets.com/images/default/5fa21282cb759.jpeg" alt="新加坡最新房产资讯" />
         </router-link>
-        <router-link to="/" tag="h3">2019年最值得投资的楼盘，南峰雅苑</router-link>
+        <router-link to="/c/d/qwe" tag="h3">2019年最值得投资的楼盘，南峰雅苑</router-link>
         <p>2-5室 / 96-116㎡</p>
         <span class="price">$105 <i>万起</i></span>
       </div>

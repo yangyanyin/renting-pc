@@ -42,6 +42,18 @@
           padding: 0 20px;
           margin-bottom: 10px;
           color: #6f6f6f;
+          &::before {
+            content: '';
+            position: absolute;
+            z-index: 1;
+            left: 4px;
+            top: 7px;
+            width: 6px;
+            height: 3px;
+            border-bottom: 1px solid #fff;
+            border-left: 1px solid #fff;
+            transform: rotate(-45deg);
+          }
           &:after {
             content: '';
             position: absolute;

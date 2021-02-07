@@ -2,7 +2,9 @@
   <header class="home-header">
     <div class="w1200px clearfix">
       <div class="logo left">
-        <img src="../../../assets/image/logo-white.png" alt="新加坡看房网" />
+        <router-link to="/">
+          <img src="../../../assets/image/logo-white.png" alt="新加坡看房网" />
+        </router-link>
       </div>
       <div class="hotline right">
         客服热线
