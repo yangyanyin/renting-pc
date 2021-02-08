@@ -25,6 +25,6 @@ export default [
   },
   {
     name: '关于我们',
-    url: ''
+    url: '/about'
   }
 ]
