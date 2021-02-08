@@ -13,7 +13,7 @@ export default [
   },
   {
     name: '我是业主',
-    url: ''
+    url: '/owner'
   },
   {
     name: '狮城租房',

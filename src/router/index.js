@@ -10,6 +10,7 @@ const Business = () => import(/* webpackChunkName: "estate" */ '../views/estate/
 const Building = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Building')
 const Shophouse = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Shophouse')
 const EstateDetails = () => import(/* webpackChunkName: "estate-details" */ '../views/estate/EstateDetails')
+const OwnerIndex = () => import(/* webpackChunkName: "estate-details" */ '../views/owner/Index')
 
 
 Vue.use(VueRouter)
@@ -69,6 +70,11 @@ const routes = [
     path: '/estate/d/:name',
     name: 'estate-details',
     component: EstateDetails
+  },
+  {
+    path: '/owner',
+    name: 'owner-index',
+    component: OwnerIndex
   }
 ]
 
