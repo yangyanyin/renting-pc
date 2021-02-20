@@ -34,6 +34,7 @@ body{
   background-color: #fff;
   margin: 0;
   font-weight: 400;
+  font-family: 'font-medium', sans-serif;
 }
 h1,
 h2,
@@ -41,7 +42,6 @@ h3,
 h4,
 h5,
 h6{
-  font-family: 'patpat-medium', sans-serif;
   font-weight: 400;
   margin:0;
   padding: 0;
@@ -66,11 +66,10 @@ select{
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
-
-  /*在选择框的最右侧中间显示小箭头图片*/
-  background-color: #fff !important;
   outline: none;
   border-radius:0;
+  background: #fff url('../image/select-icon.png') no-repeat 95% center;
+  background-size: 8px;
 }
 
 select:focus,select:active,select:hover{
@@ -110,4 +109,19 @@ select:focus,select:active,select:hover{
 }
 .mt80 {
   margin-top: 80px;
+}
+
+@font-face {
+  font-family: 'font-medium';
+  src: url('../fonts/DIN-Medium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'font-bold';
+  src: url('../fonts/DIN-Bold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }

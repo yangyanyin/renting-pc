@@ -38,11 +38,17 @@ export default {
 <style scoped lang="less">
 .images {
   width: 710px;
+  text-align: center;
   p {
+    display: inline-block;
     margin-top: 30px;
+    padding-left: 25px;
+    line-height: 16px;
     font-size: 12px;
     color: #24A10F;
     text-align: center;
+    background: url('../../assets/image/real-green-icon.png') no-repeat left center;
+    background-size: 15px;
   }
   .big-img {
     img {

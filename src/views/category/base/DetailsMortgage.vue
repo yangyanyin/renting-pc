@@ -58,7 +58,7 @@
       width: 237px;
       height: 50px;
       padding: 0 15px;
-      background: #FFFFFF;
+      background-color: #FFFFFF;
       border: 1px solid #C9C9C9;
       border-radius: 5px;
     }
