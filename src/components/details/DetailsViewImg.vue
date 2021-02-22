@@ -1,5 +1,5 @@
 <template>
-  <div class="images">
+  <div class="images details-images">
     <div class="big-img">
       <img :src="bigImage" alt="">
     </div>
@@ -54,4 +54,67 @@ export default {
     overflow: hidden;
   }
 }
+</style>
+<style lang="less">
+.details-images {
+  .slick-slide {
+    height: 80px;
+    img {
+      height: 80px;
+    }
+  }
+  .slick-arrow {
+    width: 30px;
+    height: 80px;
+    border-radius: 0;
+    background: #C4C4C4;
+    cursor: pointer;
+    &.slick-prev {
+      left: -39px;
+    }
+    &.slick-next {
+      right: -39px;
+    }
+    &:before {
+      top: 30px;
+    }
+    &:hover {
+      background: #969696;
+    }
+  }
+}
+
+// button {
+//       position: absolute;
+//       top: 0;
+//       width: 30px;
+//       height: 80px;
+//       background: #C4C4C4;
+//       cursor: pointer;
+//       &:hover {
+//         background: #969696;
+//       }
+//       &.prev {
+//         left: 0;
+//       }
+//       &.next {
+//         right: 0;
+//         &::after {
+//           left: auto;
+//           right: 12px;
+//           transform: rotate(135deg);
+//         }
+//       }
+//       &::after {
+//         content: '';
+//         position: absolute;
+//         top: 36px;
+//         left: 12px;
+//         width: 8px;
+//         height: 8px;
+//         border-left: 1px solid #fff;
+//         border-top: 1px solid #fff;
+//         transform: rotate(-45deg);
+//       }
+//     }
 </style>
