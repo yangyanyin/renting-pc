@@ -2,10 +2,17 @@ module.exports = {
   outputDir: 'server/build',
   publicPath: '/',
   pages: {
-    index: {
+    html: {
       entry: 'src/main.js',
-      template: 'public/index.html',
-      filename: 'html/index.html',
+      template: 'src/index.html',
+      filename: 'html/index.html'
     }
-  }
+  },
+  devServer: {
+		historyApiFallback: {
+			rewrites: [
+				{ from: /^\/[\s\S]*/, to: '/html/index.html' }
+			]
+		}
+  },
 }

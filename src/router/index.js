@@ -11,7 +11,10 @@ const Building = () => import(/* webpackChunkName: "estate" */ '../views/estate/
 const Shophouse = () => import(/* webpackChunkName: "estate" */ '../views/estate/base/Shophouse')
 const EstateDetails = () => import(/* webpackChunkName: "estate-details" */ '../views/estate/EstateDetails')
 const OwnerIndex = () => import(/* webpackChunkName: "owner" */ '../views/owner/Index')
-const AboutIndex = () => import(/* webpackChunkName: "about" */ '../views/about/Index')
+const OtherIndex = () => import(/* webpackChunkName: "other" */ '../views/other/Index')
+const About = () => import(/* webpackChunkName: "other" */ '../views/other/About')
+const ContactUs = () => import(/* webpackChunkName: "other" */ '../views/other/ContactUs')
+const Copyright = () => import(/* webpackChunkName: "other" */ '../views/other/Copyright')
 
 
 Vue.use(VueRouter)
@@ -78,9 +81,26 @@ const routes = [
     component: OwnerIndex
   },
   {
-    path: '/about',
-    name: 'about-index',
-    component: AboutIndex
+    path: '/a',
+    name: 'other',
+    component: OtherIndex,
+    children: [
+      {
+        path: '/about',
+        name: 'about',
+        component: About
+      },
+      {
+        path: '/contact-us',
+        name: 'contact-us',
+        component: ContactUs
+      },
+      {
+        path: '/copyright',
+        name: 'copyright',
+        component: Copyright
+      }
+    ]
   }
 ]
 
