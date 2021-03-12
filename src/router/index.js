@@ -25,14 +25,33 @@ const routes = [
     name: 'home',
     component: Home
   },
-  // 租房 新楼盘 二手房
   {
-    path: '/c/:name',
+    path: '/c/',
     name: 'category',
-    component: Category
+    component: Category,
+    children: [
+      // 新楼盘
+      {
+        path: 'new-house',
+        name: 'new house',
+        component: Category,
+      },
+      // 租房
+      {
+        path: 'renting',
+        name: 'renting',
+        component: Category,
+      },
+      // 二手房
+      {
+        path: 'second-hand',
+        name: 'second hand',
+        component: Category,
+      }
+    ]
   },
   {
-    path: '/c/d/:name',
+    path: '/c/:category/:id',
     name: 'category-details',
     component: CategoryDetails
   },

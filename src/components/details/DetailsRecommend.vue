@@ -2,6 +2,16 @@
   <div class="details-side">
     <h3>新楼盘推荐</h3>
     <div class="recommend">
+
+      <div class="item" v-for="(item, k) in recommendList" :key="k">
+        <router-link :to="'/c/d/' + item._id"  class="a-img">
+          <img :src="item.image" :alt="item.title" />
+        </router-link>
+        <router-link to="/" tag="strong">{{ item.title }}</router-link>
+        <p>2-5室 / 96-116㎡</p>
+        <span>{{ item.price }} 万起</span>
+      </div>
+<!--       
       <div class="item" v-for="(i, k) in 3" :key="k">
         <router-link to="/" class="a-img">
           <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="项目详情" />
@@ -9,7 +19,7 @@
         <router-link to="/" tag="strong">东景苑奢华卓越新地标，超大型东部私宅新楼盘</router-link>
         <p>2-5室 / 96-116㎡</p>
         <span>$79 <em>万起</em></span>
-      </div>
+      </div> -->
     </div>
     <Consultant />
 
@@ -36,6 +46,7 @@ export default {
   },
   data () {
     return {
+      recommendList: [],
       fromInfo: {
         message: '',
         name: '',
@@ -66,6 +77,14 @@ export default {
       }
       console.log(this.fromInfo, 'fromInfo')
     }
+  },
+  mounted () {
+    this.$httpApi.productRecommend().then(res => {
+      console.log(res)
+      if (res.code === 200) {
+        this.recommendList = res.data.recommend
+      }
+    })
   }
 }
 </script>

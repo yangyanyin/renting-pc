@@ -5,11 +5,11 @@ export default [
   },
   {
     name: '新楼盘',
-    url: '/c/real-estate'
+    url: '/c/new-house'
   },
   {
     name: '二手公寓',
-    url: '/c/second-hand-housing'
+    url: '/c/second-hand'
   },
   {
     name: '我是业主',

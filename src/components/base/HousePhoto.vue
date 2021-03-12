@@ -1,11 +1,7 @@
 <template>
-  <div class="view-image">
+  <div class="view-image" v-if="imagesArr.length > 0">
     <VueSlickCarousel v-bind="settings">
-      <img @click="viewBigImg('https://waterlandcap.com/img/Vanuatu-img.2fa78183.jpg')" src="https://waterlandcap.com/img/Vanuatu-img.2fa78183.jpg" alt="" />
-      <img @click="viewBigImg('https://waterlandcap.com/img/Cyprus-img.faf39e14.jpg')" src="https://waterlandcap.com/img/Cyprus-img.faf39e14.jpg" alt="" />
-      <img @click="viewBigImg" src="https://waterlandcap.com/img/Antigua-img.412a1e3c.jpg" alt="" />
-      <img @click="viewBigImg" src="https://waterlandcap.com/img/SaintKitts-img.5ac9c1a5.jpg" alt="" />
-      <img @click="viewBigImg" src="https://waterlandcap.com/img/SaintLucia-img.6adc2d9a.jpg" alt="" />
+      <img v-for="(img, k) in imagesArr" :key="k" :src="img" @click="viewBigImg(img)" />
     </VueSlickCarousel>
   </div>
 </template>
@@ -25,6 +21,12 @@ export default {
       default: () => {
         return true
       }
+    },
+    imagesArr: {
+      type: Array,
+      default: () => {
+        return []
+      }
     }
   },
   data () {
@@ -39,7 +41,6 @@ export default {
   },
   methods: {
     viewBigImg (url) {
-      console.log(url)
       this.$emit('viewBigImg', url)
     }
   }

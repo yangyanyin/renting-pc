@@ -3,11 +3,11 @@
     <h3 class="other-t">房源相册</h3>
     <div class="list">
       <strong>效果图</strong>
-      <HousePhoto @viewBigImg="viewBigImg" />
+      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.effect_picture" />
       <strong>样板间</strong>
-      <HousePhoto @viewBigImg="viewBigImg" />
+      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.sample_room"/>
       <strong>周边配套</strong>
-      <HousePhoto @viewBigImg="viewBigImg" />
+      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.matching"/>
     </div>
     <div class="big-img" v-if="bigImgUrl">
       <div class="content">
@@ -22,6 +22,9 @@ import HousePhoto from '../../../components/base/HousePhoto'
 export default {
   components: {
     HousePhoto
+  },
+  props: {
+    photoAll: Object
   },
   data () {
     return {

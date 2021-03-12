@@ -11,7 +11,6 @@
         <router-view></router-view>
       </div>
     </div>
-    
   </div>
 </template>
 <script>
@@ -48,5 +47,13 @@ export default {
   width: 910px;
   padding: 30px;
   background: #F5F5F5;
+}
+</style>
+
+<style lang="less">
+.other-title {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 18px;
 }
 </style>

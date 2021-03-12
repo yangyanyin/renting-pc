@@ -1,15 +1,16 @@
 <template>
   <div class="item">
-    <router-link to="/" class="a-img">
-      <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="新加坡最新房产资讯" />
+    <router-link :to="routerLink + item._id" class="a-img">
+      <img :src="item.image" :alt="item.title" />
     </router-link>
-    <router-link to="/" tag="h3">新加坡Hilltops山领域奢华高端公寓 <i>公寓</i></router-link>
+    <router-link :to="routerLink + item._id" tag="h3">{{ item.title }} <i>公寓</i></router-link>
     <p class="traffic">交通：
-      <i>NS20 诺维娜</i> 
-      <i>NS20 诺维娜</i>
+      <i v-for="(name, k) in item.traffic" :key="k">{{ name }}</i>
     </p>
-    <p class="address">地址：勿洛水池路 waterfront isle</p>
-    <p class="type">1卧室+书房 89㎡</p>
+    <p class="address">地址：{{ item.addr }}</p>
+    <p class="type">
+      <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>
+    </p>
     <ul class="label">
       <li>公寓</li>
       <li>精装修</li>
@@ -17,9 +18,36 @@
       <li>交通便利</li>
       <li>允许贷款</li>
     </ul>
-    <div class="price">$3600<i>/月</i></div>
+    <div class="price"> {{ item.price }} <i>{{ priceType }}</i></div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    item: Object,
+    productType: String
+  },
+  computed: {
+    priceType () {
+      if (this.productType === 'new house') {
+        return '万起'
+      }
+      if (this.productType === 'second-hand-housing') {
+        return '万'
+      }
+      return ''
+    },
+    routerLink () {
+      const routes = {
+        'new house': '/c/new-house/',
+        'renting': '/c/renting/',
+        'second hand': '/c/second-hand/'
+      }
+      return [routes[this.$route.name]]
+    }
+  }
+}
+</script>
 <style scoped lang="less">
 .item {
   position: relative;
@@ -68,17 +96,38 @@
   p {
     font-size: 12px;
     margin-top: 20px;
+    i {
+      display: inline-block;
+      height: 20px;
+      margin: 0 5px;
+      line-height: 20px;
+    }
     &.type {
       margin-top: 13px;
-      color: #7C7C7C;
+      i {
+        position: relative;
+        color: #7C7C7C;
+        padding-right: 10px;
+        &:last-child {
+          padding-right: 0;
+          &::after {
+            display: none;
+          }
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 5px;
+          width: 1px;
+          height: 10px;
+          background: #7C7C7C;
+        }
+      }
     }
     &.traffic {
       i {
-        display: inline-block;
-        height: 20px;
-        margin: 0 5px;
         padding: 0 10px;
-        line-height: 20px;
         color: #fff;
         background: #E12129;
         border-radius: 90px;

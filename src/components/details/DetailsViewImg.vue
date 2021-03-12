@@ -4,7 +4,7 @@
       <img :src="bigImage" alt="">
     </div>
     <div class="small-img">
-      <HousePhoto :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
+      <HousePhoto :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
     </div>
     <p>100% 真实房源，100%真实物业图片</p>
   </div>
@@ -15,6 +15,9 @@ export default {
   components: {
     HousePhoto
   },
+  props: {
+    imagesArr: Array
+  },
   data () {
     return {
       bigImage: ''
@@ -24,6 +27,9 @@ export default {
     viewBigImg (img) {
       this.bigImage = img
     }
+  },
+  mounted () {
+    this.bigImage = this.imagesArr[0]
   }
 }
 </script>

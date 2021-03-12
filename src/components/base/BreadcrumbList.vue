@@ -1,8 +1,8 @@
 <template>
   <div class="breadcrumb-list">
     <div class="w1200px">
-      <router-link to="/">首页</router-link> >
-      <router-link v-if="breadcrumb.name" :to="breadcrumb.url"> {{ breadcrumb.name }} </router-link>
+      <router-link to="/">首页</router-link>
+      <router-link v-for="(item, k) in breadcrumb" :key="k" :to="item.url">{{ item.name }}</router-link>
     </div>
   </div>
 </template>
@@ -10,9 +10,9 @@
 export default {
   props: {
     breadcrumb: {
-      type: Object,
+      type: Array,
       default: () => {
-        return {}
+        return []
       }
     }
   }
@@ -25,10 +25,29 @@ export default {
   background: #f5f5f5;
   border-bottom: 1px solid #C9C9C9;
   a {
+    position: relative;
+    margin-right: 20px;
     color: #7C7C7C;
     font-size: 12px;
+    &:last-child {
+      &::after {
+        display: none;
+      }
+    }
     &:hover {
       color: #24A10F;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: -11px;
+      width: 6px;
+      height: 6px;
+      border-top: 1px solid #000;
+      border-right: 1px solid #000;
+      transform: rotate(45deg);
+      opacity: 0.5;
     }
   }
 }

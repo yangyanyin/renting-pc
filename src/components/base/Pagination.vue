@@ -1,7 +1,7 @@
 <template>
   <div class="pagination">
     <vue-ads-pagination
-      :total-items="200"
+      :total-items="total"
       :max-visible-pages="10"
       :page="page"
       :loading="loading"
@@ -37,18 +37,25 @@ export default {
   data() {
     return {
       loading: false,
-      page: 0
+      page: this.$route.query.page ? this.$route.query.page - 1 : 0,
+      initialization: false
     };
   },
-
+  props: {
+    total: Number
+  },
   methods: {
     pageChange(page) {
       this.page = page
-      console.log(page)
     },
-
     rangeChange(start, end) {
-      console.log(start, end, this.page)
+      if (this.initialization) {
+        this.initialization = false
+        console.log(start, end, this.page)
+        this.$emit('clickPage', this.page)
+      }
+      this.initialization = true
+      
     },
     title(key, pages) {
       if (key === 0) {
@@ -63,6 +70,9 @@ export default {
 }
 </script>
 <style lang="less">
+.pagination {
+  margin-top: 30px;
+}
 .vue-ads-cursor-default {
   cursor: default;
 }

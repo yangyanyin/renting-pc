@@ -38,6 +38,7 @@ import HouseList from './base/HouseList'
 import BuyHouseAdvisory from './base/BuyHouseAdvisory'
 import Estate from './base/Estate'
 export default {
+  name: 'home',
   components: {
     HomeHeader,
     HomeBanner,

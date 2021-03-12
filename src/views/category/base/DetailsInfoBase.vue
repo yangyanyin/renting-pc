@@ -1,48 +1,60 @@
 <template>
   <div class="info-base">
     <div class="price">
-      $105<i>万起</i>
+      {{infoBase.price}}<i>万起</i>
       <a>变价提醒</a>
     </div>
-    <p>地区位置：<i>市区</i></p>
-    <p>建筑面积：<i>7653m²</i></p>
-    <p>预计落成日期：<i>2022年10月</i></p>
-    <p>房产地址：<i>新加坡，乌节路1号 #169016</i></p>
+    <p>地区位置：<i>{{ infoBase.location }}</i></p>
+    <p>建筑面积：<i>{{ infoBase.area }}</i></p>
+    <p>预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
+    <p>房产地址：<i>{{ infoBase.addr }}</i></p>
     <p class="traffic">
       交通：
-      <span>NS20  诺维娜</span>
-      <span>NS20  诺维娜</span>
-      <span>NS20  诺维娜</span>
-      <i>步行至最近地铁站仅需5分钟</i>
+      <!-- <span v-for="(color, name, k) in traffic" :key="k" :style="{background: color}">{{ name }}</span> -->
+      <span v-for="(name, k) in infoBase.traffic" :key="k">{{ name }}</span>
+      <i>{{ infoBase.traffic_tips }}</i>
     </p>
     <div class="rule clearfix">
-      <ul>
-        <li class="t">户型</li>
-        <li>2室1厅</li>
-        <li>3室1厅</li>
-        <li>4室1厅</li>
-      </ul>
-      <ul>
-        <li class="t">面积㎡</li>
-        <li>48㎡</li>
-        <li>58㎡</li>
-        <li>68㎡</li>
-      </ul>
-      <ul>
-        <li class="t">套数</li>
-        <li>20套</li>
-        <li>30套</li>
-        <li>40套</li>
-      </ul>
-      <ul>
-        <li class="t">售价</li>
-        <li class="p">约$100万</li>
-        <li class="p">约$150万</li>
-        <li class="p">约$200万</li>
+      <ul v-for="(types, name, k) in houseTypes" :key="k">
+        <li class="t">{{ name }}</li>
+        <li :class="{p: name === '售价'}" v-for="(item, i) in types" :key="i">{{ item }}</li>
       </ul>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    infoBase: Object
+  },
+  computed: {
+    houseTypes () {
+      const types = this.infoBase.house_types
+      const data = {
+        '户型': [],
+        '面积㎡': [],
+        '套数': [],
+        '售价': []
+      }
+      for (let i = 0; i < types.length; i++) {
+        data['户型'].push(types[i].type)
+        data['面积㎡'].push(types[i].area)
+        data['套数'].push(types[i].total)
+        data['售价'].push(types[i].price)
+      }
+      return data
+    },
+    // traffic () {
+    //   let data = {}
+    //   const tips = this.infoBase.traffic_tips.split(',')
+    //   for (let i = 0; i < this.infoBase.traffic.length; i++) {
+    //     data[this.infoBase.traffic[i]] = tips[i] || ''
+    //   }
+    //   return data
+    // }
+  }
+}
+</script>
 <style lang="less" scoped>
 .info-base {
   .price {
@@ -90,7 +102,7 @@
         color: #fff;
       }
       i {
-        display: inline-block;
+        display: block;
         margin: 10px 0 0 55px;
         font-size: 12px;
         color: #1C1C1C;

@@ -1,11 +1,11 @@
 <template>
   <div class="product-list w1200px clearfix">
     <div class="result">
-      为您找到<i>100</i>条结果
+      为您找到<i>{{productData.length}}</i>条结果
       <a>清除条件</a>
     </div>
     <div class="list left">
-      <ProductItem v-for="(i, k) in 4" :key="k" />
+      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :productType="productType" />
     </div>
     <div class="recommend right">
       <h3>租房推荐</h3>
@@ -20,6 +20,10 @@ export default {
   components: {
     ProductItem,
     RecommendItem
+  },
+  props: {
+    productData: Array,
+    productType: String
   }
 }
 </script>

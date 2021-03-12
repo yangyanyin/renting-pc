@@ -2,27 +2,27 @@
   <div class="detailed">
     <h3 class="other-t">项目详情</h3>
     <ul class="clearfix">
-      <li><i>楼盘名称</i> 海景号苑</li>
-      <li><i>房产类型 </i>私人公寓</li>
-      <li><i>开发商 </i>CDL</li>
-      <li><i>产权  </i>99年地契</li>
-      <li><i>开盘日期 </i>2019年10月</li>
-      <li><i>预计落成日期 </i>2022年10月</li>
+      <li><i>楼盘名称</i> {{ projectDetails.name }}</li>
+      <li><i>房产类型 </i> {{ projectDetails.type }} </li>
+      <li><i>开发商 </i> {{ projectDetails.developer }} </li>
+      <li><i>产权  </i> {{ projectDetails.property }} </li>
+      <li><i>开盘日期 </i> {{ projectDetails.start_time }} </li>
+      <li><i>预计落成日期 </i> {{ projectDetails.finish }} </li>
       <li><i>公共设施 </i>
         <div>
-          <span>24小时保安</span>
-          <span>50米标准泳池</span>
-          <span>儿童戏水池</span>
-          <span>健身房</span>
-          <span>桑拿房</span>
-          <span>网球场</span>
-          <span>室外健身器材</span>
-          <span>BBQ台</span>
+          <span v-for="(name, k) in projectDetails.facility" :key="k">{{ name }}</span>
         </div>
       </li>
     </ul>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    projectDetails: Object
+  }
+}
+</script>
 <style lang="less" scoped>
 .detailed {
   ul {
