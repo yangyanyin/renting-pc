@@ -5,7 +5,7 @@
       <a>清除条件</a>
     </div>
     <div class="list left">
-      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :productType="productType" />
+      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" />
     </div>
     <div class="recommend right">
       <h3>租房推荐</h3>
@@ -22,8 +22,7 @@ export default {
     RecommendItem
   },
   props: {
-    productData: Array,
-    productType: String
+    productData: Array
   }
 }
 </script>

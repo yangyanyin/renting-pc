@@ -1,6 +1,6 @@
 <template>
   <div class="details">
-    <BreadcrumbList :breadcrumb="breadcrumb" />
+    <BreadcrumbList :breadcrumb="breadcrumb" v-if="breadcrumb.length > 0" />
     <SearchBox />
 
     <Loading v-if="!proTitle"/>
@@ -18,7 +18,7 @@
         <DetailsPhoto :photoAll="photoAll" />
         <DetailsDetailed :projectDetails="projectDetails" />
         <DetailsMortgage />
-        <DetailsUnitType />
+        <DetailsUnitType :houseTypes="houseTypes" />
       </div>
       <div class="right">
         <DetailsInfoBase :infoBase="infoBase" />
@@ -62,7 +62,8 @@ export default {
       infoBase: {},       // 标签信息
       introduction: '',   // 介绍
       photoAll: {},       // 房源相册
-      projectDetails: {}  // 项目详情
+      projectDetails: {}, // 项目详情
+      houseTypes: ''
     }
   },
   computed: {
@@ -100,7 +101,7 @@ export default {
         this.proTitle = detailInfo.title
         this.proBigImages = detailInfo.effect_images
         this.introduction = detailInfo.description
-
+        this.houseTypes = detailInfo.house_types
         this.infoBase = {
           location: detailInfo.location,
           area: detailInfo.area,

@@ -24,15 +24,14 @@
 <script>
 export default {
   props: {
-    item: Object,
-    productType: String
+    item: Object
   },
   computed: {
     priceType () {
-      if (this.productType === 'new house') {
+      if (this.$route.name === 'new house') {
         return '万起'
       }
-      if (this.productType === 'second-hand-housing') {
+      if (this.$route.name === 'second hand') {
         return '万'
       }
       return ''

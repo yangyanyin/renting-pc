@@ -1,19 +1,26 @@
 <template>
   <div class="unit-type">
     <h3 class="other-t">户型介绍</h3>
-    <div class="item" v-for="(i, k) in 3" :key="k">
+    <div class="item" v-for="(item, k) in houseTypes" :key="k">
       <router-link to="/" class="a-img">
         <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="项目详情" />
       </router-link>
-      <router-link to="/" tag="h3">2室1厅</router-link>
+      <router-link to="/" tag="h3">{{ item.type }}</router-link>
       <p>参考均价：<i>$3000</i>/㎡</p>
       <p>参考总价：<i>$100万</i>/套</p>
-      <span>90㎡</span>
+      <span>{{ item.area }}</span>
     </div>
     <strong>免责声明</strong>
     <em>页面所载楼盘内容及数据仅供用户参考和借鉴，最终以开发商实际公示为准，如楼盘信息有误或其他疑义，可进行纠错。</em>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    houseTypes: Array
+  }
+}
+</script>
 <style lang="less" scoped>
 .unit-type {
   .item {

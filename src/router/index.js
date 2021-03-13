@@ -100,7 +100,7 @@ const routes = [
     component: OwnerIndex
   },
   {
-    path: '/a',
+    path: '/',
     name: 'other',
     component: OtherIndex,
     children: [

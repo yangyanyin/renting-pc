@@ -1,7 +1,7 @@
 <template>
   <div class="info-base">
     <div class="price">
-      {{infoBase.price}}<i>万起</i>
+      {{infoBase.price}}<i>{{priceType}}</i>
       <a>变价提醒</a>
     </div>
     <p>地区位置：<i>{{ infoBase.location }}</i></p>
@@ -44,14 +44,15 @@ export default {
       }
       return data
     },
-    // traffic () {
-    //   let data = {}
-    //   const tips = this.infoBase.traffic_tips.split(',')
-    //   for (let i = 0; i < this.infoBase.traffic.length; i++) {
-    //     data[this.infoBase.traffic[i]] = tips[i] || ''
-    //   }
-    //   return data
-    // }
+    priceType () {
+      if (this.$route.params.category === 'new-house') {
+        return '万起'
+      }
+      if (this.$route.params.category === 'second-hand') {
+        return '万'
+      }
+      return ''
+    },
   }
 }
 </script>

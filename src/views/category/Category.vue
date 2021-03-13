@@ -7,7 +7,7 @@
     <Loading v-if="total <= 0 || pageLoading"/>
     <template v-else>
       <Filters />
-      <ProductList :productData="productData" :productType="productType" />
+      <ProductList :productData="productData" />
     </template>
     <Pagination v-if="total > 10" :total="total" @clickPage="clickPage" />
   </div>
@@ -39,9 +39,6 @@ export default {
     }
   },
   computed: {
-    productType () {
-      return this.$route.name
-    },
     breadcrumb () {
       const routes = {
         'new house': {
