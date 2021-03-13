@@ -13,7 +13,7 @@
           <option value="30">30%</option>
           <option value="40">40%</option>
           <option value="50">50%</option>
-          <option value="75">75%</option>
+          <option value="70">70%</option>
         </select>
       </div>
       <div class="input-box">
@@ -21,7 +21,7 @@
         <input class="inp ban" type="text" v-model="countLoanPrice" disabled="disabled" />
       </div>
       <div class="input-box">
-        贷款利率
+        贷款年利率
         <select class="inp" v-model="interestRate">
           <option value="2.5">2.5%</option>
           <option value="3">3%</option>
