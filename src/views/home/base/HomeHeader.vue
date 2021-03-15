@@ -45,6 +45,9 @@ export default {
       display: inline-block;
       margin: 0 20px;
       color: #fff;
+      &:hover {
+        color: #21e800;
+      }
     }
   }
   .hotline {

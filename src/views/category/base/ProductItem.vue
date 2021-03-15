@@ -11,12 +11,8 @@
     <p class="type">
       <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>
     </p>
-    <ul class="label">
-      <li>公寓</li>
-      <li>精装修</li>
-      <li>核心地段</li>
-      <li>交通便利</li>
-      <li>允许贷款</li>
+    <ul class="label" v-if="item.house_tags.length">
+      <li v-for="(name, k) in item.house_tags" :key="k">{{ name }}</li>
     </ul>
     <div class="price"> {{ item.price }} <i>{{ priceType }}</i></div>
   </div>

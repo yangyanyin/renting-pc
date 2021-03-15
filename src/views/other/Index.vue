@@ -1,6 +1,6 @@
 <template>
   <div class="other">
-    <BreadcrumbList />
+    <BreadcrumbList :breadcrumb="breadcrumb" />
     <div class="clearfix w1200px mt40">
       <div class="left menu">
         <router-link to="/about">关于我们</router-link>
@@ -18,6 +18,25 @@ import BreadcrumbList from '../../components/base/BreadcrumbList'
 export default {
   components: {
     BreadcrumbList
+  },
+  computed: {
+    breadcrumb () {
+      const data = {
+        about: {
+          name: '关于我们',
+          url: '/about'
+        },
+        'contact-us': {
+          name: '联系我们',
+          url: '/contact-us'
+        },
+        copyright: {
+          name: '版权声明',
+          url: '/copyright'
+        }
+      }
+      return [data[this.$route.name]]
+    }
   }
 }
 </script>

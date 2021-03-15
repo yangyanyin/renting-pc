@@ -47,6 +47,9 @@ header {
     a {
       display: inline-block;
       margin: 0 20px;
+      &:hover {
+        color: #24A10F;
+      }
     }
   }
   .hotline {

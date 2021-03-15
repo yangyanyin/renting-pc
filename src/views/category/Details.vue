@@ -8,9 +8,7 @@
       
       <div class="name">
         <h3>{{ proTitle }}</h3>
-        <span>公寓</span>
-        <span>核心地段</span>
-        <span>知名房企</span>
+        <span v-for="(name, k) in houseTags" :key="k">{{ name }}</span>
       </div>
       <div class="left">
         <DetailsViewImg :imagesArr="proBigImages" v-if="proBigImages" />
@@ -63,7 +61,8 @@ export default {
       introduction: '',   // 介绍
       photoAll: {},       // 房源相册
       projectDetails: {}, // 项目详情
-      houseTypes: ''
+      houseTypes: '',     // 户型
+      houseTags: []       // 楼盘标签
     }
   },
   computed: {
@@ -102,6 +101,7 @@ export default {
         this.proBigImages = detailInfo.effect_images
         this.introduction = detailInfo.description
         this.houseTypes = detailInfo.house_types
+        this.houseTags = detailInfo.house_tags
         this.infoBase = {
           location: detailInfo.location,
           area: detailInfo.area,
