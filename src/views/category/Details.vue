@@ -23,6 +23,7 @@
         <DetailsRecommend />
       </div>
     </div>
+    <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" />
   </div>
 </template>
 <script>
@@ -36,6 +37,7 @@ import DetailsDetailed from './base/DetailsDetailed'
 import DetailsUnitType from './base/DetailsUnitType'
 import DetailsInfoBase from './base/DetailsInfoBase'
 import DetailsRecommend from '../../components/details/DetailsRecommend'
+import BaiduMap from '../../components/details/BaiduMap'
 import Loading from '../../components/base/Loading'
 
 export default {
@@ -51,6 +53,7 @@ export default {
     DetalsIntroduction,
     DetailsInfoBase,
     DetailsRecommend,
+    BaiduMap,
     Loading
   },
   data () {

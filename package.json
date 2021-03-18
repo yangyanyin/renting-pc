@@ -14,6 +14,7 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-ads-pagination": "^2.1.7",
+    "vue-baidu-map": "^0.21.22",
     "vue-i18n": "^8.22.4",
     "vue-router": "^3.5.1",
     "vue-slick-carousel": "^1.0.6"
