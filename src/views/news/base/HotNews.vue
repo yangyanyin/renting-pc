@@ -3,10 +3,10 @@
     <h2>热门资讯</h2>
     <div class="list">
       <ul>
-        <li v-for="(i, k) in 10" :key="k"> 
-          <router-link to="/" >
+        <li v-for="(item, k) in newsList" :key="k"> 
+          <router-link :to="'/n/d/' + item.id" >
             <span> {{k + 1}} </span>
-            刷新历史纪录！疫情之下加拿大12月份的房屋成交量超过1
+            {{ item.title }}
           </router-link>
         </li>
       </ul>
@@ -14,6 +14,25 @@
     </div>
   </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      newsList: []
+    }
+  },
+  mounted () {
+    const params = {
+      category_id: 2
+    }
+    this.$httpApi.newsListApi(params).then(res => {
+      if (res.code === 200) {
+        this.newsList = res.data.news_list
+      }
+    })
+  }
+}
+</script>
 <style lang="less" scoped>
 .hot-news {
   h2 {
@@ -46,6 +65,13 @@
         }
       }
       a {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        /* autoprefixer: off */
+        -webkit-box-orient: vertical;
+        /* autoprefixer: no */
         span {
           display: inline-block;
           width: 16px;

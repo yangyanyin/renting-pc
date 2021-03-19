@@ -1,12 +1,19 @@
 <template>
   <div class="item">
-    <img src="https://cms.aicassets.com/images/default/6018abc3e6cbc.jpeg" alt="" />
-    <router-link to="/n/d/asd" tag="h3">刷新历史纪录！疫情之下加拿大12月份的房屋成交量超过1.2万宗</router-link>
-    <p>根据加拿大房地产协会在1月15日所公布出来的的最新统计数据，截至2020年12月加拿大全国房屋销量超过1.2万宗及多项相关指标均刷新历史纪录</p>
-    <span>2021-02-02</span>
-    <router-link to="/n/d/asd">查看详情</router-link>
+    <img :src="item.img" :alt="item.title" />
+    <router-link :to="'/n/d/' + item.id" tag="h3">{{ item.title }}</router-link>
+    <p>{{ item.description }}</p>
+    <span>{{ item.created_at ? item.created_at.split(' ')[0] : '' }}</span>
+    <router-link :to="'/n/d/' + item.id">查看详情</router-link>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    item: Object
+  }
+}
+</script>
 <style lang="less" scoped>
 .item {
   position: relative;
@@ -24,6 +31,7 @@
   h3 {
     padding-top: 5px;
     font-size: 16px;
+    cursor: pointer;
   }
   p {
     font-size: 12px;

@@ -1,28 +1,62 @@
 import axios from './axios'
 
-// 新楼盘列表
-const newHouse = (params) => axios({
-  url: '/v1/new_house/list',
+// 房屋信息列表
+const categoryListApi = (params) => axios({
+  url: `/v1/${params.api_url}/list`,
   method: 'get',
   params: params
 })
 
-// 新楼盘列表
-const productDetail = (params) => axios({
-  url: '/v1/new_house/' + params.id,
+// 房屋信息详情
+const productDetailApi = (params) => axios({
+  url: `/v1/${params.api_url}/${params.id}`,
   method: 'get',
   params: params
 })
 
 // 楼盘推荐
-const productRecommend = (params) => axios({
+const productRecommendApi = (params) => axios({
   url: '/v1/new_house_recommend',
   method: 'get',
   params: params
 })
 
+// 新闻列表
+const newsListApi = (params) => axios({
+  url: '/v1/newsList',
+  method: 'get',
+  params: params
+})
+
+// 新闻详情
+const newsDetailsApi = (params) => axios({
+  url: '/v1/news',
+  method: 'get',
+  params: params
+})
+
+// 热门资讯
+const hotNewsListApi = (params) => axios({
+  url: '/v1/news',
+  method: 'get',
+  params: params
+})
+
+// 推荐新闻
+const recommendNewsApi = (params) => axios({
+  url: '/v1/recommend_news_list',
+  method: 'get',
+  params: params
+})
+
+
+
 export default {
-  newHouse,
-  productDetail,
-  productRecommend
+  categoryListApi,
+  productDetailApi,
+  productRecommendApi,
+  newsListApi,
+  newsDetailsApi,
+  hotNewsListApi,
+  recommendNewsApi
 }

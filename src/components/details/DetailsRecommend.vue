@@ -79,7 +79,7 @@ export default {
     }
   },
   mounted () {
-    this.$httpApi.productRecommend().then(res => {
+    this.$httpApi.productRecommendApi().then(res => {
       console.log(res)
       if (res.code === 200) {
         this.recommendList = res.data.recommend

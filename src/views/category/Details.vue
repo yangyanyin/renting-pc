@@ -73,7 +73,8 @@ export default {
       const routes = {
         'new-house': {
           url: '/c/new-house',
-          name: '新楼盘'
+          name: '新楼盘',
+          api: 'new_house'
         },
         'renting': {
           url: '/c/renting',
@@ -81,7 +82,8 @@ export default {
         },
         'second-hand': {
           url: '/c/second-hand',
-          name: '二手公寓'
+          name: '二手公寓',
+          api: 'second_hand_house'
         }
       }
       return [
@@ -95,11 +97,12 @@ export default {
   },
   mounted () {
     const params = {
-      id: this.$route.params.id
+      id: this.$route.params.id,
+      api_url: this.breadcrumb[0].api
     }
-    this.$httpApi.productDetail(params).then(res => {
+    this.$httpApi.productDetailApi(params).then(res => {
       if (res.code === 200) {
-        const detailInfo = res.data.new_house
+        const detailInfo = res.data.new_house || res.data.second_hand_house
         this.proTitle = detailInfo.title
         this.proBigImages = detailInfo.effect_images
         this.introduction = detailInfo.description

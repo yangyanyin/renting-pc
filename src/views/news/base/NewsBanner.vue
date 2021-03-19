@@ -1,21 +1,11 @@
 <template>
   <div class="news-banner">
     <VueSlickCarousel v-bind="settings">
-      <div class="item">
-        <h3>新加坡侨水资本：建立家族信托，为财富传承布局</h3>
-        <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="新加坡侨水资本：建立家族信托，为财富传承布局" />
-      </div>
-      <div class="item">
-        <h3>加入全球最大自贸区RCEP 新加坡移民迎来新机遇</h3>
-        <img src="https://cms.aicassets.com/images/default/5fd2d5ce978b1.jpeg" alt="加入全球最大自贸区RCEP 新加坡移民迎来新机遇" />
-      </div>
-      <div class="item">
-        <h3>家族财富|带您了解新加坡单一家族办公室的最佳移民方案</h3>
-        <img src="https://cms.aicassets.com/images/default/5fadfe33c2cb8.png" alt="家族财富|带您了解新加坡单一家族办公室的最佳移民方案" />
-      </div>
-      <div class="item">
-        <h3>新加坡入境管制再放宽，同时2021年起包括公民在内所有人入境自行承担隔离费用</h3>
-        <img src="https://cms.aicassets.com/images/default/5f9bb20aa5981.jpeg" alt="新加坡入境管制再放宽，同时2021年起包括公民在内所有人入境自行承担隔离费用" />
+      <div class="item" v-for="(item, k) in newsBanner" :key="k">
+        <router-link :to="'/n/d' + item.id">
+          <h3>{{ item.title }}</h3>
+          <img :src="item.img" :alt="item.title">
+        </router-link>
       </div>
     </VueSlickCarousel>
   </div>
@@ -27,6 +17,9 @@
   import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
   export default {
     components: { VueSlickCarousel },
+    props: {
+      newsBanner: Array
+    },
     data () {
       return {
         settings: {
@@ -55,6 +48,10 @@
       right: 40px;
       font-size: 20px;
       color: #fff;
+    }
+    img {
+      object-fit: cover;
+      height: 100%;
     }
   }
   

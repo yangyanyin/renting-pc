@@ -7,13 +7,12 @@
     <Loading v-if="total <= 0 || pageLoading"/>
     <template v-else>
       <Filters />
-      <ProductList :productData="productData" />
+      <ProductList :productData="productData" :total="total" />
     </template>
     <Pagination v-if="total > 10" :total="total" @clickPage="clickPage" />
   </div>
 </template>
 <script>
-// const apiType = ['newHouse']
 import BreadcrumbList from '../../components/base/BreadcrumbList'
 import SearchBox from './base/SearchBox'
 import Filters from './base/Filters'
@@ -43,7 +42,8 @@ export default {
       const routes = {
         'new house': {
           url: '/c/new-house',
-          name: '新楼盘'
+          name: '新楼盘',
+          api: 'new_house'
         },
         'renting': {
           url: '/c/renting',
@@ -51,7 +51,8 @@ export default {
         },
         'second hand': {
           url: '/c/second-hand',
-          name: '二手公寓'
+          name: '二手公寓',
+          api: 'second_hand_house'
         }
       }
       return [routes[this.$route.name]]
@@ -74,11 +75,12 @@ export default {
       this.page = page
       const params = {
         page: this.page,
-        size: 10
+        size: 10,
+        api_url: this.breadcrumb[0].api
       }
       this.pageLoading = true
-      this.$httpApi.newHouse(params).then(res => {
-        this.productData = res.data.new_houses
+      this.$httpApi.categoryListApi(params).then(res => {
+        this.productData = res.data.new_houses || res.data.second_hand_houses
         this.total = res.data.total
         this.pageLoading = false
       })

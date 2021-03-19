@@ -1,7 +1,7 @@
 <template>
   <div class="product-list w1200px clearfix">
     <div class="result">
-      为您找到<i>{{productData.length}}</i>条结果
+      为您找到<i>{{ total }}</i>条结果
       <a>清除条件</a>
     </div>
     <div class="list left">
@@ -22,7 +22,8 @@ export default {
     RecommendItem
   },
   props: {
-    productData: Array
+    productData: Array,
+    total: Number
   }
 }
 </script>

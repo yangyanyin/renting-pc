@@ -3,17 +3,11 @@
     <Title title="新加坡最新房产资讯" :more="titleMore" />
 
     <div class="list clearfix">
-      <router-link to="/n/d/a">
-        <img src="https://cms.aicassets.com/images/default/5fa21282cb759.jpeg" alt="新加坡最新房产资讯" />
-        <h3>在这里，中国爹妈发现了性价比最高的“跳板”</h3>
-        <p>除了在东南亚置业，中国人在东南亚又发现了新的宝藏——学校，尤其是小学和初中国际学校。 最近，泰国正流传着一个重磅新闻。由于中国留学生激增，泰国一所国际学校2018年盈利飙升至9700万泰铢，比2017年足足翻了四倍多。</p>
-        <span>2021-1-22</span>
-      </router-link>
-      <router-link to="/n/d/a">
-        <img src="https://cms.aicassets.com/images/default/5fa21282cb759.jpeg" alt="新加坡最新房产资讯" />
-        <h3>在这里，中国爹妈发现了性价比最高的“跳板”</h3>
-        <p>除了在东南亚置业，中国人在东南亚又发现了新的宝藏——学校，尤其是小学和初中国际学校。 最近，泰国正流传着一个重磅新闻。由于中国留学生激增，泰国一所国际学校2018年盈利飙升至9700万泰铢，比2017年足足翻了四倍多。</p>
-        <span>2021-1-22</span>
+      <router-link :to="'/n/d/' + item.id" v-for="(item, k) in newsList" :key="k">
+        <img :src="item.img" :alt="item.title" />
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+        <span>{{ item.created_at ? item.created_at.split(' ')[0] : '' }} </span>
       </router-link>
     </div>
   </div>
@@ -26,6 +20,7 @@ export default {
   },
   data () {
     return {
+      newsList: [],
       titleMore: [
         {
           text: '查看更多',
@@ -33,6 +28,19 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    const params = {
+      page: 1,
+      size: 2,
+      category_id: 1
+    }
+    this.$httpApi.newsList(params).then(res => {
+      console.log(res, 'new')
+      if (res.code === 200) {
+        this.newsList = res.data.news_list
+      }
+    })
   }
 }
 </script>

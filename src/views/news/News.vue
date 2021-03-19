@@ -1,19 +1,22 @@
 <template>
   <div class="news">
-    <BreadcrumbList />
+    <BreadcrumbList :breadcrumb="breadcrumb" />
     <div class="content clearfix w1200px">
-      <div class="left">
-        <NewsBanner />
-        <div class="list">
-          <h2>新闻列表</h2>
-          <NewsItem v-for="(i, k) in 10" :key="k" />
-          
+      <Loading v-if="newsList.length === 0" />
+      <template v-if="newsList.length > 0">
+        <div class="left">
+          <NewsBanner :newsBanner="bannerNewsList" />
+          <div class="list">
+            <h2>新闻列表</h2>
+            <NewsItem v-for="(item, k) in newsList" :item="item" :key="k" />
+          </div>
         </div>
-      </div>
-      <div class="right">
-        <HotNews />
-        <DetailsRecommend />
-      </div>
+        <div class="right">
+          <HotNews />
+          <DetailsRecommend />
+        </div>
+      </template>
+      
     </div>
   </div>
 </template>
@@ -23,13 +26,43 @@ import DetailsRecommend from '../../components/details/DetailsRecommend'
 import HotNews from './base/HotNews'
 import NewsBanner from './base/NewsBanner'
 import NewsItem from './base/NewsItem'
+import Loading from '../../components/base/Loading'
+
 export default {
   components: {
     BreadcrumbList,
     DetailsRecommend,
     HotNews,
     NewsBanner,
-    NewsItem
+    NewsItem,
+    Loading
+  },
+  data () {
+    return {
+      newsList: [],
+      bannerNewsList: []
+    }
+  },
+  computed: {
+    breadcrumb () {
+      return [{
+        url: '/n/s',
+        name: '最新房产资讯'
+      }]
+    }
+  },
+  mounted () {
+    const params = {
+      category_id: 1
+    }
+    this.$httpApi.newsListApi(params).then(res => {
+      if (res.code === 200) {
+        if (this.bannerNewsList.length === 0) {
+          this.bannerNewsList = res.data.news_list.slice(0, 4)
+        }
+        this.newsList = res.data.news_list
+      }
+    })
   }
 }
 </script>
