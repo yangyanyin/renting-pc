@@ -32,6 +32,12 @@ export default {
     padding-top: 5px;
     font-size: 16px;
     cursor: pointer;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* autoprefixer: off */
+    -webkit-box-orient: vertical;
+    /* autoprefixer: no */
   }
   p {
     font-size: 12px;

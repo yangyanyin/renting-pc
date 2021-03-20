@@ -15,8 +15,8 @@ const productDetailApi = (params) => axios({
 })
 
 // 楼盘推荐
-const productRecommendApi = (params) => axios({
-  url: '/v1/new_house_recommend',
+const categoryRecommendApi = (params) => axios({
+  url: '/v1/recommend',
   method: 'get',
   params: params
 })
@@ -54,7 +54,7 @@ const recommendNewsApi = (params) => axios({
 export default {
   categoryListApi,
   productDetailApi,
-  productRecommendApi,
+  categoryRecommendApi,
   newsListApi,
   newsDetailsApi,
   hotNewsListApi,

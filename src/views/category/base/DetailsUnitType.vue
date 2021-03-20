@@ -2,12 +2,12 @@
   <div class="unit-type">
     <h3 class="other-t">户型介绍</h3>
     <div class="item" v-for="(item, k) in houseTypes" :key="k">
-      <router-link to="/" class="a-img">
-        <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="项目详情" />
-      </router-link>
-      <router-link to="/" tag="h3">{{ item.type }}</router-link>
-      <p>参考均价：<i>$3000</i>/㎡</p>
-      <p>参考总价：<i>$100万</i>/套</p>
+      <i class="a-img">
+        <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" :alt="item.type" />
+      </i>
+      <i tag="h3">{{ item.type }}</i>
+      <p>参考均价：<i>{{ item.average_price }}</i>/㎡</p>
+      <p>参考总价：<i> {{ item.price }} </i>/套</p>
       <span>{{ item.area }}</span>
     </div>
     <strong>免责声明</strong>

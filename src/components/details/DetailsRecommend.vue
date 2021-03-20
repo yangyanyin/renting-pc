@@ -1,26 +1,17 @@
 <template>
   <div class="details-side">
-    <h3>新楼盘推荐</h3>
+    <h3>{{ recommendType.title }}</h3>
     <div class="recommend">
-
       <div class="item" v-for="(item, k) in recommendList" :key="k">
-        <router-link :to="'/c/d/' + item._id"  class="a-img">
+        <router-link :to="recommendType.link + item._id"  class="a-img">
           <img :src="item.image" :alt="item.title" />
         </router-link>
         <router-link to="/" tag="strong">{{ item.title }}</router-link>
         <p>2-5室 / 96-116㎡</p>
-        <span>{{ item.price }} 万起</span>
+        <span>{{ item.price }} <em>{{ recommendType.unit }}</em></span>
       </div>
-<!--       
-      <div class="item" v-for="(i, k) in 3" :key="k">
-        <router-link to="/" class="a-img">
-          <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="项目详情" />
-        </router-link>
-        <router-link to="/" tag="strong">东景苑奢华卓越新地标，超大型东部私宅新楼盘</router-link>
-        <p>2-5室 / 96-116㎡</p>
-        <span>$79 <em>万起</em></span>
-      </div> -->
     </div>
+
     <Consultant />
 
     <h3>给TA留言<i>提交咨询请求，30分钟内回复</i></h3>
@@ -62,6 +53,36 @@ export default {
       }
     }
   },
+  computed: {
+    recommendType () {
+      const data =  {
+        'second-hand': {
+          title: '二手房推荐',
+          type: 'second_hand_house',
+          link: '/c/second-hand/',
+          unit: '万'
+        },
+        'new-house': {
+          title: '新楼盘推荐',
+          type: 'new_house',
+          link:'/c/new-house/',
+          unit: '万起'
+        },
+        'renting': {
+          title: '租房推荐',
+          type: 'renting',
+          link:'/c/renting/'
+        }
+      }
+
+      return data[this.$route.params.category] || {
+        title: '房产推荐',
+        type: 'new_house',
+        link:'/c/new-house/',
+        unit: '万起'
+      }
+    }
+  },
   methods: {
     protocolClick () {
       this.fromInfo.protocol = !this.fromInfo.protocol
@@ -79,8 +100,10 @@ export default {
     }
   },
   mounted () {
-    this.$httpApi.productRecommendApi().then(res => {
-      console.log(res)
+    const params = {
+      type: this.recommendType.type
+    }
+    this.$httpApi.categoryRecommendApi(params).then(res => {
       if (res.code === 200) {
         this.recommendList = res.data.recommend
       }

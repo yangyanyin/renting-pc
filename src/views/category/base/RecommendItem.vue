@@ -1,12 +1,31 @@
 <template>
   <div class="item">
     <router-link to="/" class="a-img">
-      <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="新加坡最新房产资讯" />
+      <img :src="item.image" :alt="item.title" />
     </router-link>
-    <router-link to="/" tag="h3">新加坡Hilltops山领域奢华高端公寓</router-link>
-    <div class="price">$3600<i>/月</i></div>
+    <router-link :to="link + item._id" tag="h3">{{ item.title }}</router-link>
+    <div class="price">{{ item.price }} <i>{{priceType}}</i></div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    item: Object,
+    link: String
+  },
+  computed: {
+    priceType () {
+      if (this.$route.name === 'new house') {
+        return '万起'
+      }
+      if (this.$route.name === 'second hand') {
+        return '万'
+      }
+      return '万起'
+    }
+  }
+}
+</script>
 <style scoped lang="less">
 .item {
   margin-top: 20px;

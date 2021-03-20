@@ -35,8 +35,7 @@ export default {
       size: 2,
       category_id: 1
     }
-    this.$httpApi.newsList(params).then(res => {
-      console.log(res, 'new')
+    this.$httpApi.newsListApi(params).then(res => {
       if (res.code === 200) {
         this.newsList = res.data.news_list
       }
