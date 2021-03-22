@@ -1,7 +1,7 @@
 <template>
   <div class="home-advisory mt80">
     <div class="w1200px">
-      <router-link to="/">立即查看</router-link>
+      <router-link :to="buyHouseAdvisory.more">立即查看</router-link>
       <h3 v-html="buyHouseAdvisory.title"></h3>
       <p>{{ buyHouseAdvisory.des }}</p>
     </div>

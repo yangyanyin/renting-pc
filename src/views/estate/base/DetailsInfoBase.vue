@@ -9,19 +9,34 @@
     <p>靠近地铁站：<i>市中心地铁站(Downtown MRT)</i></p>
     <div class="price">
       参考价: <span> $2,720每平方尺 </span>
-      <button>购买</button>
+      <button @click="showAdvisory" >购买</button>
     </div>
     <div class="price">
       参考价:<span> $13平方尺每月 </span>
-      <button>租赁</button>
-
+      <button @click="showAdvisory">租赁</button>
     </div>
+
+    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>
 </template>
 
 <script>
-export default {
+import AdvisoryPopup from '../../../components/base/AdvisoryPopup'
 
+export default {
+  components: {
+    AdvisoryPopup
+  },
+  data () {
+    return {
+      showAdvisoryType: false
+    }
+  },
+  methods: {
+    showAdvisory () {
+      this.showAdvisoryType = !this.showAdvisoryType
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
