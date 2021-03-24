@@ -1,5 +1,12 @@
 import axios from './axios'
 
+// 首页
+const indexApi = (params) => axios({
+  url: `/v1/index`,
+  method: 'get',
+  params: params
+})
+
 // 房屋信息列表
 const categoryListApi = (params) => axios({
   url: `/v1/${params.api_url}/list`,
@@ -52,6 +59,7 @@ const recommendNewsApi = (params) => axios({
 
 
 export default {
+  indexApi,
   categoryListApi,
   productDetailApi,
   categoryRecommendApi,

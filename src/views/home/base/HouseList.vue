@@ -1,18 +1,19 @@
 <template>
   <div class="home-house-list w1200px mt80">
-    <Title title="精选优质新房" :more="titleMore" />
+    <!-- <Title :title="housesType.name" :more="titleMore" /> -->
+    <Title :title="housesType.name" />
     <div class="product-list clearfix">
-      <div class="item left" v-for="(i, k) in 8" :key="k">
-        <router-link to="/c/d/qwe" class="a-img">
-          <img src="https://cms.aicassets.com/images/default/5fa21282cb759.jpeg" alt="新加坡最新房产资讯" />
+      <div class="item left" v-for="(item, k) in housesData" :key="k">
+        <router-link :to="`${housesType.url}/${item._id}`" class="a-img">
+          <img :src="item.image" :alt="item.title" />
         </router-link>
-        <router-link to="/c/d/qwe" tag="h3">2019年最值得投资的楼盘，南峰雅苑</router-link>
+        <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
         <p>2-5室 / 96-116㎡</p>
-        <span class="price">$105 <i>万起</i></span>
+        <span class="price"> {{item.price}} <i>{{priceType}}</i></span>
       </div>
 
     </div>
-    <router-link to="/" class="view-all">查看全部</router-link>
+    <router-link :to="housesType.url" class="view-all">查看全部</router-link>
   </div>
 </template>
 <script>
@@ -20,6 +21,10 @@ import Title from './Title'
 export default {
   components: {
     Title
+  },
+  props: {
+    housesData: Array,
+    type: String
   },
   data () {
     return {
@@ -53,6 +58,35 @@ export default {
           url: '/'
         }
       ]
+    }
+  },
+  computed: {
+    housesType () {
+      const routes = {
+        'new house': {
+          url: '/c/new-house',
+          name: '精选优质新房',
+        },
+        'second hand': {
+          url: '/c/second-hand',
+          name: '新加坡二手好房',
+          api: 'second_hand_house'
+        },
+        'renting': {
+          url: '/c/renting',
+          name: '狮城租房'
+        }
+      }
+      return routes[this.type] || {}
+    },
+    priceType () {
+      if (this.type === 'new house') {
+        return '万起'
+      }
+      if (this.type === 'second hand') {
+        return '万'
+      }
+      return '/月'
     }
   }
 }

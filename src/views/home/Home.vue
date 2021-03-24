@@ -6,26 +6,29 @@
     <!-- Banner -->
     <HomeBanner />
 
-    <!-- 新房咨询 -->
-    <NewHouse />
+    <Loading v-if="!homeApiStatus"/>
+    <template v-else>
+      <!-- 新房咨询 -->
+      <NewHouse />
 
-    <!-- 其他 -->
-    <Other />
+      <!-- 其他 -->
+      <Other />
 
-    <!-- 新房列表 -->
-    <HouseList />
-    <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory1" />
+      <!-- 新房列表 -->
+      <HouseList :housesData="newHouses" type="new house" />
+      <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory1" />
 
-    <!-- 二手好房 -->
-    <HouseList />
-    <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory2" />
+      <!-- 二手好房 -->
+      <HouseList :housesData="secondHandedHouses" type="second hand" />
+      <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory2" />
 
-    <!-- 租房 -->
-    <HouseList />
-    <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory3" />
+      <!-- 租房 -->
+      <HouseList :housesData="rentedHouses" type="renting" />
+      <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory3" />
 
-    <!-- 商业地产 -->
-    <Estate />
+      <!-- 商业地产 -->
+      <Estate />
+    </template>
 
   </div>
 </template>
@@ -37,6 +40,8 @@ import Other from './base/Other'
 import HouseList from './base/HouseList'
 import BuyHouseAdvisory from './base/BuyHouseAdvisory'
 import Estate from './base/Estate'
+import Loading from '../../components/base/Loading'
+
 export default {
   name: 'home',
   components: {
@@ -46,7 +51,8 @@ export default {
     Other,
     HouseList,
     BuyHouseAdvisory,
-    Estate
+    Estate,
+    Loading
   },
   data () {
     return {
@@ -64,8 +70,24 @@ export default {
         title: '<i style="color: #BF3F3F;">优质的商业地产</i>买卖及租赁',
         des: '为企业、业主提供专业的服务',
         more: '/c/new-house'
-      }
+      },
+      newHouses: [],          // 新房
+      rentedHouses: [],       // 租房
+      secondHandedHouses: [], // 二手房
+      business: [],           // 地产
+      homeApiStatus: false
     }
+  },
+  mounted () {
+    this.$httpApi.indexApi().then(res => {
+      if (res.code === 200) {
+        this.newHouses = res.data.newHouses
+        this.rentedHouses = res.data.rentedHouses
+        this.secondHandedHouses = res.data.secondHandedHouses
+        this.business = res.data.business
+        this.homeApiStatus = true
+      }
+    })
   }
 }
 </script>

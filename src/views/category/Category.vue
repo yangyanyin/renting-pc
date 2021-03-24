@@ -47,7 +47,8 @@ export default {
         },
         'renting': {
           url: '/c/renting',
-          name: '狮城租房'
+          name: '狮城租房',
+          api: 'renting_house'
         },
         'second hand': {
           url: '/c/second-hand',
@@ -68,7 +69,6 @@ export default {
           page: page
         }
       })
-
       this.getProductList(page)
     },
     getProductList (page) {

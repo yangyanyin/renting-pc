@@ -7,7 +7,7 @@
         <div class="left">
           <NewsBanner :newsBanner="bannerNewsList" />
           <div class="list">
-            <h2>新闻列表</h2>
+            <h2>{{ breadcrumb[0].name }}</h2>
             <NewsItem v-for="(item, k) in newsList" :item="item" :key="k" />
           </div>
         </div>
@@ -45,15 +45,34 @@ export default {
   },
   computed: {
     breadcrumb () {
-      return [{
-        url: '/n/s',
-        name: '最新房产资讯'
-      }]
+      const data = {
+        'must-see': {
+          id: 1,
+          name: '买房必看',
+          url: '/n/must-see'
+        },
+        'property': {
+          id: 3,
+          name: '产权交易',
+          url: '/n/property'
+        },
+        'faq': {
+          id: 4,
+          name: '常见问题',
+          url: '/n/faq'
+        },
+        'guide': {
+          id: 5,
+          name: '购房指南',
+          url: '/n/guide'
+        }
+      }
+      return [data[this.$route.params.name]]
     }
   },
   mounted () {
     const params = {
-      category_id: 1
+      category_id: this.breadcrumb[0].id
     }
     this.$httpApi.newsListApi(params).then(res => {
       if (res.code === 200) {
