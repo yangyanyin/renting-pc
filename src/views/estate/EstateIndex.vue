@@ -11,6 +11,11 @@
     <router-view></router-view>
   </div>
 </template>
+<script>
+export default {
+  name: 'estate'
+}
+</script>
 <style lang="less" scoped>
 .banner {
   width: 100%;

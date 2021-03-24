@@ -1,18 +1,18 @@
 <template>
   <div class="info-base">
-    <p>建成时间：<i>2013年</i></p>
-    <p>地契：<i>99年</i></p>
-    <p>类型：<i>商业办公室</i></p>
-    <p>地址：<i>12 Marina View Singapore 018961 </i></p>
-    <p>总高：<i>228米</i></p>
-    <p>楼层：<i>46层</i></p>
-    <p>靠近地铁站：<i>市中心地铁站(Downtown MRT)</i></p>
+    <p>建成时间：<i> {{ infoBase.build_at }} </i></p>
+    <p>地契：<i> {{ infoBase.deed }} </i></p>
+    <p>类型：<i> {{infoBase.type}} </i></p>
+    <p>地址：<i> {{infoBase.addr}} </i></p>
+    <p>总高：<i> {{ infoBase.height }} </i></p>
+    <p>楼层：<i> {{ infoBase.floor }} </i></p>
+    <p class="traffic">靠近地铁站：<i v-for="(name, k) in infoBase.traffic" :key="k"> {{name}} </i></p>
     <div class="price">
-      参考价: <span> $2,720每平方尺 </span>
+      参考价: <span> {{infoBase.price}} </span>
       <button @click="showAdvisory" >购买</button>
     </div>
     <div class="price">
-      参考价:<span> $13平方尺每月 </span>
+      参考价:<span> {{infoBase.rent_price}} </span>
       <button @click="showAdvisory">租赁</button>
     </div>
 
@@ -26,6 +26,9 @@ import AdvisoryPopup from '../../../components/base/AdvisoryPopup'
 export default {
   components: {
     AdvisoryPopup
+  },
+  props: {
+    infoBase: Object
   },
   data () {
     return {
@@ -45,6 +48,11 @@ export default {
     margin-bottom: 22px;
     font-size: 16px;
     color: #737373;
+    &.traffic {
+      i {
+        margin-right: 10px;
+      }
+    }
     i {
       display: inline-block;
       margin-left: 10px;

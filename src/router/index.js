@@ -90,7 +90,7 @@ const routes = [
     ]
   },
   {
-    path: '/estate/d/:name',
+    path: '/estate/:category/:id',
     name: 'estate-details',
     component: EstateDetails
   },

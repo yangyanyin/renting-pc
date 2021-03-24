@@ -56,6 +56,27 @@ const recommendNewsApi = (params) => axios({
   params: params
 })
 
+// 商业办公大楼
+const buildingApi = (params) => axios({
+  url: '/v1/office/list',
+  method: 'get',
+  params: params
+})
+
+// 保留性店屋
+const shophouseApi = (params) => axios({
+  url: '/v1/retention/list',
+  method: 'get',
+  params: params
+})
+
+// 地产详情
+const estateDetailsApi = (params) => axios({
+  url: '/v1/business/' + params.id,
+  method: 'get',
+  params: params
+})
+
 
 
 export default {
@@ -66,5 +87,8 @@ export default {
   newsListApi,
   newsDetailsApi,
   hotNewsListApi,
-  recommendNewsApi
+  recommendNewsApi,
+  buildingApi,
+  shophouseApi,
+  estateDetailsApi
 }

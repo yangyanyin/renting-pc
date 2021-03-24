@@ -1,12 +1,25 @@
 <template>
   <div class="item left">
-    <router-link to="/" class="a-img">
-      <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="商业地产" />
+    <router-link :to="`/estate/${type}/${item._id}`" class="a-img">
+      <img :src="item.image" :alt="item.title" />
     </router-link>
-    <router-link to="/" tag="strong">Asia Square | 亚洲广场</router-link>
-    <p>12 Marina View Singapore 018961</p>
+    <router-link :to="`/estate/${type}/${item._id}`" tag="strong">{{item.title}}</router-link>
+    <p>{{item.addr}}</p>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    item: {
+      type: Object,
+      default () {
+        return {}
+      }
+    },
+    type: String
+  }
+}
+</script>
 <style lang="less" scoped>
 .item {
   width: 386px;

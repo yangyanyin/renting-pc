@@ -1,7 +1,7 @@
 <template>
   <div class="images details-images">
     <div class="big-img">
-      <img :src="bigImage" alt="">
+      <img :src="bigImage" />
     </div>
     <div class="small-img">
       <HousePhoto :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />

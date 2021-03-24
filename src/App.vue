@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <keep-alive :include="['home', 'category', 'category-detail']" max="11">
+    <keep-alive :include="['home', 'category', 'category-detail', 'estate']" max="11">
       <router-view :key="curRouterLink" />
     </keep-alive>  
   </Layout>
