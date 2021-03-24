@@ -1,5 +1,6 @@
 <template>
   <div class="baidu-map">
+    <h3>地理位置及周边配套</h3>
     <div class="map-tab">
       <div class="tab">
         <span v-for="(item, t, k) in surrounding"
@@ -135,6 +136,10 @@ export default {
 <style lang="less">
 .baidu-map {
   position: relative;
+  h3 {
+    font-size: 20px;
+    padding-bottom: 20px;
+  }
   .map-tab {
     position: absolute;
     top: 20px;

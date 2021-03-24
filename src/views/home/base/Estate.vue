@@ -1,16 +1,16 @@
 <template>
   <div class="home-estate w1200px mt80">
-    <Title title="商业地产" :more="titleMore" />
+    <Title title="商业地产" />
     <div class="estate-list clearfix">
-      <div class="item left" v-for="(i, k) in 3" :key="k">
-        <router-link to="/estate/d/sad" class="a-img">
-          <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" alt="商业地产" />
+      <div class="item left" v-for="(item, k) in businessData" :key="k">
+        <router-link :to="'/estate/d/' + item._id" class="a-img">
+          <img :src="item.image" :alt="item.title" />
         </router-link>
-        <router-link to="/estate/d/sad" tag="h3">Asia Square | 亚洲广场</router-link>
-        <p>12 Marina View Singapore 018961</p>
+        <router-link to="/estate/d/sad" tag="h3">{{ item.title }}</router-link>
+        <p>{{ item.addr }}</p>
       </div>
     </div>
-    <router-link to="/" class="view-all">查看全部</router-link>
+    <router-link to="/estate" class="view-all">查看全部</router-link>
   </div>
 </template>
 <script>
@@ -19,15 +19,11 @@ export default {
   components: {
     Title
   },
+  props: {
+    businessData: Array
+  },
   data () {
-    return {
-      titleMore: [
-        {
-          text: '查看更多',
-          url: '/estate'
-        }
-      ]
-    }
+    return {}
   }
 }
 </script>

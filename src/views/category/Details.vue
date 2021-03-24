@@ -9,6 +9,7 @@
       <div class="name">
         <h3>{{ proTitle }}</h3>
         <span v-for="(name, k) in houseTags" :key="k">{{ name }}</span>
+        <button @click="showAdvisory">立即预约看房</button>
       </div>
       <div class="left">
         <DetailsViewImg :imagesArr="proBigImages" v-if="proBigImages" />
@@ -24,6 +25,8 @@
       </div>
     </div>
     <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" />
+
+    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>
 </template>
 <script>
@@ -39,6 +42,7 @@ import DetailsInfoBase from './base/DetailsInfoBase'
 import DetailsRecommend from '../../components/details/DetailsRecommend'
 import BaiduMap from '../../components/details/BaiduMap'
 import Loading from '../../components/base/Loading'
+import AdvisoryPopup from '../../components/base/AdvisoryPopup'
 
 export default {
   name: 'category-detail',
@@ -54,7 +58,8 @@ export default {
     DetailsInfoBase,
     DetailsRecommend,
     BaiduMap,
-    Loading
+    Loading,
+    AdvisoryPopup
   },
   data () {
     return {
@@ -65,7 +70,8 @@ export default {
       photoAll: {},       // 房源相册
       projectDetails: {}, // 项目详情
       houseTypes: '',     // 户型
-      houseTags: []       // 楼盘标签
+      houseTags: [],      // 楼盘标签
+      showAdvisoryType: false
     }
   },
   computed: {
@@ -93,6 +99,11 @@ export default {
           name: this.proTitle
         }
       ]
+    }
+  },
+  methods: {
+    showAdvisory () {
+      this.showAdvisoryType = !this.showAdvisoryType
     }
   },
   mounted () {
@@ -145,10 +156,24 @@ export default {
 <style lang="less" scoped>
 .details {
   .name {
+    position: relative;
     margin-bottom: 15px;
     h3 {
+      height: 70px;
       padding-bottom: 20px;
       font-size: 28px;
+    }
+    button {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 180px;
+      height: 50px;
+      line-height: 50px;
+      background: #24A10F;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
     }
     span {
       display: inline-block;

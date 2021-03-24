@@ -27,7 +27,7 @@
       <BuyHouseAdvisory :buyHouseAdvisory="buyHouseAdvisory3" />
 
       <!-- 商业地产 -->
-      <Estate />
+      <Estate :businessData="business" />
     </template>
 
   </div>
