@@ -77,15 +77,12 @@ const estateDetailsApi = (params) => axios({
   params: params
 })
 
-// 地产详情
+// 业主留言
 const messageApi = (params) => axios({
   url: '/v1/contact',
   method: 'post',
   params: params
 })
-
-
-
 
 
 export default {

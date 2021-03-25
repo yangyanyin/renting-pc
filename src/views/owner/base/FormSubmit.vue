@@ -9,7 +9,7 @@
     <div class="input-box">
       <select v-model="fromInfo.housesType">
         <option value="私人公寓">私人公寓</option>
-        <option value="政府组屋（HDB)">政府组屋（HDB)</option>
+        <option value="政府组屋（HDB)">政府组屋 (HDB)</option>
         <option value="执行共管公寓">执行共管公寓</option>
         <option value="有地私宅">有地私宅</option>
         <option value="商业地产">商业地产</option>

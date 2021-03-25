@@ -1,6 +1,7 @@
 <template>
   <div class="banner">
     <img class="b-img" src="../../../assets/image/home-banner.jpg"  alt="新加坡看公寓网" />
+    <h3>好房直通车，就在新加坡看公寓网</h3>
     <SearchBar class="search-banner" />
     <div class="integrity">
       <span>
@@ -40,6 +41,14 @@ export default {
     left: 50%;
     width: auto;
     height: 560px;
+    transform: translateX(-50%);
+  }
+  h3 {
+    position: absolute;
+    left: 50%;
+    top: 230px;
+    color: #fff;
+    font-size: 28px;
     transform: translateX(-50%);
   }
   .integrity {

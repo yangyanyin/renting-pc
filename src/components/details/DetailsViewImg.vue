@@ -64,9 +64,9 @@ export default {
       left: 15px;
       bottom: 15px;
       width: 110px;
-      height: 24px;
+      height: 30px;
       padding-right: 20px;
-      line-height: 24px;
+      line-height: 30px;
       font-size: 12px;
       color: #fff;
       text-align: center;
@@ -85,7 +85,7 @@ export default {
         content: '';
         position: absolute;
         right: 14px;
-        top: 9px;
+        top: 12px;
         width: 5px;
         height: 5px;
         border-right: 1px solid #fff;

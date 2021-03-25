@@ -16,7 +16,10 @@
 
       <input type="text" v-model="fromInfo.advisoryEmail" placeholder="您的邮箱地址（必填）" />
       <i v-if="fromError.advisoryEmail">请输入您的邮箱地址。</i>
-      <button @click="submitForm">确定</button>
+      <button @click="submitForm">
+        <template v-if="submitLoad">...</template>
+        <template v-else>确定</template>
+      </button>
     </div>
   </div>
 </template>
@@ -44,7 +47,8 @@ export default {
         advisoryName: '',
         advisoryContact: '',
         advisoryEmail: ''
-      }
+      },
+      submitLoad: false
     }
   },
   methods: {
@@ -63,7 +67,22 @@ export default {
           this.fromError[info] = false
         }
       }
-      console.log(this.fromInfo, 'fromInfo')
+      const params = {
+        advisory_type: this.fromInfo.advisoryType,
+        name: this.fromInfo.name,
+        contact: this.fromInfo.contact,
+        email: this.fromInfo.advisoryEmail
+      }
+      if (this.submitLoad) return
+      this.submitLoad = true
+      this.$httpApi.messageApi(params).then(res => {
+        if (res.code === 200) {
+          this.submitLoad = false
+          for (const info in this.fromInfo) {
+            this.fromInfo[info] = ''
+          }
+        }
+      })
     }
   }
 }

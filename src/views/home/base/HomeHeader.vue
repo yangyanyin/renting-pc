@@ -56,7 +56,11 @@ export default {
     strong {
       position: relative;
       top: 3px;
+      margin-left: 10px;
+      padding-left: 30px;
       font-size: 20px;
+      background: url('../../../assets/image/tel-white.png') no-repeat left center;
+      background-size: 20px;
     }
   }
 }
