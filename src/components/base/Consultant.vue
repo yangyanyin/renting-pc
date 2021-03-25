@@ -2,7 +2,7 @@
   <div class="consultant">
     <h3>联系顾问</h3>
     <div class="content">
-      <img src="https://waterlandcap.com/img/michael-chan.6149365e.png" alt="项目详情" />
+      <img src="../../assets/image/consultant.jpg" />
       <strong>吴洲 / Peter Wu <span>金牌销售</span></strong>
       <p class="tel">+65 8813 9139</p>
       <p>任职于新交所上市企业，新加坡最大的国际性产业集团ERA担任高级营销董事，金牌房产经纪人</p>

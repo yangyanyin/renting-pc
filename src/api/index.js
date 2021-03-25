@@ -77,6 +77,15 @@ const estateDetailsApi = (params) => axios({
   params: params
 })
 
+// 地产详情
+const messageApi = (params) => axios({
+  url: '/v1/contact',
+  method: 'post',
+  params: params
+})
+
+
+
 
 
 export default {
@@ -90,5 +99,6 @@ export default {
   recommendNewsApi,
   buildingApi,
   shophouseApi,
-  estateDetailsApi
+  estateDetailsApi,
+  messageApi
 }

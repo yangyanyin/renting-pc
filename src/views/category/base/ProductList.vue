@@ -49,7 +49,7 @@ export default {
           link:'/c/renting/'
         }
       }
-      return data[this.$route.name]
+      return data[this.$route.name] || {}
     }
   },
   mounted () {

@@ -5,7 +5,7 @@
     <div class="product-list clearfix">
       <div class="item left" v-for="(item, k) in housesData" :key="k">
         <router-link :to="`${housesType.url}/${item._id}`" class="a-img">
-          <img :src="item.image" :alt="item.title" />
+          <rentImg :url="item.image" :alt="item.title" />
         </router-link>
         <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
         <p>2-5室 / 96-116㎡</p>

@@ -10,15 +10,17 @@
     <p>房产地址：<i>{{ infoBase.addr }}</i></p>
     <p class="traffic">
       交通：
-      <!-- <span v-for="(color, name, k) in traffic" :key="k" :style="{background: color}">{{ name }}</span> -->
       <span v-for="(name, k) in infoBase.traffic" :key="k">{{ name }}</span>
       <i>{{ infoBase.traffic_tips }}</i>
     </p>
     <div class="rule clearfix">
-      <ul v-for="(types, name, k) in houseTypes" :key="k">
-        <li class="t">{{ name }}</li>
-        <li :class="{p: name === '售价'}" v-for="(item, i) in types" :key="i">{{ item }}</li>
-      </ul>
+      <template v-if="typeof houseTypes === 'object'">
+        <ul v-for="(types, name, k) in houseTypes" :key="k">
+          <li class="t">{{ name }}</li>
+          <li :class="{p: name === '售价'}" v-for="(item, i) in types" :key="i">{{ item }}</li>
+        </ul>
+      </template>
+      <p v-else>{{ houseTypes }}</p>
     </div>
   </div>
 </template>
@@ -36,11 +38,13 @@ export default {
         '套数': [],
         '售价': []
       }
-      for (let i = 0; i < types.length; i++) {
-        data['户型'].push(types[i].type)
-        data['面积㎡'].push(types[i].area)
-        data['套数'].push(types[i].total)
-        data['售价'].push(types[i].price)
+      if (typeof types === 'object' ) {
+        for (let i = 0; i < types.length; i++) {
+          data['户型'].push(types[i].type)
+          data['面积㎡'].push(types[i].area)
+          data['套数'].push(types[i].total)
+          data['售价'].push(types[i].price)
+        }
       }
       return data
     },

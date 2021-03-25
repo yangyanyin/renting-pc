@@ -1,6 +1,6 @@
 <template>
   <div class="owner">
-    <BreadcrumbList />
+    <BreadcrumbList :breadcrumb="breadcrumb" />
     <div class="owner-banner w1200px">
       <img src="../../assets/image/owner-banner.jpg" alt="我是业主" />
     </div>
@@ -10,7 +10,7 @@
           <button @click="changeType('委托出租')" :class="{active: tabType === '委托出租'}">委托出租</button>
           <button @click="changeType('委托卖房')" :class="{active: tabType === '委托卖房'}">委托卖房</button>
         </div>
-        <FormSubmit />
+        <FormSubmit :tabType="tabType" />
       </div>
       <div class="right">
         <Consultant />
@@ -34,7 +34,13 @@ export default {
   },
   data () {
     return {
-      tabType: '委托出租'
+      tabType: '委托出租',
+      breadcrumb: [
+        {
+          name: '我是业主',
+          url: '/owner'
+        }
+      ]
     }
   },
   methods: {

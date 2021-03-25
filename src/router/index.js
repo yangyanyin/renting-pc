@@ -15,6 +15,7 @@ const OtherIndex = () => import(/* webpackChunkName: "other" */ '../views/other/
 const About = () => import(/* webpackChunkName: "other" */ '../views/other/About')
 const ContactUs = () => import(/* webpackChunkName: "other" */ '../views/other/ContactUs')
 const Copyright = () => import(/* webpackChunkName: "other" */ '../views/other/Copyright')
+const Protocol = () => import(/* webpackChunkName: "other" */ '../views/other/Protocol')
 
 
 Vue.use(VueRouter)
@@ -120,6 +121,11 @@ const routes = [
         component: Copyright
       }
     ]
+  },
+  {
+    path: '/protocol',
+    name: 'protocol',
+    component: Protocol
   }
 ]
 

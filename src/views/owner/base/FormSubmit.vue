@@ -21,13 +21,13 @@
     <div class="clearfix">
       <div class="input-box w50 first">
         <span>大牌 block</span>
-        <input type="text" placeholder="请输入大牌" v-model="fromInfo.bigName" />
-        <em v-if="fromErr.bigName">请输入大牌</em>
+        <input type="text" placeholder="请输入大牌" v-model="fromInfo.bigHouseNumber" />
+        <em v-if="fromErr.bigHouseNumber">请输入大牌</em>
       </div>
       <div class="input-box w50">
         <span>门牌 unit</span>
-        <input type="text" placeholder="请输入门牌" v-model="fromInfo.doorplate" />
-        <em v-if="fromErr.doorplate">请输入门牌</em>
+        <input type="text" placeholder="请输入门牌" v-model="fromInfo.houseNumber" />
+        <em v-if="fromErr.houseNumber">请输入门牌</em>
       </div>
     </div>
     
@@ -52,19 +52,30 @@
     <p>
       点击递交之后，房源核验、确认信息无误，我们将与您联系，签订服务合同，新加坡看公寓网仅提供免费房产信息展示和网络技术服务。
     </p>
-    <button @click="submitInfo">递交</button>
+    <button @click="submitInfo">
+      <template v-if="submitLoad">...</template>
+      <template v-else>递交</template>
+    </button>
+    <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
   </div>
 </template>
 <script>
+import SubmitSuccess from './SubmitSuccess'
 export default {
+  components: {
+    SubmitSuccess
+  },
+  props: {
+    tabType: String
+  },
   data () {
     return {
       fromInfo: {
         position: '',
         address: '',
         housesType: '私人公寓',
-        bigName: '',
-        doorplate: '',
+        bigHouseNumber: '',
+        houseNumber: '',
         sellingPrice: '',
         name: '',
         contact: '',
@@ -72,12 +83,14 @@ export default {
       fromErr: {
         position: false,
         address: false,
-        bigName: false,
-        doorplate: false,
+        bigHouseNumber: false,
+        houseNumber: false,
         sellingPrice: false,
         name: false,
         contact: false
-      }
+      },
+      submitStatus: false,
+      submitLoad: false
     }
   },
   methods: {
@@ -90,7 +103,32 @@ export default {
           this.fromErr[info] = false
         }
       }
-      console.log(this.fromInfo, 'fromInfo')
+      
+      const params = {
+        entrust_type: this.tabType,
+        property_location: this.fromInfo.position,
+        address_type: this.housesType,
+        address: this.fromInfo.address,
+        big_house_number: this.fromInfo.bigHouseNumber,
+        house_number: this.fromInfo.houseNumber,
+        expected_price: this.fromInfo.sellingPrice,
+        name: this.fromInfo.name,
+        contact: this.fromInfo.contact
+      }
+      if (this.submitLoad) return
+      this.submitLoad = true
+      this.$httpApi.messageApi(params).then(res => {
+        if (res.code === 200) {
+          this.submitLoad = false
+          this.submitStatus = true
+          for (const info in this.fromInfo) {
+            this.fromInfo[info] = ''
+            if (info === 'housesType') {
+              this.fromInfo[info] = '私人公寓'
+            }
+          }
+        }
+      })
     }
   }
 }

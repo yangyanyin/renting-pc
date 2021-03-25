@@ -4,7 +4,7 @@
     <div class="estate-list clearfix">
       <div class="item left" v-for="(item, k) in businessData" :key="k">
         <router-link :to="'/estate/d/' + item._id" class="a-img">
-          <img :src="item.image" :alt="item.title" />
+          <rentImg :url="item.image" :alt="item.title" />
         </router-link>
         <router-link to="/estate/d/sad" tag="h3">{{ item.title }}</router-link>
         <p>{{ item.addr }}</p>

@@ -48,7 +48,7 @@ export default {
         'renting': {
           url: '/c/renting',
           name: '狮城租房',
-          api: 'renting_house'
+          api: 'rented_house'
         },
         'second hand': {
           url: '/c/second-hand',
@@ -80,7 +80,7 @@ export default {
       }
       this.pageLoading = true
       this.$httpApi.categoryListApi(params).then(res => {
-        this.productData = res.data.new_houses || res.data.second_hand_houses
+        this.productData = res.data.new_houses || res.data.second_hand_houses || res.data.rented_houses
         this.total = res.data.total
         this.pageLoading = false
       })

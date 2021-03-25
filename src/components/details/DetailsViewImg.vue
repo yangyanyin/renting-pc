@@ -2,6 +2,10 @@
   <div class="images details-images">
     <div class="big-img">
       <img :src="bigImage" />
+      <a :href="vrLink" target="_blank" v-if="vrLink">
+        <img src="../../assets/image/vr_icon.gif">
+        VR看房
+      </a>
     </div>
     <div class="small-img">
       <HousePhoto :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
@@ -16,7 +20,8 @@ export default {
     HousePhoto
   },
   props: {
-    imagesArr: Array
+    imagesArr: Array,
+    vrLink: String
   },
   data () {
     return {
@@ -49,8 +54,50 @@ export default {
     background-size: 15px;
   }
   .big-img {
+    position: relative;
     img {
       height: 400px;
+    }
+    a {
+      position: absolute;
+      z-index: 9;
+      left: 15px;
+      bottom: 15px;
+      width: 110px;
+      height: 24px;
+      padding-right: 20px;
+      line-height: 24px;
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 3px;
+      opacity: .8;
+      transition: .3s;
+      &:hover {
+        background: rgba(0, 0, 0, 0.9);
+        &:after {
+          right: 11px;
+          transform: scale(1.1) rotate(45deg);
+        }
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        right: 14px;
+        top: 9px;
+        width: 5px;
+        height: 5px;
+        border-right: 1px solid #fff;
+        border-top: 1px solid #fff;
+        transform: rotate(45deg);
+        transition: .3s;
+      }
+      img {
+        display: inline-block;
+        width: 40px;
+        height: auto;
+      }
     }
   }
   .small-img {

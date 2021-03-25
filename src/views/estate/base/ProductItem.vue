@@ -1,7 +1,7 @@
 <template>
   <div class="item left">
     <router-link :to="`/estate/${type}/${item._id}`" class="a-img">
-      <img :src="item.image" :alt="item.title" />
+      <rentImg :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="`/estate/${type}/${item._id}`" tag="strong">{{item.title}}</router-link>
     <p>{{item.addr}}</p>

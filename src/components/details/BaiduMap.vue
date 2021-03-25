@@ -142,7 +142,7 @@ export default {
   }
   .map-tab {
     position: absolute;
-    top: 20px;
+    top: 70px;
     right: 20px;
     z-index: 9999;
     background: #fff;

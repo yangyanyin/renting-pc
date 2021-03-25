@@ -4,7 +4,7 @@
 
     <div class="list clearfix">
       <router-link :to="'/n/d/' + item.id" v-for="(item, k) in newsList" :key="k">
-        <img :src="item.img" :alt="item.title" />
+        <rentImg :url="item.img" :alt="item.title" />
         <h3>{{ item.title }}</h3>
         <p>{{ item.description }}</p>
         <span>{{ item.created_at ? item.created_at.split(' ')[0] : '' }} </span>

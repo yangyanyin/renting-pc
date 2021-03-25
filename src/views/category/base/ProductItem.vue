@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <router-link :to="routerLink + item._id" class="a-img">
-      <img :src="item.image" :alt="item.title" />
+      <rentImg :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="routerLink + item._id" tag="h3">{{ item.title }} <i>公寓</i></router-link>
     <p class="traffic">交通：
@@ -11,7 +11,7 @@
     <p class="type">
       <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>
     </p>
-    <ul class="label" v-if="item.house_tags.length">
+    <ul class="label" v-if="item.house_tags && item.house_tags.length">
       <li v-for="(name, k) in item.house_tags" :key="k">{{ name }}</li>
     </ul>
     <div class="price"> {{ item.price }} <i>{{ priceType }}</i></div>

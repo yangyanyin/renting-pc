@@ -1,7 +1,7 @@
 <template>
   <div class="item">
-    <router-link to="/" class="a-img">
-      <img :src="item.image" :alt="item.title" />
+    <router-link :to="link + item._id" class="a-img">
+      <rentImg :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="link + item._id" tag="h3">{{ item.title }}</router-link>
     <div class="price">{{ item.price }} <i>{{priceType}}</i></div>

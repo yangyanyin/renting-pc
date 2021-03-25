@@ -1,7 +1,7 @@
 <template>
   <div class="view-image" v-if="imagesArr.length > 0">
     <VueSlickCarousel v-bind="settings">
-      <img v-for="(img, k) in imagesArr" :key="k" :src="img" @click="viewBigImg(img)" />
+      <rentImg v-for="(img, k) in imagesArr" :key="k" :url="img" @click.native="viewBigImg(img)" />
     </VueSlickCarousel>
   </div>
 </template>

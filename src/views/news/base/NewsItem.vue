@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <img :src="item.img" :alt="item.title" />
+    <rentImg :url="item.img" :alt="item.title" />
     <router-link :to="'/n/d/' + item.id" tag="h3">{{ item.title }}</router-link>
     <p>{{ item.description }}</p>
     <span>{{ item.created_at ? item.created_at.split(' ')[0] : '' }}</span>

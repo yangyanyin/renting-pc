@@ -5,19 +5,21 @@
 
     <Loading v-if="!proTitle"/>
     <div v-else class="content clearfix w1200px mt80">
-      
       <div class="name">
         <h3>{{ proTitle }}</h3>
         <span v-for="(name, k) in houseTags" :key="k">{{ name }}</span>
         <button @click="showAdvisory">立即预约看房</button>
       </div>
       <div class="left">
-        <DetailsViewImg :imagesArr="proBigImages" v-if="proBigImages" />
+        <DetailsViewImg :imagesArr="proBigImages" :vrLink="vrLink" v-if="proBigImages" />
         <DetalsIntroduction :introduction="introduction" />
-        <DetailsPhoto :photoAll="photoAll" />
-        <DetailsDetailed :projectDetails="projectDetails" />
-        <DetailsMortgage />
-        <DetailsUnitType :houseTypes="houseTypes" />
+        <template v-if="breadcrumb[0].name !== '狮城租房'">
+          <DetailsPhoto :photoAll="photoAll" />
+          <DetailsDetailed :projectDetails="projectDetails" />
+          <DetailsMortgage />
+          <DetailsUnitType :houseTypes="houseTypes" />
+        </template>
+        <template></template>
       </div>
       <div class="right">
         <DetailsInfoBase :infoBase="infoBase" />
@@ -71,6 +73,7 @@ export default {
       projectDetails: {}, // 项目详情
       houseTypes: '',     // 户型
       houseTags: [],      // 楼盘标签
+      vrLink: '',         // VR 看房链接
       showAdvisoryType: false
     }
   },
@@ -84,7 +87,8 @@ export default {
         },
         'renting': {
           url: '/c/renting',
-          name: '狮城租房'
+          name: '狮城租房',
+          api: 'rented_house'
         },
         'second-hand': {
           url: '/c/second-hand',
@@ -115,10 +119,11 @@ export default {
       if (res.code === 200) {
         const detailInfo = res.data.new_house || res.data.second_hand_house
         this.proTitle = detailInfo.title
-        this.proBigImages = detailInfo.effect_images
+        this.proBigImages = detailInfo.effect_images || detailInfo.images
         this.introduction = detailInfo.description
         this.houseTypes = detailInfo.house_types
         this.houseTags = detailInfo.house_tags
+        this.vrLink = detailInfo.vr_link
         this.infoBase = {
           location: detailInfo.location,
           area: detailInfo.area,
