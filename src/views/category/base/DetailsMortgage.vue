@@ -3,7 +3,7 @@
     <h3 class="other-t">房贷计算</h3>
     <div class="left count clearfix">
       <div class="input-box">
-        房产价格（$)
+        房产价格 ($)
         <input class="inp" type="text" placeholder="输入价格" v-model="roomTotalPrice" />
       </div>
       <div class="input-box">
@@ -17,7 +17,7 @@
         </select>
       </div>
       <div class="input-box">
-        贷款总额（$)
+        贷款总额 ($)
         <input class="inp ban" type="text" v-model="countLoanPrice" disabled="disabled" />
       </div>
       <div class="input-box">
@@ -46,12 +46,22 @@
         <li>支付利息<span>{{ countResult.interest }}</span></li>
         <li>月均还款<span>{{ countResult.repayment }}</span></li>
       </ul>
-      <p>本次计算仅作为购房参考，不能作为最终的购房依据。了解更准确的方案，建议<a>咨询置业顾问</a></p>
+      <p v-if="countResult.down_payment &&
+              countResult.loan_price &&
+              countResult.interest
+              && countResult.repayment">
+              本次计算仅作为购房参考，不能作为最终的购房依据。了解更准确的方案，建议<a @click="showAdvisory">咨询置业顾问</a>
+      </p>
     </div>
+    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory"/>
   </div>
 </template>
 <script>
+import AdvisoryPopup from '../../../components/base/AdvisoryPopup'
 export default {
+  components: {
+    AdvisoryPopup
+  },
   data () {
     return {
       roomTotalPrice: '',
@@ -63,7 +73,8 @@ export default {
         loan_price: '',
         interest: '',
         repayment: ''
-      }
+      },
+      showAdvisoryType: false
     }
   },
   computed: {
@@ -88,6 +99,9 @@ export default {
         interest: `$${(this.monthlyPayment * this.years * 12 - this.countLoanPrice).toFixed(2)}`,
         repayment: `$${this.monthlyPayment.toFixed(2)}`
       }
+    },
+    showAdvisory () {
+      this.showAdvisoryType = !this.showAdvisoryType
     }
   },
   mounted () {}

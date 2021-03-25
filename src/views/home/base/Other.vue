@@ -84,6 +84,16 @@ export default {
       width: 140px;
       margin: 0 26px;
       font-size: 16px;
+      transition: .3s;
+      img {
+        transition: .3s;
+      }
+      &:hover {
+        color: #24A10F;
+        img {
+          transform: scale(1.1);
+        }
+      }
     }
   }
 }

@@ -25,7 +25,7 @@ export default {
   height: 50px;
   line-height: 50px;
   background: #f5f5f5;
-  border-bottom: 1px solid #C9C9C9;
+  border-bottom: 1px solid #e8e8e8;
   a {
     position: relative;
     margin-right: 20px;

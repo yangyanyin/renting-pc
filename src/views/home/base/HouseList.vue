@@ -8,7 +8,7 @@
           <rentImg :url="item.image" :alt="item.title" />
         </router-link>
         <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
-        <p>2-5室 / 96-116㎡</p>
+        <p> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
         <span class="price"> {{item.price}} <i>{{priceType}}</i></span>
       </div>
 

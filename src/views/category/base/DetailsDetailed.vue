@@ -30,6 +30,12 @@ export default {
       float: left;
       width: 50%;
       margin-top: 25px;
+      &:nth-child(odd) {
+        width: 60%;
+      }
+      &:nth-child(even) {
+        width: 40%;
+      }
       &:last-child {
         width: 100%;
         div {
@@ -69,8 +75,9 @@ export default {
       }
       i {
         float: left;
-        width: 130px;
-        padding-right: 40px;
+        width: 100px;
+        font-size: 12px;
+        padding-right: 20px;
         color: #6f6f6f;
       }
     }

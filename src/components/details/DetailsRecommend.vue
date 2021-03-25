@@ -7,7 +7,7 @@
           <rentImg :url="item.image" :alt="item.title" />
         </router-link>
         <router-link to="/" tag="strong">{{ item.title }}</router-link>
-        <p>2-5室 / 96-116㎡</p>
+        <!-- <p v-if="item.house_types[0]"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p> -->
         <span>{{ item.price }} <em>{{ recommendType.unit }}</em></span>
       </div>
     </div>
