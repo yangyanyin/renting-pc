@@ -21,10 +21,16 @@
         <template v-else>确定</template>
       </button>
     </div>
+    <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
+
   </div>
 </template>
 <script>
+import SubmitSuccess from '../base/SubmitSuccess'
 export default {
+  components: {
+    SubmitSuccess
+  },
   data () {
     return {
       typeList: [
@@ -48,6 +54,7 @@ export default {
         advisoryContact: '',
         advisoryEmail: ''
       },
+      submitStatus: false,
       submitLoad: false
     }
   },
@@ -78,6 +85,7 @@ export default {
       this.$httpApi.messageApi(params).then(res => {
         if (res.code === 200) {
           this.submitLoad = false
+          this.submitStatus = true
           for (const info in this.fromInfo) {
             this.fromInfo[info] = ''
           }

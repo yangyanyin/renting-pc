@@ -30,17 +30,21 @@
         <template v-else>立即咨询</template>
       </button>
     </div>
+    <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
   </div>
 </template>
 <script>
 import Consultant from '../base/Consultant'
+import SubmitSuccess from '../base/SubmitSuccess'
 export default {
   components: {
-    Consultant
+    Consultant,
+    SubmitSuccess
   },
   data () {
     return {
       recommendList: [],
+      submitStatus: false,
       submitLoad: false,
       fromInfo: {
         message: '',
@@ -104,7 +108,7 @@ export default {
       const params = {
         message: this.fromInfo.message,
         name: this.fromInfo.name,
-        tel: this.fromInfotel.tel,
+        tel: this.fromInfo.tel,
         email: this.fromInfo.email,
         protocol: this.fromInfo.protocol
       }
@@ -113,6 +117,7 @@ export default {
       this.$httpApi.messageApi(params).then(res => {
         if (res.code === 200) {
           this.submitLoad = false
+          this.submitStatus = true
           for (const info in this.fromInfo) {
             this.fromInfo[info] = ''
           }

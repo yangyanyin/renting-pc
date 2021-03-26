@@ -19,10 +19,13 @@
           <DetailsMortgage />
           <DetailsUnitType :houseTypes="houseTypes" />
         </template>
-        <template></template>
+        <template v-else>
+          <DetailsHousingInfo />
+          <DetailsHousingDescribe />
+        </template>
       </div>
       <div class="right">
-        <DetailsInfoBase :infoBase="infoBase" />
+        <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" />
         <DetailsRecommend />
       </div>
     </div>
@@ -41,6 +44,8 @@ import DetailsMortgage from './base/DetailsMortgage'
 import DetailsDetailed from './base/DetailsDetailed'
 import DetailsUnitType from './base/DetailsUnitType'
 import DetailsInfoBase from './base/DetailsInfoBase'
+import DetailsHousingInfo from './base/DetailsHousingInfo'
+import DetailsHousingDescribe from './base/DetailsHousingDescribe'
 import DetailsRecommend from '../../components/details/DetailsRecommend'
 import BaiduMap from '../../components/details/BaiduMap'
 import Loading from '../../components/base/Loading'
@@ -58,6 +63,8 @@ export default {
     DetailsUnitType,
     DetalsIntroduction,
     DetailsInfoBase,
+    DetailsHousingInfo,
+    DetailsHousingDescribe,
     DetailsRecommend,
     BaiduMap,
     Loading,
@@ -132,7 +139,10 @@ export default {
           traffic_tips: detailInfo.traffic_tips,
           price: detailInfo.price,
           addr: detailInfo.addr,
-          house_types: detailInfo.house_types
+          house_type: detailInfo.house_type,
+          house_types: detailInfo.house_types,
+          rent_type: detailInfo.rent_type,
+          floor: detailInfo.floor
         }
 
         this.photoAll = {

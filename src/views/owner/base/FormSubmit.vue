@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import SubmitSuccess from './SubmitSuccess'
+import SubmitSuccess from '../../../components/base/SubmitSuccess'
 export default {
   components: {
     SubmitSuccess

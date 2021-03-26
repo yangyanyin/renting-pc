@@ -4,41 +4,47 @@
       {{infoBase.price}}<i>{{priceType}}</i>
       <a>变价提醒</a>
     </div>
-    <p>地区位置：<i>{{ infoBase.location }}</i></p>
-    <p>建筑面积：<i>{{ infoBase.area }}</i></p>
-    <p>预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
-    <p>房产地址：<i>{{ infoBase.addr }}</i></p>
+    <template v-if="type === '狮城租房'">
+      <p>租凭方式：<i>{{ infoBase.rent_type }}</i></p>
+      <p>房屋类型：<i>{{ infoBase.house_type }}</i></p>
+      <p>楼层：<i>{{ infoBase.floor }}</i></p>
+    </template>
+    <template v-else>
+      <p>地区位置：<i>{{ infoBase.location }}</i></p>
+      <p>建筑面积：<i>{{ infoBase.area }}</i></p>
+      <p>预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
+      <p>房产地址：<i>{{ infoBase.addr }}</i></p>
+    </template>
     <p class="traffic">
       交通：
       <span v-for="(name, k) in infoBase.traffic" :key="k">{{ name }}</span>
       <i>{{ infoBase.traffic_tips }}</i>
     </p>
-    <div class="rule clearfix">
-      <template v-if="typeof houseTypes === 'object'">
-        <ul v-for="(types, name, k) in houseTypes" :key="k">
-          <li class="t">{{ name }}</li>
-          <li :class="{p: name === '售价'}" v-for="(item, i) in types" :key="i">{{ item }}</li>
-        </ul>
-      </template>
-      <p v-else>{{ houseTypes }}</p>
+    <div v-if="houseTypes" class="rule clearfix">
+      <ul v-for="(types, name, k) in houseTypes" :key="k">
+        <li class="t">{{ name }}</li>
+        <li :class="{p: name === '售价'}" v-for="(item, i) in types" :key="i">{{ item }}</li>
+      </ul>
     </div>
   </div>
 </template>
 <script>
 export default {
   props: {
-    infoBase: Object
+    infoBase: Object,
+    type: String
   },
   computed: {
     houseTypes () {
       const types = this.infoBase.house_types
-      const data = {
-        '户型': [],
-        '面积㎡': [],
-        '套数': [],
-        '售价': []
-      }
-      if (typeof types === 'object' ) {
+      let data = false
+      if (types) {
+        const data = {
+          '户型': [],
+          '面积㎡': [],
+          '套数': [],
+          '售价': []
+        }
         for (let i = 0; i < types.length; i++) {
           data['户型'].push(types[i].type)
           data['面积㎡'].push(types[i].area)
@@ -55,7 +61,7 @@ export default {
       if (this.$route.params.category === 'second-hand') {
         return '万'
       }
-      return ''
+      return '/月'
     },
   }
 }
