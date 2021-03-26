@@ -4,7 +4,7 @@
     <div class="recommend">
       <div class="item" v-for="(item, k) in recommendList" :key="k">
         <router-link :to="recommendType.link + item._id"  class="a-img">
-          <rentImg :url="item.image" :alt="item.title" />
+          <rentImg class="img-object" :url="item.image" :alt="item.title" />
         </router-link>
         <router-link to="/" tag="strong">{{ item.title }}</router-link>
         <!-- <p v-if="item.house_types[0]"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p> -->

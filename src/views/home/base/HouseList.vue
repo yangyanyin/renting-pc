@@ -5,11 +5,11 @@
     <div class="product-list clearfix">
       <div class="item left" v-for="(item, k) in housesData" :key="k">
         <router-link :to="`${housesType.url}/${item._id}`" class="a-img">
-          <rentImg :url="item.image" :alt="item.title" />
+          <rentImg class="img-object" :url="item.image" :alt="item.title" />
         </router-link>
         <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
-        <p> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
-        <span class="price"> {{item.price}} <i>{{priceType}}</i></span>
+        <p v-if="item.house_types"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
+        <span class="price"> {{item.price}} <i>{{housesType.unit}}</i></span>
       </div>
 
     </div>
@@ -66,27 +66,20 @@ export default {
         'new house': {
           url: '/c/new-house',
           name: '精选优质新房',
+          unit: '万起'
         },
         'second hand': {
           url: '/c/second-hand',
           name: '新加坡二手好房',
-          api: 'second_hand_house'
+          unit: '万'
         },
         'renting': {
           url: '/c/renting',
-          name: '狮城租房'
+          name: '狮城租房',
+          unit: '/月'
         }
       }
       return routes[this.type] || {}
-    },
-    priceType () {
-      if (this.type === 'new house') {
-        return '万起'
-      }
-      if (this.type === 'second hand') {
-        return '万'
-      }
-      return '/月'
     }
   }
 }
@@ -111,6 +104,8 @@ export default {
       display: block;
       border-radius: 5px;
       overflow: hidden;
+      width: 285px;
+      height: 160px;
       img {
         transition: .3s;
       }

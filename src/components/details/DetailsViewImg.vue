@@ -1,13 +1,13 @@
 <template>
   <div class="images details-images">
     <div class="big-img">
-      <img :src="bigImage" />
+      <img class="img-object" :src="bigImage" />
       <a :href="vrLink" target="_blank" v-if="vrLink">
         <img src="../../assets/image/vr_icon.gif">
         VR看房
       </a>
     </div>
-    <div class="small-img">
+    <div class="small-img" :class="{'no-btn': imagesArr.length <= 4}">
       <HousePhoto :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
     </div>
     <p>100% 真实房源，100%真实物业图片</p>
@@ -55,9 +55,8 @@ export default {
   }
   .big-img {
     position: relative;
-    img {
-      height: 400px;
-    }
+    width: 710px;
+    height: 400px;
     a {
       position: absolute;
       z-index: 9;
@@ -105,14 +104,19 @@ export default {
     margin-top: 15px;
     padding: 0 47px;
     overflow: hidden;
+    &.no-btn {
+      padding: 0;
+    }
   }
 }
 </style>
 <style lang="less">
 .details-images {
   .slick-slide {
+    width: 158px !important;
     height: 80px;
-    img {
+    > div {
+      width: 142px;
       height: 80px;
     }
   }

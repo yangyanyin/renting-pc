@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <router-link :to="routerLink + item._id" class="a-img">
-      <rentImg :url="item.image" :alt="item.title" />
+      <rentImg class="img-object" :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="routerLink + item._id" tag="h3">{{ item.title }} <i>公寓</i></router-link>
     <p class="traffic">交通：

@@ -4,7 +4,7 @@
       <div class="item" v-for="(item, k) in newsBanner" :key="k">
         <router-link :to="'/n/d' + item.id">
           <h3>{{ item.title }}</h3>
-          <img :src="item.img" :alt="item.title">
+          <img class="img-object" :src="item.img" :alt="item.title">
         </router-link>
       </div>
     </VueSlickCarousel>
@@ -49,9 +49,10 @@
       font-size: 20px;
       color: #fff;
     }
-    img {
-      object-fit: cover;
-      height: 100%;
+    a {
+      display: block;
+      width: 710px;
+      height: 400px;
     }
   }
   

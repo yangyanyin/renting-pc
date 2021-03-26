@@ -8,7 +8,7 @@
           <NewsBanner :newsBanner="bannerNewsList" />
           <div class="list">
             <h2>{{ breadcrumb[0].name }}</h2>
-            <NewsItem v-for="(item, k) in newsList" :item="item" :key="k" />
+            <NewsItem v-for="(item, k) in newsList" :item="item" :key="k" :cUrl="breadcrumb[0].url" />
           </div>
         </div>
         <div class="right">

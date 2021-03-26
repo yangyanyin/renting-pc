@@ -53,11 +53,29 @@ export default {
   },
   computed: {
     breadcrumb () {
-      return [
-        {
-          url: '/n/s',
-          name: '最新房产资讯'
+      const data = {
+        'must-see': {
+          id: 1,
+          name: '买房必看',
+          url: '/n/must-see'
         },
+        'property': {
+          id: 3,
+          name: '产权交易',
+          url: '/n/property'
+        },
+        'faq': {
+          id: 4,
+          name: '常见问题',
+          url: '/n/faq'
+        },
+        'guide': {
+          id: 5,
+          name: '购房指南',
+          url: '/n/guide'
+        }
+      }
+      return [ data[this.$route.params.name],
         {
           url: this.$route.path,
           name: this.newsData.title

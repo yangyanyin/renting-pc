@@ -1,7 +1,7 @@
 <template>
   <div class="item left">
     <router-link :to="`/estate/${type}/${item._id}`" class="a-img">
-      <rentImg :url="item.image" :alt="item.title" />
+      <rentImg class="img-object" :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="`/estate/${type}/${item._id}`" tag="strong">{{item.title}}</router-link>
     <p>{{item.addr}}</p>
@@ -32,6 +32,8 @@ export default {
     display: block;
     border-radius: 5px;
     overflow: hidden;
+    width: 386px;
+    height: 217px;
     img {
       transition: .3s;
     }

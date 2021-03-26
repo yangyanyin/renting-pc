@@ -1,16 +1,17 @@
 <template>
   <div class="item">
     <rentImg :url="item.img" :alt="item.title" />
-    <router-link :to="'/n/d/' + item.id" tag="h3">{{ item.title }}</router-link>
+    <router-link :to="`${cUrl}/${item.id}`" tag="h3">{{ item.title }}</router-link>
     <p>{{ item.description }}</p>
     <span>{{ item.created_at ? item.created_at.split(' ')[0] : '' }}</span>
-    <router-link :to="'/n/d/' + item.id">查看详情</router-link>
+    <router-link :to="`${cUrl}/${item.id}`">查看详情</router-link>
   </div>
 </template>
 <script>
 export default {
   props: {
-    item: Object
+    item: Object,
+    cUrl: String
   }
 }
 </script>

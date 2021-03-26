@@ -1,7 +1,7 @@
 <template>
   <div class="view-image" v-if="imagesArr.length > 0">
     <VueSlickCarousel v-bind="settings">
-      <rentImg v-for="(img, k) in imagesArr" :key="k" :url="img" @click.native="viewBigImg(img)" />
+      <rentImg class="img-object" v-for="(img, k) in imagesArr" :key="k" :url="img" @click.native="viewBigImg(img)" />
     </VueSlickCarousel>
   </div>
 </template>
@@ -51,6 +51,10 @@ export default {
   margin: 0 -8px;
   .slick-slide {
     padding: 0 8px;
+    > div {
+      width: 226px;
+      height: 126px;
+    }
   }
   .slick-arrow {
     z-index: 9;

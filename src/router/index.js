@@ -63,7 +63,7 @@ const routes = [
     component: News
   },
   {
-    path: '/n/d/:id',
+    path: '/n/:name/:id',
     name: 'news-details',
     component: NewsDetails
   },

@@ -12,8 +12,8 @@
       </div>
       <div class="left">
         <DetailsViewImg :imagesArr="proBigImages" :vrLink="vrLink" v-if="proBigImages" />
-        <DetalsIntroduction :introduction="introduction" />
         <template v-if="breadcrumb[0].name !== '狮城租房'">
+          <DetalsIntroduction :introduction="introduction" />
           <DetailsPhoto :photoAll="photoAll" />
           <DetailsDetailed :projectDetails="projectDetails" />
           <DetailsMortgage />
