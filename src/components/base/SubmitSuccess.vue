@@ -84,10 +84,16 @@ export default {
       padding: 60px 0;
       background: #24A10F;
       color: #fff;
-      h3 {
-        display: inline-block;
-        padding-bottom: 15px;
-        font-size: 32px;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 5px;
+        width: 8px;
+        height: 18px;
+        border-bottom: 2px solid #fff;
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
       }
       p {
         font-size: 16px;
