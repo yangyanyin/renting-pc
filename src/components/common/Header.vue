@@ -47,13 +47,19 @@ header {
     a {
       display: inline-block;
       margin: 0 20px;
+      &.router-link-active {
+        color: #24A10F;
+      }
+      &:first-child {
+        color: #444;
+      }
       &:hover {
         color: #24A10F;
       }
     }
   }
   .hotline {
-    padding: 24px 0  0 16px;
+    padding: 23px 0  0 16px;
     strong {
       position: relative;
       top: 3px;

@@ -10,7 +10,7 @@
     </div>
 
     <div class="home-mortgage" v-if="showMortgage">
-      <div class="b">
+      <div class="b popup-animat">
         <div class="close" @click="showMortgage = false"></div>
         <DetailsMortgage />
       </div>
@@ -116,7 +116,8 @@ export default {
     margin-left: -420px;
     background: #fff;
     border-radius: 5px;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
+    opacity: .3;
     .close {
       position: absolute;
       top: 30px;

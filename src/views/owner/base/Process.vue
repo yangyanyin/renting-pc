@@ -19,20 +19,27 @@
       <li>
         <img src="../../../assets/image/process-icon3.png" alt="多元销售" />
         <div>
-          <span>多元销售</span>
-          线上线下多方渠道同步推广
+          <span>{{tabType === '委托卖房' ? '多元销售' : '在线挂租'}}</span>
+          {{tabType === '委托卖房' ? '线上线下多方渠道同步推广' : '全网快速挂租展示'}} 
         </div>
       </li>
       <li>
         <img src="../../../assets/image/process-icon4.png" alt="签约出售" />
         <div>
-          <span>签约出售</span>
+          <span>{{tabType === '委托卖房' ? '签约出售' : '签约租凭'}}</span>
           签约过户全程专业服务
         </div>
       </li>
     </ul>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    tabType: String
+  }
+}
+</script>
 <style scoped lang="less">
 .process {
   h3 {
@@ -76,6 +83,7 @@
         display: block;
         font-size: 17px;
         color: #1C1C1C;
+        font-weight: bold;
       }
       img {
         width: 80px;

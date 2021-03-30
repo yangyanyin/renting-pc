@@ -4,12 +4,17 @@
       <li>Whats App</li>
       <li>咨询</li>
       <li>微信</li>
-      <li @click="backTop">返回顶部</li>
+      <li class="top-btn" :class="{antion: showTopBtn}" @click="backTop">返回顶部</li>
     </ul>
   </div>
 </template>
 <script>
 export default {
+  data () {
+    return {
+      showTopBtn: false
+    }
+  },
   methods: {
     backTop () {
       let scrTop = 0
@@ -25,6 +30,15 @@ export default {
         document.documentElement.scrollTop = scrTop - iSpeed
       }, 8)
     }
+  },
+  mounted () {
+    window.addEventListener('scroll', () => {
+      if (document.body.scrollTop || document.documentElement.scrollTop > 600) {
+        this.showTopBtn = true
+      } else {
+        this.showTopBtn = false
+      }
+    })
   }
 }
 </script>
@@ -35,7 +49,6 @@ export default {
   right: 20px;
   bottom: 100px;
   width: 60px;
-  height: 305px;
   background: #FFFFFF;
   border: 1px solid #C9C9C9;
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -60,6 +73,17 @@ export default {
       background-size: 60px;
       background-position-x: -37px;
       transition: .3s;
+    }
+    &.top-btn {
+      height: 0;
+      padding: 0;
+      overflow: hidden;
+      transition: .6s;
+      
+      &.antion {
+        padding-top: 20px;
+        height: 55px;
+      }
     }
     &:after {
       content: '';

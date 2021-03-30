@@ -1,16 +1,33 @@
 <template>
   <div class="home-advisory mt80">
     <div class="w1200px">
-      <router-link :to="buyHouseAdvisory.more">立即查看</router-link>
+      <router-link :to="buyHouseAdvisory.more" @click.native="btnClick(buyHouseAdvisory.more)">{{buyHouseAdvisory.btn}}</router-link>
       <h3 v-html="buyHouseAdvisory.title"></h3>
       <p>{{ buyHouseAdvisory.des }}</p>
     </div>
+    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="btnClick('/')" />
   </div>
 </template>
 <script>
+import AdvisoryPopup from '../../../components/base/AdvisoryPopup'
 export default {
+  components: {
+    AdvisoryPopup
+  },
   props: {
     buyHouseAdvisory: Object
+  },
+  data () {
+    return {
+      showAdvisoryType: false
+    }
+  },
+  methods: {
+    btnClick (url) {
+      if (url === '/') {
+        this.showAdvisoryType = !this.showAdvisoryType
+      }
+    }
   }
 }
 </script>

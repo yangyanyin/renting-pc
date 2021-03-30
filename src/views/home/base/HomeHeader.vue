@@ -51,7 +51,7 @@ export default {
     }
   }
   .hotline {
-    padding: 24px 0 0 16px;
+    padding: 23px 0 0 16px;
     color: #fff;
     strong {
       position: relative;

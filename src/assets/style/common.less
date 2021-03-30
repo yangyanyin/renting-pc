@@ -127,6 +127,17 @@ select:focus,select:active,select:hover{
   object-fit: cover;
 }
 
+.popup-animat {
+  animation: popupTop .3s both;
+}
+@keyframes popupTop {
+  100% {
+    top: 50%;
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}
+
 @font-face {
   font-family: 'font-medium';
   src: url('../fonts/DIN-Medium.otf') format('opentype');

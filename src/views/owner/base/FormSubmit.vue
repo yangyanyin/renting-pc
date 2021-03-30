@@ -32,10 +32,10 @@
     </div>
     
     <div class="input-box">
-      <span>期望售价</span>
-      <input type="text" placeholder="请输入您想卖出的价格" v-model="fromInfo.sellingPrice" />
-      <i>或者咨询专业经纪人，做免费估价</i>
-      <em v-if="fromErr.sellingPrice">请输入您想卖出的价格</em>
+      <span>{{tabType === '委托卖房' ? '期望售价' : '期望租金'}}</span>
+      <input type="text" :placeholder="tabType === '委托卖房' ? '请输入您的期望售价' : '请输入您的期望租金'" v-model="fromInfo.sellingPrice" />
+      <i @click="showAdvisory">或者咨询专业经纪人，做免费估价</i>
+      <em v-if="fromErr.sellingPrice">{{tabType === '委托卖房' ? '请输入您的期望售价' : '请输入您的期望租金'}}</em>
     </div>
     <div class="clearfix">
       <div class="input-box w50 first">
@@ -57,13 +57,17 @@
       <template v-else>递交</template>
     </button>
     <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
+    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>
 </template>
 <script>
 import SubmitSuccess from '../../../components/base/SubmitSuccess'
+import AdvisoryPopup from '../../../components/base/AdvisoryPopup'
+
 export default {
   components: {
-    SubmitSuccess
+    SubmitSuccess,
+    AdvisoryPopup
   },
   props: {
     tabType: String
@@ -90,10 +94,14 @@ export default {
         contact: false
       },
       submitStatus: false,
-      submitLoad: false
+      submitLoad: false,
+      showAdvisoryType: false
     }
   },
   methods: {
+    showAdvisory () {
+      this.showAdvisoryType = !this.showAdvisoryType
+    },
     submitInfo () {
       for (const info in this.fromInfo) {
         if (this.fromInfo[info] === '') {
@@ -196,6 +204,10 @@ export default {
       top: 15px;
       color: #24A10F;
       font-size: 12px;
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
     }
     em {
       display: block;

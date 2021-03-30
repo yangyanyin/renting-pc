@@ -1,6 +1,6 @@
 <template>
   <div class="success">
-    <div class="content">
+    <div class="content popup-animat">
       <div class="close" @click="closeSuccess"></div>
       <div class="t">
         <h3>提交成功</h3>
@@ -40,9 +40,10 @@ export default {
     margin-left: -300px;
     background: #fff;
     border-radius: 5px;
-    transform: translateY(-50%);
+    transform: translateY(-20%);
     text-align: center;
     overflow: hidden;
+    opacity: .3;
     .close {
       position: absolute;
       top: 20px;
@@ -84,16 +85,23 @@ export default {
       padding: 60px 0;
       background: #24A10F;
       color: #fff;
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 5px;
-        width: 8px;
-        height: 18px;
-        border-bottom: 2px solid #fff;
-        border-right: 2px solid #fff;
-        transform: rotate(45deg);
+      
+      h3 {
+        position: relative;
+        display: inline-block;
+        padding: 0 0 10px 35px;
+        font-size: 24px;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 3px;
+          width: 8px;
+          height: 22px;
+          border-bottom: 2px solid #fff;
+          border-right: 2px solid #fff;
+          transform: rotate(45deg);
+        }
       }
       p {
         font-size: 16px;

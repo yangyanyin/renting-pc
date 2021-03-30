@@ -122,16 +122,26 @@ export default {
       background: inherit;
       filter: blur(5px);
     }
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -100px;
+      z-index: 1;
+      width: 100%;
+      height: 440px;
+      background: rgba(0, 0, 0, .5);
+    }
     h3 {
       position: relative;
-      z-index: 1;
+      z-index: 2;
       padding-top: 60px;
       font-size: 28px;
     }
     p {
       display: inline-block;
       position: relative;
-      z-index: 1;
+      z-index: 2;
       padding-top: 15px;
       font-size: 18px;
     }

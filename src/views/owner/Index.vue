@@ -7,8 +7,9 @@
     <div class="w1200px content clearfix">
       <div class="left">
         <div class="tab">
-          <button @click="changeType('委托出租')" :class="{active: tabType === '委托出租'}">委托出租</button>
           <button @click="changeType('委托卖房')" :class="{active: tabType === '委托卖房'}">委托卖房</button>
+          <button @click="changeType('委托出租')" :class="{active: tabType === '委托出租'}">委托出租</button>
+
         </div>
         <FormSubmit :tabType="tabType" />
       </div>
@@ -16,7 +17,7 @@
         <Consultant />
       </div>
     </div>
-    <Process></Process>
+    <Process :tabType="tabType"></Process>
 
   </div>
 </template>
@@ -34,7 +35,7 @@ export default {
   },
   data () {
     return {
-      tabType: '委托出租',
+      tabType: '委托卖房',
       breadcrumb: [
         {
           name: '我是业主',

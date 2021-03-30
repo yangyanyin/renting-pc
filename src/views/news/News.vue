@@ -2,6 +2,12 @@
   <div class="news">
     <BreadcrumbList :breadcrumb="breadcrumb" />
     <div class="content clearfix w1200px">
+      <div class="nav-menu">
+        <router-link v-for="(item, k) in newsMenu" :to="item.url" :key="k">
+          <i>{{ item.name }}</i>
+        </router-link>
+      </div>
+
       <Loading v-if="newsList.length === 0" />
       <template v-if="newsList.length > 0">
         <div class="left">
@@ -40,7 +46,29 @@ export default {
   data () {
     return {
       newsList: [],
-      bannerNewsList: []
+      bannerNewsList: [],
+      newsMenu: [
+        {
+          name: '买房必看',
+          url: '/n/must-see',
+          id: 1
+        },
+        {
+          name: '产权交易',
+          url: '/n/property',
+          id: 3
+        },
+        {
+          name: '常见问题',
+          url: '/n/faq',
+          id: 4
+        },
+        {
+          name: '购房指南',
+          url: '/n/guide',
+          id: 5
+        },
+      ],
     }
   },
   computed: {
@@ -87,8 +115,20 @@ export default {
 </script>
 <style lang="less" scoped>
 .news {
-  .content {
-    margin-top: 30px;
+  .nav-menu {
+    padding: 22px 0;
+    a {
+      display: inline-block;
+      margin-right: 25px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #fff;
+      font-weight: bold;
+      font-size: 15px;
+      &.router-link-active {
+        color: #24A10F;
+        border-color: #24A10F;
+      }
+    }
   }
   .left {
     width: 710px;

@@ -42,10 +42,22 @@ export default {
       overflow: hidden;
       width: 386px;
       height: 217px;
+      img {
+        transition: .3s;
+      }
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
     }
     h3 {
       font-size: 20px;
       padding: 20px 0 10px;
+      cursor: pointer;
+      &:hover {
+        color: #24A10F;
+      }
     }
     p {
       font-size: 14px;
