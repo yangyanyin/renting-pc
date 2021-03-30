@@ -100,9 +100,16 @@ export default {
   line-height: 24px;
   border: 1px solid #c9c9c9;
   background: #fff;
+  cursor: pointer;
+  &:hover {
+    background: #f3f3f3;
+  }
+  &:disabled[disabled] {
+    background: none;
+  }
 }
 .vue-ads-bg-teal-500 {
-  background-color: #24a10f;
+  background-color: #24a10f !important;
 }
 .vue-ads-pr-2 {
   width: 58px;

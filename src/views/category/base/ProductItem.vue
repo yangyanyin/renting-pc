@@ -103,6 +103,9 @@ export default {
         position: relative;
         color: #7C7C7C;
         padding-right: 10px;
+        &:first-child {
+          margin-left: 0;
+        }
         &:last-child {
           padding-right: 0;
           &::after {

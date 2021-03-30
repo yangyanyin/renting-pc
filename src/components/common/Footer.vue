@@ -18,11 +18,11 @@
         </div>
         <div class="right">
           <span>
-            <i> <img src="../../assets/image/wx1.png" alt="扫码关注公众号" /></i>
+            <i> <img src="../../assets/image/wx2.png" alt="扫码关注公众号" /></i>
             扫码关注公众号
           </span>
           <span>
-            <i> <img src="../../assets/image/wx2.png" alt="扫码关注公众号" /></i>
+            <i> <img src="../../assets/image/wx1.png" alt="扫码关注公众号" /></i>
             新加坡吴洲房产
           </span>
         </div>

@@ -78,6 +78,11 @@ export default {
       color: #fff;
       background: #24A10F;
       border-radius: 5px;
+      transition: .3s;
+      cursor: pointer;
+      &:hover {
+        background: #1b800a;
+      }
     }
   }
 }

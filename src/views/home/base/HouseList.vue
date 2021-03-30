@@ -136,18 +136,18 @@ export default {
   width: 184px;
   height: 50px;
   margin: auto;
+  padding-left: 54px;
   background: #FFFFFF;
   border: 1px solid #24A10F;
   color: #24A10F;
   border-radius: 5px;
-  text-align: center;
   line-height: 48px;
   transition: .3s;
   &::after {
     content: '';
     position: absolute;
     top: 19px;
-    right: 45px;
+    right: 55px;
     width: 7px;
     height: 7px;
     border-top: 2px solid #24A10F;

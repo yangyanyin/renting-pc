@@ -120,7 +120,7 @@ export default {
       width: 100%;
       height: 440px;
       background: inherit;
-      filter: blur(5px);
+      filter: blur(8px);
     }
     &::before {
       content: '';

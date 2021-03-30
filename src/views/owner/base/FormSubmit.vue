@@ -189,6 +189,9 @@ export default {
       border: 1px solid #C9C9C9;
       border-right: none;
     }
+    // select {
+    //   background-position-x: 80px;
+    // }
     input {
       width: calc(100% - 130px);
       height: 50px;

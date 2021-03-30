@@ -23,7 +23,7 @@
       <i v-if="fromErr.tel">请输入您的联系电话</i>
       <input class="inp" type="text" placeholder="您的邮箱地址（必填）" v-model="fromInfo.email">
       <i v-if="fromErr.email">请输入您的邮箱地址</i>
-      <p><span :class="{check: fromInfo.protocol}" @click="protocolClick"></span> 已阅读并同意<router-link to="/protocol">《新加坡看公寓网用户协议》</router-link></p>
+      <p><span :class="{check: fromInfo.protocol}" @click="protocolClick"></span> 已阅读并同意<a @click="agreementClick">《新加坡看公寓网用户协议》</a></p>
       <i class="protocol-err" v-if="fromErr.protocol">请勾选《新加坡看公寓网用户协议》</i>
       <button @click="submitInfo">
         <template v-if="submitLoad">...</template>
@@ -31,21 +31,25 @@
       </button>
     </div>
     <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
+    <Agreement v-if="agreementStatus" @close="agreementStatus = false" />
   </div>
 </template>
 <script>
 import Consultant from '../base/Consultant'
 import SubmitSuccess from '../base/SubmitSuccess'
+import Agreement from '../base/Agreement'
 export default {
   components: {
     Consultant,
-    SubmitSuccess
+    SubmitSuccess,
+    Agreement
   },
   data () {
     return {
       recommendList: [],
       submitStatus: false,
       submitLoad: false,
+      agreementStatus: false,
       fromInfo: {
         message: '',
         name: '',
@@ -94,6 +98,9 @@ export default {
   methods: {
     protocolClick () {
       this.fromInfo.protocol = !this.fromInfo.protocol
+    },
+    agreementClick () {
+      this.agreementStatus = !this.agreementStatus
     },
     submitInfo () {
       for (const info in this.fromErr) {
@@ -256,6 +263,7 @@ export default {
       }
       a {
         color: #24A10F;
+        cursor: pointer;
         &:hover {
           text-decoration: underline;
         }
