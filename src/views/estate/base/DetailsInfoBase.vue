@@ -6,7 +6,9 @@
     <p>地址：<i> {{infoBase.addr}} </i></p>
     <p>总高：<i> {{ infoBase.height }} </i></p>
     <p>楼层：<i> {{ infoBase.floor }} </i></p>
-    <p class="traffic">靠近地铁站：<i v-for="(name, k) in infoBase.traffic" :key="k"> {{name}} </i></p>
+    <p class="traffic">靠近地铁站：
+      <i v-for="(item, k) in infoBase.traffic" :key="k" :style="{background: item.color}"> {{item.name}} </i>
+    </p>
     <div class="price">
       参考价: <span> {{infoBase.price}} </span>
       <button @click="showAdvisory" >购买</button>
@@ -50,7 +52,14 @@ export default {
     color: #737373;
     &.traffic {
       i {
-        margin-right: 10px;
+        display: inline-block;
+        margin: 0 15px 0 0;
+        padding: 0 15px;
+        line-height: 28px;
+        background: #E12129;
+        border-radius: 90px;
+        font-size: 12px;
+        color: #fff;
       }
     }
     i {

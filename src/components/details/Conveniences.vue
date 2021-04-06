@@ -2,7 +2,11 @@
   <div class="conveniences">
     <h3 class="other-t">便利设施</h3>
     <ul class="clearfix">
-      <li>
+      <li v-for="(item, k) in facilities" :key="k">
+        <img :src="`http://web.aicassets.com/${item.image}`" :alt="item.title" />
+        {{item.title}}
+      </li>
+      <!-- <li>
         <img src="../../assets/image/24hours-icon.png" alt="24小时可访问" />
         24小时可访问
       </li>
@@ -41,10 +45,17 @@
       <li>
         <img src="../../assets/image/subway-icon.png" alt="近地铁" />
         近地铁
-      </li>
+      </li> -->
     </ul>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    facilities: Array
+  }
+}
+</script>
 <style lang="less" scoped>
 .conveniences {
   ul {

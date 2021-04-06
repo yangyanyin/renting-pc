@@ -5,7 +5,7 @@
       <a>清除条件</a>
     </div>
     <div class="list left">
-      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" />
+      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :type="recommendType.type"  />
     </div>
     <div class="recommend right">
       <h3>{{ recommendType.title }}</h3>

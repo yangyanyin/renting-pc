@@ -20,8 +20,13 @@
           <DetailsUnitType :houseTypes="houseTypes" />
         </template>
         <template v-else>
-          <DetailsHousingInfo />
-          <DetailsHousingDescribe />
+          <DetailsHousingInfo :infoBase="infoBase" />
+          <DetailsHousingDescribe 
+            :facilities="surroundingFacilities"
+            :community="community"
+            :introduction="introduction"
+            :payType="payType"
+            :price="infoBase.price" />
         </template>
       </div>
       <div class="right">
@@ -80,7 +85,10 @@ export default {
       projectDetails: {}, // 项目详情
       houseTypes: '',     // 户型
       houseTags: [],      // 楼盘标签
-      vrLink: '',         // VR 看房链接
+      vrLink: '',         // VR 看房链接,
+      surroundingFacilities: '',
+      community: '',
+      payType: '',
       showAdvisoryType: false
     }
   },
@@ -131,6 +139,9 @@ export default {
         this.houseTypes = detailInfo.house_types
         this.houseTags = detailInfo.house_tags
         this.vrLink = detailInfo.vr_link
+        this.surroundingFacilities = detailInfo.surrounding_facilities
+        this.community = detailInfo.community
+        this.payType = detailInfo.pay_type
         this.infoBase = {
           location: detailInfo.location,
           area: detailInfo.area,
@@ -142,7 +153,14 @@ export default {
           house_type: detailInfo.house_type,
           house_types: detailInfo.house_types,
           rent_type: detailInfo.rent_type,
-          floor: detailInfo.floor
+          floor: detailInfo.floor,
+          checking_house: detailInfo.checking_house,
+          live_time: detailInfo.live_time,
+          facilities: detailInfo.facilities,
+          electricity: detailInfo.electricity,
+          water: detailInfo.water,
+          lease: detailInfo.lease,
+          has_parking: detailInfo.has_parking
         }
 
         this.photoAll = {

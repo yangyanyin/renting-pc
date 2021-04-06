@@ -2,16 +2,16 @@
   <div class="home-house-list w1200px mt80">
     <!-- <Title :title="housesType.name" :more="titleMore" /> -->
     <Title :title="housesType.name" />
-    <div class="product-list clearfix">
+    <div class="product-list clearfix" v-if="housesData.length > 0">
       <div class="item left" v-for="(item, k) in housesData" :key="k">
         <router-link :to="`${housesType.url}/${item._id}`" class="a-img">
           <rentImg class="img-object" :url="item.image" :alt="item.title" />
         </router-link>
         <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
-        <p v-if="item.house_types"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
+        <!-- {{item.house_types[0]}} -->
+        <p v-if="item.house_types && item.house_types.length > 0"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
         <span class="price"> {{item.price}} <i>{{housesType.unit}}</i></span>
       </div>
-
     </div>
     <router-link :to="housesType.url" class="view-all">查看全部</router-link>
   </div>

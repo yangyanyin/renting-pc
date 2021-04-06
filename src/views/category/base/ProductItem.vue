@@ -1,15 +1,23 @@
 <template>
   <div class="item">
     <router-link :to="routerLink + item._id" class="a-img">
-      <rentImg class="img-object" :url="item.image" :alt="item.title" />
+      <rentImg class="img-object" :url="item.images ? item.images[0] : ''" :alt="item.title" />
     </router-link>
-    <router-link :to="routerLink + item._id" tag="h3">{{ item.title }} <i>公寓</i></router-link>
+    <router-link :to="routerLink + item._id" tag="h3">
+      {{ item.title }} 
+      <i v-for="(name, k) in item.title_tags" :key="'00' + k">{{name}}</i>
+    </router-link>
     <p class="traffic">交通：
-      <i v-for="(name, k) in item.traffic" :key="k">{{ name }}</i>
+      <i v-for="(item, k) in item.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</i>
     </p>
     <p class="address">地址：{{ item.addr }}</p>
     <p class="type">
-      <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>
+      <template v-if="type === 'renting'">
+        <i>{{ item.house_model[0] }}  {{ item.area}}</i>
+      </template>
+      <template >
+        <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>
+      </template>
     </p>
     <ul class="label" v-if="item.house_tags && item.house_tags.length">
       <li v-for="(name, k) in item.house_tags" :key="k">{{ name }}</li>
@@ -20,7 +28,8 @@
 <script>
 export default {
   props: {
-    item: Object
+    item: Object,
+    type: String
   },
   computed: {
     priceType () {

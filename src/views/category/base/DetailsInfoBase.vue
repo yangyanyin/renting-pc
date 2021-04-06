@@ -12,12 +12,12 @@
     <template v-else>
       <p>地区位置：<i>{{ infoBase.location }}</i></p>
       <p>建筑面积：<i>{{ infoBase.area }}</i></p>
-      <p>预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
+      <p v-if="type !== '二手公寓'">预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
       <p>房产地址：<i>{{ infoBase.addr }}</i></p>
     </template>
     <p class="traffic">
       交通：
-      <span v-for="(name, k) in infoBase.traffic" :key="k">{{ name }}</span>
+      <span v-for="(item, k) in infoBase.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</span>
       <i>{{ infoBase.traffic_tips }}</i>
     </p>
     <div v-if="houseTypes" class="rule clearfix">
@@ -36,8 +36,9 @@ export default {
   },
   computed: {
     houseTypes () {
-      const types = this.infoBase.house_types
       let data = false
+      const types = this.infoBase.house_types
+      console.log(types, 'SS')
       if (types) {
         const data = {
           '户型': [],
@@ -51,6 +52,7 @@ export default {
           data['套数'].push(types[i].total)
           data['售价'].push(types[i].price)
         }
+        return data
       }
       return data
     },

@@ -3,7 +3,11 @@
     <h3 class="other-t">户型介绍</h3>
     <div class="item" v-for="(item, k) in houseTypes" :key="k">
       <i class="a-img">
-        <img src="https://cms.aicassets.com/images/default/6013780af0d6d.jpeg" :alt="item.type" />
+        <rentImg class="img-object" :url="item.image" :alt="item.type" />
+        <a :href="item.vr_link" target="_blank" v-if="item.vr_link">
+          <img src="../../../assets/image/vr_icon.gif">
+          VR看房
+        </a>
       </i>
       <i tag="h3">{{ item.type }}</i>
       <p>参考均价：<i>{{ item.average_price }}</i>/㎡</p>
@@ -35,6 +39,48 @@ export default {
       width: 225px;
       height: 126px;
       overflow: hidden;
+      border: 1px solid #ddd;
+      a {
+        position: absolute;
+        z-index: 9;
+        left: 5px;
+        bottom: 5px;
+        width: 100px;
+        height: 26px;
+        padding-right: 20px;
+        line-height: 26px;
+        font-size: 12px;
+        color: #fff;
+        text-align: center;
+        background: rgba(0, 0, 0, 0.9);
+        border-radius: 3px;
+        opacity: .8;
+        transition: .3s;
+        &:hover {
+          background: rgba(0, 0, 0, 0.9);
+          &:after {
+            right: 11px;
+            transform: scale(1.1) rotate(45deg);
+          }
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          right: 14px;
+          top: 10px;
+          width: 5px;
+          height: 5px;
+          border-right: 1px solid #fff;
+          border-top: 1px solid #fff;
+          transform: rotate(45deg);
+          transition: .3s;
+        }
+        img {
+          display: inline-block;
+          width: 34px;
+          height: auto;
+        }
+      }
     }
     h3 {
       padding-top: 22px;
