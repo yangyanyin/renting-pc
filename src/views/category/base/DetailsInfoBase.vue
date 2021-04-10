@@ -10,7 +10,7 @@
       <p>楼层：<i>{{ infoBase.floor }}</i></p>
     </template>
     <template v-else>
-      <p>地区位置：<i>{{ infoBase.location }}</i></p>
+      <p>地区位置：<i>{{ infoBase.region }}</i></p>
       <p>建筑面积：<i>{{ infoBase.area }}</i></p>
       <p v-if="type !== '二手公寓'">预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
       <p>房产地址：<i>{{ infoBase.addr }}</i></p>
@@ -38,7 +38,6 @@ export default {
     houseTypes () {
       let data = false
       const types = this.infoBase.house_types
-      console.log(types, 'SS')
       if (types) {
         const data = {
           '户型': [],
@@ -96,7 +95,7 @@ export default {
   }
   p {
     margin-top: 22px;
-    font-size: 16px;
+    font-size: 14px;
     color: #737373;
     i {
       display: inline-block;
@@ -107,10 +106,10 @@ export default {
       span {
         display: inline-block;
         margin-right: 15px;
-        padding: 0 15px;
-        line-height: 28px;
+        padding: 0 12px;
+        line-height: 26px;
         background: #E12129;
-        border-radius: 90px;
+        border-radius: 13px;
         font-size: 12px;
         color: #fff;
       }

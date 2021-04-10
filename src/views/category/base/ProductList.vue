@@ -1,11 +1,14 @@
 <template>
   <div class="product-list w1200px clearfix">
-    <div class="result">
+    <div class="result" v-if="total > 0">
       为您找到<i>{{ total }}</i>条结果
-      <a>清除条件</a>
+      <router-link :to="categoryLink">清除条件</router-link>
     </div>
     <div class="list left">
-      <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :type="recommendType.type"  />
+      <NoResult v-if="total === 0" />
+      <template v-else>
+        <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :type="recommendType.type"  />
+      </template>
     </div>
     <div class="recommend right">
       <h3>{{ recommendType.title }}</h3>
@@ -16,14 +19,18 @@
 <script>
 import ProductItem from './ProductItem'
 import RecommendItem from './RecommendItem'
+import NoResult from '../../../components/base/NoResult'
+
 export default {
   components: {
     ProductItem,
-    RecommendItem
+    RecommendItem,
+    NoResult
   },
   props: {
     productData: Array,
-    total: Number
+    total: Number,
+    categoryLink: String
   },
   data () {
     return {

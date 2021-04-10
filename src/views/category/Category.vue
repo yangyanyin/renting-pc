@@ -3,12 +3,9 @@
   <div class="category">
     <BreadcrumbList :breadcrumb="breadcrumb" />
     <SearchBox />
-
-    <Loading v-if="total <= 0 || pageLoading"/>
-    <template v-else>
-      <Filters />
-      <ProductList :productData="productData" :total="total" />
-    </template>
+    <Filters :category="breadcrumb[0].name" />
+    <Loading v-if="total < 0 || pageLoading"/>
+    <ProductList v-else :productData="productData" :total="total" :categoryLink="breadcrumb[0].url" />
     <Pagination v-if="total > 10" :total="total" @clickPage="clickPage" />
   </div>
 </template>
@@ -32,7 +29,7 @@ export default {
   data () {
     return {
       productData: [],
-      total: 0,
+      total: -1,
       page: 1,
       pageLoading: false
     }
@@ -73,9 +70,17 @@ export default {
     },
     getProductList (page) {
       this.page = page
+      const region = this.$route.query.region
+      const house = this.$route.query.house
+      const price = this.$route.query.price
+      const area = this.$route.query.area
       const params = {
         page: this.page,
         size: 10,
+        price_index: price,
+        area_index: area,
+        house_index: house,
+        region_index: region,
         api_url: this.breadcrumb[0].api
       }
       this.pageLoading = true

@@ -8,9 +8,13 @@
           <rentImg class="img-object" :url="item.image" :alt="item.title" />
         </router-link>
         <router-link :to="`${housesType.url}/${item._id}`" tag="h3"> {{item.title}} </router-link>
-        <!-- {{item.house_types[0]}} -->
+
         <p v-if="item.house_types && item.house_types.length > 0"> {{item.house_types[0].type}} / {{item.house_types[0].area}} </p>
         <span class="price"> {{item.price}} <i>{{housesType.unit}}</i></span>
+        <a class="vr" :href="item.vr_link" target="_blank" v-if="item.vr_link">
+          <img src="../../../assets/image/vr_icon.gif">
+          VR看房
+        </a>
       </div>
     </div>
     <router-link :to="housesType.url" class="view-all">查看全部</router-link>
@@ -87,6 +91,7 @@ export default {
 <style scoped lang="less">
 .product-list {
   .item {
+    position: relative;
     width: 285px;
     margin: 0 20px 40px 0;
     &:hover {
@@ -95,6 +100,40 @@ export default {
       }
       img {
         transform: scale(1.1);
+      }
+    }
+    .vr {
+      position: absolute;
+      z-index: 9;
+      left: 5px;
+      top: 130px;
+      width: 100px;
+      height: 26px;
+      padding-right: 20px;
+      line-height: 26px;
+      font-size: 12px;
+      color: #fff;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.9);
+      border-radius: 3px;
+      opacity: 0.8;
+      transition: 0.3s;
+      img {
+        display: inline-block;
+        width: 34px;
+        height: auto;
+      }
+      &:after {
+        content: '';
+        position: absolute;
+        right: 14px;
+        top: 10px;
+        width: 5px;
+        height: 5px;
+        border-right: 1px solid #fff;
+        border-top: 1px solid #fff;
+        transform: rotate(45deg);
+        transition: 0.3s;
       }
     }
     &:nth-child(4n) {

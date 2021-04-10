@@ -5,7 +5,7 @@
     <p>{{introduction}}</p>
 
     <strong>周边配套</strong>
-    <p>{{facilities}}</p>
+    <p v-html="facilities"></p>
     <!-- <p v-for="(name, k) in facilities" :key="'0' + k">{{k+1}} {{name}}</p> -->
     <strong>小区介绍</strong>
     <span v-for="(name, k) in community" :key="k">{{name}}</span>

@@ -4,17 +4,20 @@
     <template v-else>
       <div class="banner-title" :style="{background: 'url('+ imagesAll[0] +')' }">
         <h3>{{ proTitle }}</h3>
-        <p>{{ proAddress }}</p>
+        <p><img src="../../assets/image/addr-icon.png" />{{ proAddress }}</p>
       </div>
       <BreadcrumbList class="estate-breadcrumb" :breadcrumb="breadcrumb" v-if="breadcrumb.length > 0" />
       <div class="content clearfix w1200px">
         <div class="left">
           <DetailsViewImg :imagesArr="imagesAll" />
           <DetalsIntroduction :introduction="introduction" />
-          <Conveniences />
+          <Conveniences v-if="breadcrumb[0].name !== '保留性店屋'" />
+
+          <h4>免责声明</h4>
+           <em>页面所载楼盘内容及数据仅供用户参考和借鉴，最终以开发商实际公示为准，如楼盘信息有误或其他疑义，可进行纠错。</em>
         </div>
         <div class="right">
-          <DetailsInfoBase :infoBase="infoBase" />
+          <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" />
           <Consultant />
         </div>
       </div>
@@ -93,7 +96,8 @@ export default {
           addr: detailInfo.addr,
           traffic: detailInfo.traffic,
           price: detailInfo.price,
-          rent_price: detailInfo.rent_price
+          rent_price: detailInfo.rent_price,
+          area: detailInfo.area
         }
       }
     })
@@ -144,10 +148,32 @@ export default {
       z-index: 2;
       padding-top: 15px;
       font-size: 18px;
+      img {
+        display: inline-block;
+        position: relative;
+        top: -1px;
+        width: 14px;
+        margin-right: 10px;
+      }
     }
   }
   .left {
     width: 710px;
+    h4{
+      display: block;
+      margin-top: 40px;
+      padding-left: 20px;
+      font-weight: bold;
+      color: #7C7C7C;
+      background: url('../../assets/image/disclaimer-icon.png') no-repeat left center;
+      background-size: 12px;
+    }
+    em {
+      display: block;
+      margin-top: 8px;
+      color: #7C7C7C;
+      font-size: 12px;
+    }
   }
   .right {
     width: 444px;

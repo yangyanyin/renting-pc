@@ -4,15 +4,15 @@
     <strong>基本信息</strong>
     <ul>
       <li>面积 <i>{{infoBase.area}}</i> </li>
-      <li>入住 <i></i> </li>
+      <li>入住 <i>{{infoBase.live_time > 0 ? '随时入住' : '无'}}</i> </li>
       <li>楼层 <i>{{infoBase.floor}}</i> </li>
-      <li>电梯 <i></i> </li>
-      <li>车位 <i>{{infoBase.has_parking ? '有' : '无'}}</i> </li>
-      <li>用水 <i>{{infoBase.water ? '民水' : '商业用水'}}</i> </li>
-      <li>用电 <i>{{infoBase.electricity ? '民电' : '商业用电'}}</i> </li>
-      <li>燃气 <i>{{infoBase.area}}</i> </li>
-      <li>租期 <i></i> </li>
-      <li>看房 <i>{{infoBase.live_time ? '随时看房' : '无'}}</i> </li>
+      <li>电梯 <i>{{infoBase.has_elevator > 0 ? '有' : '无'}}</i> </li>
+      <li>车位 <i>{{infoBase.has_parking > 0 ? '有' : '无'}}</i> </li>
+      <li>用水 <i>{{infoBase.water > 0 ? '民水' : '商业用水'}}</i> </li>
+      <li>用电 <i>{{infoBase.electricity > 0 ? '民电' : '商业用电'}}</i> </li>
+      <li>燃气 <i>{{infoBase.has_gas > 0 ? '有' : '无'}}</i> </li>
+      <li>租期 <i>{{lease[infoBase.lease]}}</i> </li>
+      <li>看房 <i>{{infoBase.checking_house > 0 ? '随时看房' : '无'}}</i> </li>
     </ul>
     <strong>配套设施</strong>
     <Conveniences :facilities="infoBase.facilities" />

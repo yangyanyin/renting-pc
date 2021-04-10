@@ -1,11 +1,17 @@
 <template>
   <div class="info-base">
-    <p>建成时间：<i> {{ infoBase.build_at }} </i></p>
-    <p>地契：<i> {{ infoBase.deed }} </i></p>
-    <p>类型：<i> {{infoBase.type}} </i></p>
-    <p>地址：<i> {{infoBase.addr}} </i></p>
-    <p>总高：<i> {{ infoBase.height }} </i></p>
-    <p>楼层：<i> {{ infoBase.floor }} </i></p>
+    <template v-if="type === '保留性店屋'">
+      <p>店屋地址：<i> {{infoBase.addr}} </i></p>
+      <p>地契：<i> {{ infoBase.deed }} </i></p>
+      <p>居住面积：<i> {{ infoBase.area }} </i></p>
+    </template>
+    <template v-else>
+      <p>建成时间：<i> {{ infoBase.build_at }} </i></p>
+      <p>地契：<i> {{ infoBase.deed }} </i></p>
+      <p>类型：<i> {{infoBase.type}} </i></p>
+      <p>总高：<i> {{ infoBase.height }} </i></p>
+      <p>楼层：<i> {{ infoBase.floor }} </i></p>
+    </template>
     <p class="traffic">靠近地铁站：
       <i v-for="(item, k) in infoBase.traffic" :key="k" :style="{background: item.color}"> {{item.name}} </i>
     </p>
@@ -13,7 +19,7 @@
       参考价: <span> {{infoBase.price}} </span>
       <button @click="showAdvisory" >购买</button>
     </div>
-    <div class="price">
+    <div class="price" v-if="infoBase.rent_price">
       参考价:<span> {{infoBase.rent_price}} </span>
       <button @click="showAdvisory">租赁</button>
     </div>
@@ -30,7 +36,8 @@ export default {
     AdvisoryPopup
   },
   props: {
-    infoBase: Object
+    infoBase: Object,
+    type: String
   },
   data () {
     return {
@@ -48,7 +55,7 @@ export default {
 .info-base {
    p {
     margin-bottom: 22px;
-    font-size: 16px;
+    font-size: 14px;
     color: #737373;
     &.traffic {
       i {
@@ -73,9 +80,9 @@ export default {
     line-height: 40px;
     font-size: 16px;
     border: 1px solid #C9C9C9;
-    &:last-child {
-      border-top: none;
-    }
+    // &:last-child {
+    //   border-top: none;
+    // }
     span {
       color: #BF3F3F;
     }

@@ -34,7 +34,7 @@
         <DetailsRecommend />
       </div>
     </div>
-    <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" />
+    <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" :mapData="mapData" />
 
     <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>
@@ -86,6 +86,7 @@ export default {
       houseTypes: '',     // 户型
       houseTags: [],      // 楼盘标签
       vrLink: '',         // VR 看房链接,
+      mapData: '',
       surroundingFacilities: '',
       community: '',
       payType: '',
@@ -134,7 +135,7 @@ export default {
       if (res.code === 200) {
         const detailInfo = res.data.new_house || res.data.second_hand_house
         this.proTitle = detailInfo.title
-        this.proBigImages = detailInfo.effect_images || detailInfo.images
+        this.proBigImages = detailInfo.images || detailInfo.effect_images
         this.introduction = detailInfo.description
         this.houseTypes = detailInfo.house_types
         this.houseTags = detailInfo.house_tags
@@ -142,8 +143,9 @@ export default {
         this.surroundingFacilities = detailInfo.surrounding_facilities
         this.community = detailInfo.community
         this.payType = detailInfo.pay_type
+        this.mapData = detailInfo.map
         this.infoBase = {
-          location: detailInfo.location,
+          region: detailInfo.region_ch[0],
           area: detailInfo.area,
           completion_date: detailInfo.finish_at,
           traffic: detailInfo.traffic,
@@ -160,7 +162,9 @@ export default {
           electricity: detailInfo.electricity,
           water: detailInfo.water,
           lease: detailInfo.lease,
-          has_parking: detailInfo.has_parking
+          has_elevator: detailInfo.has_elevator,
+          has_parking: detailInfo.has_parking,
+          has_gas: detailInfo.has_gas
         }
 
         this.photoAll = {

@@ -3,13 +3,13 @@
     <h3>地理位置及周边配套</h3>
     <div class="map-tab">
       <div class="tab">
-        <span v-for="(item, t, k) in surrounding"
+        <span v-for="(item, t, k) in mapData"
           :class="{active: surroundingIndex === k}"
           :key="k" 
           @click="tabClick(k)">{{ t }}</span>
       </div>
       <div class="sc">
-        <template v-for="(item, t, k) in surrounding">
+        <template v-for="(item, t, k) in mapData">
           <ul :key="k" v-if="surroundingIndex === k">
             <li v-for="(info, i) in item" :key="i" @click="mapClick(info.name)">
               <strong>{{ info.name }}</strong>
@@ -44,79 +44,17 @@ export default {
     
   },
   props: {
-    addr: String
+    addr: String,
+    mapData: String
   },
   data () {
     return {
       zoom: 10,
-      keyword: '慕达发购物中心',
+      keyword: '736 Bedok reservoir road',
       infoWindow: {
         show: true
       },
-      surroundingIndex: 0,
-      surrounding: {
-        '交通': [
-          {
-            name: '新加坡百丽宫',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr Oleander Twsr ',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: 'Oleander Twsr',
-            distance: '相距123米',
-            description: '48;141;234'
-          }
-        ],
-        '教育': [
-          {
-            name: '学校',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: '学校',
-            distance: '相距123米',
-            description: '48;141;234'
-          },
-          {
-            name: '学校',
-            distance: '相距123米',
-            description: '48;141;234'
-          }
-        ],
-        '医院': [],
-        '购物': []
-      }
+      surroundingIndex: 0
     }
   },
   methods: {
