@@ -21,7 +21,7 @@ export default {
   width: 100%;
   height: 220px;
   padding-top: 60px;
-  background: url('../../assets/image/estate-banner.png') no-repeat top center;
+  background: #6c93ae url('../../assets/image/estate-banner.png') no-repeat top center;
   background-size: auto 100%;
   button {
     width: 360px;

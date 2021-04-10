@@ -74,6 +74,7 @@ export default {
       const house = this.$route.query.house
       const price = this.$route.query.price
       const area = this.$route.query.area
+      const sort = this.$route.query.sort
       const params = {
         page: this.page,
         size: 10,
@@ -81,6 +82,7 @@ export default {
         area_index: area,
         house_index: house,
         region_index: region,
+        sort: sort,
         api_url: this.breadcrumb[0].api
       }
       this.pageLoading = true

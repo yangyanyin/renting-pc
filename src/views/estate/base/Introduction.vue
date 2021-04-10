@@ -1,7 +1,7 @@
 <template>
   <div class="introduction mt80 w1200px">
     <h3>
-      <img :src="introduction.image" :alt="introduction.title" />
+      <rentImg class="img-object" :url="introduction.image" :alt="introduction.title" />
       <i>{{ introduction.title }}</i>
     </h3>
     <p>{{ introduction.des }}</p>

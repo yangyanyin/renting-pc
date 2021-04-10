@@ -4,7 +4,7 @@
     <div class="item clearfix" v-for="(item, name, k) in filterData" :key="k">
       <div class="left">
         <span class="t">{{ filterTit[name] }}</span>
-        <span>全部</span>
+        <span @click="filterAll(name)">全部</span>
       </div>
       <div class="right">
         <span v-for="(text, i) in item" :key="i"
@@ -16,9 +16,15 @@
     </div>
 
     <div class="sort">
-      <span class="active">默认排序</span>
-      <span>按价格</span>
-      <span>按面积</span>
+      <span :class="{active: !filterResult.sort}" @click="filterSort('default')">默认排序</span>
+      <span :class="{active: [1, 2].indexOf(filterResult.sort * 1) >= 0}" @click="filterSort('price')">
+        按价格
+        <i :class="{on: filterResult.sort * 1 === 2}"></i>
+      </span>
+      <span :class="{active: [3, 4].indexOf(filterResult.sort * 1) >= 0}" @click="filterSort('area')">
+        按面积
+        <i :class="{on: filterResult.sort * 1 === 4}"></i>
+      </span>
     </div>
   </div>
 </template>
@@ -219,6 +225,28 @@ export default {
     }
   },
   methods: {
+    filterAll (name) {
+      let querys = JSON.parse(JSON.stringify(this.$route.query))
+      querys[name] = ''
+      this.$router.push({
+        query: querys
+      })
+    },
+    filterSort (type) {
+      let querys = JSON.parse(JSON.stringify(this.$route.query))
+      if (type === 'price') {
+        querys.sort = querys.sort * 1 === 1 ? 2 : 1
+      }
+      if (type === 'area') {
+        querys.sort = querys.sort * 1 === 3 ? 4 : 3
+      }
+      if (type === 'default') {
+        querys.sort = ''
+      }
+      this.$router.push({
+        query: querys
+      })
+    },
     filterClick (type, id) {
       let querys = JSON.parse(JSON.stringify(this.$route.query))
       if (querys[type] && querys[type].indexOf(id) >= 0) {
@@ -335,12 +363,47 @@ export default {
       line-height: 33px;
       text-align: center;
       cursor: pointer;
+      i {
+        display: inline-block;
+        position: relative;
+        top: 3px;
+        width: 3px;
+        height: 16px;
+        margin-left: 5px;
+        background: #19191D;
+        transform: scale(.5);
+        &.on {
+          transform: scale(.5) rotate(180deg);
+        }
+        &::after {
+          content: '';
+          position: absolute;
+          left: -4px;
+          width: 8px;
+          height: 8px;
+          border-top: 3px solid #19191D;
+          border-left: 3px solid #19191D;
+          transform: rotate(45deg);
+        }
+      }
       &:hover {
         color: #24A10F;
+        i {
+          background: #24A10F;
+          &::after {
+            border-color: #24A10F;
+          }
+        }
       }
       &.active {
         background: #24A10F;
         color: #fff;
+        i {
+          background: #fff;
+          &:after {
+            border-color: #fff;
+          }
+        }
       }
     }
   }

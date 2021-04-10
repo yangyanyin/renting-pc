@@ -5,23 +5,23 @@
       <h3>投资商业地产的优势</h3>
       <ul class="clearfix">
         <li>
-          <img src="../../../assets/image/estate-advantage-icon1.png" alt="">
+          <img src="../../../assets/image/estate-advantage-icon1.png" alt="投资商业地产的优势" />
           <p>无购买身份限制 <br /> 外国人可以买 <br /> 无额外印花税</p>
         </li>
         <li>
-          <img src="../../../assets/image/estate-advantage-icon2.png" alt="">
+          <img src="../../../assets/image/estate-advantage-icon2.png" alt="投资商业地产的优势" />
           <p>随时自由买卖 <br /> 不受私宅卖方印花税条例限制</p>
         </li>
         <li>
-          <img src="../../../assets/image/estate-advantage-icon3.png" alt="">
+          <img src="../../../assets/image/estate-advantage-icon3.png" alt="投资商业地产的优势" />
           <p>银行给予最高 <br /> 商业贷款可高达80%(附带条件)</p>
         </li>
         <li>
-          <img src="../../../assets/image/estate-advantage-icon4.png" alt="">
+          <img src="../../../assets/image/estate-advantage-icon4.png" alt="投资商业地产的优势" />
           <p>地理位置极其优越 <br /> 位于寸土寸金的金融中心，保值增值性极高</p>
         </li>
         <li>
-          <img src="../../../assets/image/estate-advantage-icon5.png" alt="">
+          <img src="../../../assets/image/estate-advantage-icon5.png" alt="投资商业地产的优势" />
           <p>商业的款利率低，租金回报率高，可以以租养贷，没有房贷压力，这类地产租金回报高</p>
         </li>
       </ul>
