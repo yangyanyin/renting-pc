@@ -1,7 +1,6 @@
 <template>
   <div class="home-house-list w1200px mt80">
-    <!-- <Title :title="housesType.name" :more="titleMore" /> -->
-    <Title :title="housesType.name" />
+    <Title :housesType="housesType" :more="titleMore" />
     <div class="product-list clearfix" v-if="housesData.length > 0">
       <div class="item left" v-for="(item, k) in housesData" :key="k">
         <router-link :to="`${housesType.url}/${item._id}`" class="a-img">
@@ -35,31 +34,35 @@ export default {
       titleMore: [
         {
           text: '东部',
-          url: '/'
+          id: 'east'
         },
         {
           text: '西部',
-          url: '/'
+          id: 'west'
         },
         {
           text: '市区',
-          url: '/'
+          id: 'urban'
         },
         {
           text: '中部',
-          url: '/'
+          id: 'middle'
         },
         {
           text: '南部',
-          url: '/'
+          id: 'east'
         },
         {
           text: '北部',
-          url: '/'
+          id: 'north'
         },
         {
           text: '东北部',
-          url: '/'
+          id: 'east_north'
+        },
+        {
+          text: '其他地区',
+          id: 'other'
         }
       ]
     }

@@ -10,7 +10,7 @@
     <p class="traffic">交通：
       <i v-for="(item, k) in item.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</i>
     </p>
-    <p class="address">地址：{{ item.addr }}</p>
+    <p class="address" v-if="item.addr">地址：{{ item.addr }}</p>
     <p class="type">
       <template v-if="type === 'renting'">
         <i>{{ item.house_model[0] }}  {{ item.area}}</i>

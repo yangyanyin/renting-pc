@@ -13,8 +13,7 @@
           <ul :key="k" v-if="surroundingIndex === k">
             <li v-for="(info, i) in item" :key="i" @click="mapClick(info.name)">
               <strong>{{ info.name }}</strong>
-              <p>{{ info.description }}</p>
-              <i>{{ info.distance }}</i>
+              <p>{{ info.desc }}</p>
             </li>
           </ul>
         </template>
@@ -22,37 +21,39 @@
     </div> 
     <BaiduMap class="bm-view" 
       ak="zvCUylrKijIObDFg2VP01XFjYMWgmlMw"
-      :zoom="10"
+      :zoom="18"
+      :center="{lng: 103.927318, lat: 1.337625}"
       :scroll-wheel-zoom="true"
       :show="true"
       @ready="ready">
-      <bm-control>
-      </bm-control>
+      <bm-info-window :position="{lng: 103.927318, lat: 1.337625}" :title="title" :show="infoWindow.show" @close="infoWindowClose" @open="infoWindowOpen">
+        <p v-text="infoWindow.contents"></p>
+      </bm-info-window>
       <bm-local-search :keyword="keyword" :auto-viewport="true" ></bm-local-search>
     </BaiduMap>
   </div>
 </template>
 <script>
-// import BaiduMap from 'vue-baidu-map/components/map/Map.vue'
 // import { BaiduMap, BmControl, BmView, BmAutoComplete, BmLocalSearch, BmMarker, BmGeolocation } from 'vue-baidu-map'
-import { BaiduMap, BmLocalSearch, BmControl  } from 'vue-baidu-map'
+import { BaiduMap, BmLocalSearch, BmInfoWindow } from 'vue-baidu-map'
 export default {
   components: {
     BaiduMap,
     BmLocalSearch,
-    BmControl
-    
+    BmInfoWindow
   },
   props: {
-    addr: String,
-    mapData: String
+    coordinate: String,
+    mapData: Object,
+    title: String,
+    addr: String
   },
   data () {
     return {
-      zoom: 10,
-      keyword: '736 Bedok reservoir road',
+      keyword: '',
       infoWindow: {
-        show: true
+        show: true,
+        contents: '地址：' + this.addr
       },
       surroundingIndex: 0
     }
@@ -67,6 +68,12 @@ export default {
     },
     mapClick (name) {
       this.keyword = name
+    },
+    infoWindowClose () {
+      this.infoWindow.show = false
+    },
+    infoWindowOpen () {
+      this.infoWindow.show = true
     }
   }
 }
@@ -74,6 +81,10 @@ export default {
 <style lang="less">
 .baidu-map {
   position: relative;
+  .BMap_bubble_title {
+    color: #cc5522;
+    font: bold 14px/16px arial,sans-serif;
+  }
   h3 {
     font-size: 20px;
     padding-bottom: 20px;
@@ -83,7 +94,6 @@ export default {
     top: 70px;
     right: 20px;
     z-index: 999;
-    background: #fff;
     .tab {
       height: 32px;
       line-height: 30px;
@@ -103,6 +113,7 @@ export default {
     .sc {
       height: 300px;
       overflow-y: auto;
+      background: rgba(0, 0, 0, 0.5);
     }
     ul {
       padding: 20px;
@@ -118,9 +129,10 @@ export default {
           display: block;
           padding-right: 70px;
           font-weight: normal;
+          color: #fff;
         }
         p {
-          color: #aaafb8;
+          color: #d8d8d8;
           font-size: 12px;
         }
         i {

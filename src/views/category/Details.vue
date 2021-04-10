@@ -34,7 +34,7 @@
         <DetailsRecommend />
       </div>
     </div>
-    <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" :mapData="mapData" />
+    <BaiduMap class="content w1200px mt80" v-if="mapData" :coordinate="coordinate" :addr="infoBase.addr" :title="proTitle" :mapData="mapData" />
 
     <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>
@@ -90,7 +90,8 @@ export default {
       surroundingFacilities: '',
       community: '',
       payType: '',
-      showAdvisoryType: false
+      showAdvisoryType: false,
+      coordinate: ''
     }
   },
   computed: {
@@ -144,6 +145,7 @@ export default {
         this.community = detailInfo.community
         this.payType = detailInfo.pay_type
         this.mapData = detailInfo.map
+        this.coordinate = detailInfo.coordinate
         this.infoBase = {
           region: detailInfo.region_ch[0],
           area: detailInfo.area,
