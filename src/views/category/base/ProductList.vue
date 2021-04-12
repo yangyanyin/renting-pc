@@ -2,7 +2,7 @@
   <div class="product-list w1200px clearfix">
     <div class="result" v-if="total > 0">
       为您找到<i>{{ total }}</i>条结果
-      <router-link :to="categoryLink">清除条件</router-link>
+      <router-link :to="categoryLink" v-if="showClear">清除条件</router-link>
     </div>
     <div class="list left">
       <NoResult v-if="total === 0" />
@@ -57,6 +57,10 @@ export default {
         }
       }
       return data[this.$route.name] || {}
+    },
+    showClear () {
+      const query = this.$route.query
+      return query.area || query.house || query.price || query.region || query.sort
     }
   },
   mounted () {

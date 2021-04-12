@@ -22,11 +22,11 @@
     <BaiduMap class="bm-view" 
       ak="zvCUylrKijIObDFg2VP01XFjYMWgmlMw"
       :zoom="18"
-      :center="{lng: 103.927318, lat: 1.337625}"
+      :center="coordinateCenter"
       :scroll-wheel-zoom="true"
       :show="true"
       @ready="ready">
-      <bm-info-window :position="{lng: 103.927318, lat: 1.337625}" :title="title" :show="infoWindow.show" @close="infoWindowClose" @open="infoWindowOpen">
+      <bm-info-window :position="coordinateCenter" :title="title" :show="infoWindow.show" @close="infoWindowClose" @open="infoWindowOpen">
         <p v-text="infoWindow.contents"></p>
       </bm-info-window>
       <bm-local-search :keyword="keyword" :auto-viewport="true" ></bm-local-search>
@@ -56,6 +56,14 @@ export default {
         contents: '地址：' + this.addr
       },
       surroundingIndex: 0
+    }
+  },
+  computed: {
+    coordinateCenter () {
+      return {
+        lng: this.coordinate.split(',')[0],
+        lat: this.coordinate.split(',')[1]
+      }
     }
   },
   methods: {

@@ -17,11 +17,6 @@ const ContactUs = () => import(/* webpackChunkName: "other" */ '../views/other/C
 const Copyright = () => import(/* webpackChunkName: "other" */ '../views/other/Copyright')
 const Protocol = () => import(/* webpackChunkName: "other" */ '../views/other/Protocol')
 
-// const originalPush = VueRouter.prototype.push
-// VueRouter.prototype.push = function push(location) {
-//   return originalPush.call(this, location).catch(err => err)
-// }
-
 Vue.use(VueRouter)
 
 const routes = [

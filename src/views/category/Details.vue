@@ -30,11 +30,11 @@
         </template>
       </div>
       <div class="right">
-        <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" />
+        <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" @priceChange="showAdvisory" />
         <DetailsRecommend />
       </div>
     </div>
-    <BaiduMap class="content w1200px mt80" v-if="mapData" :coordinate="coordinate" :addr="infoBase.addr" :title="proTitle" :mapData="mapData" />
+    <BaiduMap class="content w1200px mt80" v-if="coordinate" :coordinate="coordinate" :addr="infoBase.addr" :title="proTitle" :mapData="mapData" />
 
     <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
   </div>

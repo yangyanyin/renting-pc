@@ -3,7 +3,7 @@
     <h3 class="other-t">户型介绍</h3>
     <div class="item" v-for="(item, k) in houseTypes" :key="k">
       <i class="a-img">
-        <rentImg class="img-object" :url="item.image" :alt="item.type" />
+        <rentImg class="img-object" :url="item.image" :alt="item.type" @click.native="viewBigImg(item.image)" />
         <a :href="item.vr_link" target="_blank" v-if="item.vr_link">
           <img src="../../../assets/image/vr_icon.gif">
           VR看房
@@ -16,12 +16,27 @@
     </div>
     <strong>免责声明</strong>
     <em>页面所载楼盘内容及数据仅供用户参考和借鉴，最终以开发商实际公示为准，如楼盘信息有误或其他疑义，可进行纠错。</em>
+    <ImagePopup :bigImgUrl="bigImgUrl" @closeBigImg="viewBigImg" v-if="bigImgUrl" />
   </div>
 </template>
 <script>
+import ImagePopup from '../../../components/base/ImagePopup'
 export default {
+  components: {
+    ImagePopup
+  },
   props: {
     houseTypes: Array
+  },
+  data () {
+    return {
+      bigImgUrl: ''
+    }
+  },
+  methods: {
+    viewBigImg (url) {
+      this.bigImgUrl = url
+    }
   }
 }
 </script>

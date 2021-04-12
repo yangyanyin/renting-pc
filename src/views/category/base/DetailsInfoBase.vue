@@ -2,7 +2,7 @@
   <div class="info-base">
     <div class="price">
       {{infoBase.price}}<i>{{priceType}}</i>
-      <a>变价提醒</a>
+      <a @click="priceChange">变价提醒</a>
     </div>
     <template v-if="type === '狮城租房'">
       <p>租凭方式：<i>{{ infoBase.rent_type }}</i></p>
@@ -63,7 +63,12 @@ export default {
         return '万'
       }
       return '/月'
-    },
+    }
+  },
+  methods: {
+    priceChange () {
+      this.$emit('priceChange')
+    }
   }
 }
 </script>
@@ -91,6 +96,10 @@ export default {
       border-radius: 2px;
       font-size: 12px;
       color: #24A10F;
+      cursor: pointer;
+      &:hover {
+        background-color: #e5ece5;
+      }
     }
   }
   p {

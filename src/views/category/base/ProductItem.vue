@@ -3,6 +3,10 @@
     <router-link :to="routerLink + item._id" class="a-img">
       <rentImg class="img-object" :url="item.images ? item.images[0] : ''" :alt="item.title" />
     </router-link>
+    <a class="vr" :href="item.vr_link" target="_blank" v-if="item.vr_link">
+      <img src="../../../assets/image/vr_icon.gif">
+      VR看房
+    </a>
     <router-link :to="routerLink + item._id" tag="h3">
       {{ item.title }} 
       <i v-for="(name, k) in item.title_tags" :key="'00' + k">{{name}}</i>
@@ -68,6 +72,40 @@ export default {
     i {
       display: inline-block;
       font-size: 16px;
+    }
+  }
+  .vr {
+    position: absolute;
+    z-index: 9;
+    left: 5px;
+    top: 148px;
+    width: 100px;
+    height: 26px;
+    padding-right: 20px;
+    line-height: 26px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 3px;
+    opacity: 0.8;
+    transition: 0.3s;
+    img {
+      display: inline-block;
+      width: 34px;
+      height: auto;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      right: 14px;
+      top: 10px;
+      width: 5px;
+      height: 5px;
+      border-right: 1px solid #fff;
+      border-top: 1px solid #fff;
+      transform: rotate(45deg);
+      transition: 0.3s;
     }
   }
   .a-img {

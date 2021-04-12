@@ -4,11 +4,11 @@
     <div class="item clearfix" v-for="(item, name, k) in filterData" :key="k">
       <div class="left">
         <span class="t">{{ filterTit[name] }}</span>
-        <span @click="filterAll(name)">全部</span>
+        <span :class="{active: !filterResult[name]}" @click="filterAll(name)">全部</span>
       </div>
       <div class="right">
         <span v-for="(text, i) in item" :key="i"
-          :class="{active: filterResult[name] && filterResult[name].indexOf(text.id) >= 0}"
+          :class="{active: filterResult[name] && filterResult[name].split(',').indexOf(text.id) >= 0}"
           @click="filterClick(name, text.id)">
           <i></i> {{ text.text }}
         </span>
@@ -69,7 +69,7 @@ export default {
           },
           {
             text: '南部',
-            id: 'east'
+            id: 'south'
           },
           {
             text: '北部',
@@ -249,7 +249,7 @@ export default {
     },
     filterClick (type, id) {
       let querys = JSON.parse(JSON.stringify(this.$route.query))
-      if (querys[type] && querys[type].indexOf(id) >= 0) {
+      if (querys[type] && querys[type].split(',').indexOf(id) >= 0) {
         querys[type] = querys[type].replace(`${id},`, '')
       } else {
         querys[type] = `${id},${querys[type] || ''}`
