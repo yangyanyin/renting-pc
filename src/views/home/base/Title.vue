@@ -9,7 +9,12 @@
 <script>
 export default {
   props: {
-    housesType: String,
+    housesType: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    },
     more: {
       type: Array,
       default: () => {

@@ -3,9 +3,9 @@
   <div class="category">
     <BreadcrumbList :breadcrumb="breadcrumb" />
     <SearchBox />
-    <Filters :category="breadcrumb[0].name" />
+    <Filters v-if="breadcrumb.length > 0" :category="breadcrumb[0].name" />
     <Loading v-if="total < 0 || pageLoading"/>
-    <ProductList v-else :productData="productData" :total="total" :categoryLink="breadcrumb[0].url" />
+    <ProductList v-else :productData="productData" :total="total" :categoryLink="breadcrumb[0] ? breadcrumb[0].url : ''" />
     <Pagination v-if="total > 10" :total="total" @clickPage="clickPage" />
   </div>
 </template>

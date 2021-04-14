@@ -12,7 +12,7 @@
       </div>
       <div class="left">
         <DetailsViewImg :imagesArr="proBigImages" :vrLink="vrLink" v-if="proBigImages" />
-        <template v-if="breadcrumb[0].name !== '狮城租房'">
+        <template v-if="breadcrumb[0] && breadcrumb[0].name !== '狮城租房'">
           <DetalsIntroduction :introduction="introduction" />
           <DetailsPhoto :photoAll="photoAll" />
           <DetailsDetailed :projectDetails="projectDetails" />
@@ -30,7 +30,7 @@
         </template>
       </div>
       <div class="right">
-        <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" @priceChange="showAdvisory" />
+        <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0] ? breadcrumb[0].name : ''" @priceChange="showAdvisory" />
         <DetailsRecommend />
       </div>
     </div>

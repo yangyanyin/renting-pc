@@ -34,7 +34,6 @@
   </div>
 </template>
 <script>
-// import { BaiduMap, BmControl, BmView, BmAutoComplete, BmLocalSearch, BmMarker, BmGeolocation } from 'vue-baidu-map'
 import { BaiduMap, BmLocalSearch, BmInfoWindow } from 'vue-baidu-map'
 export default {
   components: {
@@ -61,8 +60,8 @@ export default {
   computed: {
     coordinateCenter () {
       return {
-        lng: this.coordinate.split(',')[0],
-        lat: this.coordinate.split(',')[1]
+        lng: this.coordinate ? this.coordinate.split(',')[0] : '',
+        lat: this.coordinate ? this.coordinate.split(',')[1] : ''
       }
     }
   },

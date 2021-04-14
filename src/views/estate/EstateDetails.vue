@@ -11,7 +11,7 @@
         <div class="left">
           <DetailsViewImg :imagesArr="imagesAll" />
           <DetalsIntroduction :introduction="introduction" />
-          <Conveniences v-if="breadcrumb[0].name !== '保留性店屋'" />
+          <Conveniences :facilities="facilities" v-if="breadcrumb[0].name !== '保留性店屋'" />
 
           <h4>免责声明</h4>
            <em>页面所载楼盘内容及数据仅供用户参考和借鉴，最终以开发商实际公示为准，如楼盘信息有误或其他疑义，可进行纠错。</em>
@@ -21,7 +21,7 @@
           <Consultant />
         </div>
       </div>
-      <BaiduMap class="content w1200px mt80" :addr="infoBase.addr" />
+      <BaiduMap class="content w1200px mt80" v-if="coordinate" :coordinate="coordinate" :addr="infoBase.addr" :title="proTitle" :mapData="mapData" />
     </template>
   </div>
 </template>
@@ -52,7 +52,10 @@ export default {
       proAddress: '',
       imagesAll: [],
       infoBase: {},
-      introduction: ''
+      introduction: '',
+      coordinate: '',
+      mapData: '',
+      facilities: []
     }
   },
   computed: {
@@ -87,6 +90,9 @@ export default {
         this.proAddress = detailInfo.addr
         this.imagesAll = detailInfo.images
         this.introduction = detailInfo.description
+        this.coordinate = detailInfo.coordinate
+        this.mapData = detailInfo.map
+        this.facilities = detailInfo.facilities
         this.infoBase = {
           floor: detailInfo.floor,
           deed: detailInfo.deed,
