@@ -200,6 +200,7 @@ export default {
         color: #7C7C7C;
       }
       span {
+        display: block;
         font-size: 20px;
         color: #BF3F3F;
         em {

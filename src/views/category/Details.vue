@@ -147,7 +147,7 @@ export default {
         this.mapData = detailInfo.map
         this.coordinate = detailInfo.coordinate
         this.infoBase = {
-          region: detailInfo.region_ch[0],
+          region: detailInfo.region_ch ? detailInfo.region_ch[0] : '',
           area: detailInfo.area,
           completion_date: detailInfo.finish_at,
           traffic: detailInfo.traffic,

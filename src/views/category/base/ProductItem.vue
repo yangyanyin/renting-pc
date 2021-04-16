@@ -125,7 +125,8 @@ export default {
       display: inline-block;
       position: relative;
       top: -2px;
-      width: 32px;
+      // width: 32px;
+      padding: 0 5px;
       margin-left: 10px;
       line-height: 18px;
       text-align: center;
@@ -146,6 +147,7 @@ export default {
     }
     &.type {
       margin-top: 13px;
+      padding-right: 100px;
       i {
         position: relative;
         color: #7C7C7C;

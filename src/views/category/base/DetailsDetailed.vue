@@ -6,8 +6,8 @@
       <li><i>房产类型 </i> {{ projectDetails.type }} </li>
       <li><i>开发商 </i> {{ projectDetails.developer }} </li>
       <li><i>产权  </i> {{ projectDetails.property }} </li>
-      <li><i>开盘日期 </i> {{ projectDetails.start_time.substring(0, 7) }} </li>
-      <li><i>预计落成日期 </i> {{ projectDetails.finish.substring(0, 7) }} </li>
+      <li><i>开盘日期 </i> {{ projectDetails.start_time ? projectDetails.start_time.substring(0, 7) : '' }} </li>
+      <li><i>预计落成日期 </i> {{ projectDetails.finish ? projectDetails.finish.substring(0, 7) : '' }} </li>
       <li><i>公共设施 </i>
         <div>
           <span v-for="(name, k) in projectDetails.facility" :key="k">{{ name }}</span>

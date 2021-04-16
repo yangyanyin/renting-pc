@@ -3,13 +3,12 @@
     <h3>地理位置及周边配套</h3>
     <div class="map-tab">
       <div class="tab">
-        <span v-for="(item, t, k) in mapData"
-          :class="{active: surroundingIndex === k}"
+        <span v-for="(item, t, k) in mapSurrounding" :class="{active: surroundingIndex === k}"
           :key="k" 
           @click="tabClick(k)">{{ t }}</span>
       </div>
       <div class="sc">
-        <template v-for="(item, t, k) in mapData">
+        <template v-for="(item, t, k) in mapSurrounding">
           <ul :key="k" v-if="surroundingIndex === k">
             <li v-for="(info, i) in item" :key="i" @click="mapClick(info.name)">
               <strong>{{ info.name }}</strong>
@@ -63,6 +62,16 @@ export default {
         lng: this.coordinate ? this.coordinate.split(',')[0] : '',
         lat: this.coordinate ? this.coordinate.split(',')[1] : ''
       }
+    },
+    mapSurrounding () {
+      const data = {}
+      const mapData =  this.mapData
+      for (let key in mapData) {
+        if (mapData[key].length >0) {
+          data[key] = mapData[key]
+        }
+      }
+      return data
     }
   },
   methods: {
@@ -100,6 +109,7 @@ export default {
     position: absolute;
     top: 70px;
     right: 20px;
+    width: 384px;
     z-index: 999;
     .tab {
       height: 32px;
