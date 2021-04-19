@@ -9,6 +9,7 @@
       <template v-else>
         <ProductItem v-for="(item, k) in productData" :key="k" :item="item" :type="recommendType.type"  />
       </template>
+      <Searchlike v-if="isSearch" :type="recommendType.type"  />
     </div>
     <div class="recommend right">
       <h3>{{ recommendType.title }}</h3>
@@ -20,12 +21,14 @@
 import ProductItem from './ProductItem'
 import RecommendItem from './RecommendItem'
 import NoResult from '../../../components/base/NoResult'
+import Searchlike from './Searchlike'
 
 export default {
   components: {
     ProductItem,
     RecommendItem,
-    NoResult
+    NoResult,
+    Searchlike
   },
   props: {
     productData: Array,
@@ -56,11 +59,18 @@ export default {
           link:'/c/renting/'
         }
       }
-      return data[this.$route.name] || {}
+      if (this.$route.params.search) {
+        return data[this.$route.params.search.replace('-', ' ')] || {}
+      } else {
+        return data[this.$route.name] || {}
+      }
     },
     showClear () {
       const query = this.$route.query
       return query.area || query.house || query.price || query.region || query.sort
+    },
+    isSearch () {
+      return this.$route.name === 'Search'
     }
   },
   mounted () {

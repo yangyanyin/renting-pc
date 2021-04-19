@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 const Home = () => import(/* webpackChunkName: "home" */ '../views/home/Home')
 const Category = () => import(/* webpackChunkName: "category" */ '../views/category/Category')
+const Search = () => import(/* webpackChunkName: "search" */ '../views/category/Search')
 const CategoryDetails = () => import(/* webpackChunkName: "category-details" */ '../views/category/Details')
 const News = () => import(/* webpackChunkName: "News" */ '../views/news/News')
 const NewsDetails = () => import(/* webpackChunkName: "News" */ '../views/news/Details')
@@ -54,6 +55,11 @@ const routes = [
     path: '/c/:category/:id',
     name: 'category-details',
     component: CategoryDetails
+  },
+  {
+    path: '/search/:search',
+    name: 'Search',
+    component: Search
   },
   // 新闻咨询
   {

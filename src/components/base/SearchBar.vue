@@ -1,14 +1,46 @@
 <template>
   <div class="search-Keyword">
-    <select>
+    <select v-model="selectType">
       <option value="新楼盘">新楼盘</option>
-      <option value="新楼盘">二手房</option>
-      <option value="新楼盘">租房</option>
+      <option value="二手房">二手房</option>
+      <option value="租房">租房</option>
     </select>
-    <input type="text" placeholder="输入MRT、小区名、地区名称" />
-    <button>搜索</button>
+    <input type="text" v-model="Keyword" placeholder="输入MRT、小区名、地区名称" />
+    <button @click="searchClick">搜索</button>
   </div>
 </template>
+<script>
+const selectUrl = {
+  '新楼盘': 'new-house',
+  '二手房': 'second-hand',
+  '租房': 'renting'
+}
+export default {
+  data () {
+    return {
+      selectType: '新楼盘',
+      Keyword: ''
+    }
+  },
+  methods: {
+    searchClick () {
+      this.$router.push({
+        path: `/search/${selectUrl[this.selectType]}`,
+        query: {
+          keyword: this.Keyword
+        }
+      })
+    }
+  },
+  mounted () {
+    for (const key in selectUrl) {
+      if (this.$route.params.search === selectUrl[key]) {
+        this.selectType = key
+      }
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 .search-Keyword {
   position: relative;

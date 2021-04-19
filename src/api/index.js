@@ -84,6 +84,13 @@ const messageApi = (params) => axios({
   params: params
 })
 
+// 搜索
+const search = (params) => axios({
+  url: '/v1/search',
+  method: 'post',
+  params: params
+})
+
 
 export default {
   indexApi,
@@ -97,5 +104,6 @@ export default {
   buildingApi,
   shophouseApi,
   estateDetailsApi,
-  messageApi
+  messageApi,
+  search
 }
