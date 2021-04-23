@@ -31,12 +31,12 @@
       </div>
       <div class="right">
         <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0] ? breadcrumb[0].name : ''" @priceChange="showAdvisory" />
-        <DetailsRecommend />
+        <DetailsRecommend :proTitle="proTitle" />
       </div>
     </div>
     <BaiduMap class="content w1200px mt80" v-if="coordinate" :coordinate="coordinate" :addr="infoBase.addr" :title="proTitle" :mapData="mapData" />
 
-    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
+    <AdvisoryPopup v-if="showAdvisoryType" :proTitle="proTitle" :type="breadcrumb[0].message_type" page="product_details" @closePopuo="showAdvisory" />
   </div>
 </template>
 <script>
@@ -100,17 +100,20 @@ export default {
         'new-house': {
           url: '/c/new-house',
           name: '新楼盘',
-          api: 'new_house'
+          api: 'new_house',
+          message_type: '购买新楼盘'
         },
         'renting': {
           url: '/c/renting',
           name: '狮城租房',
-          api: 'rented_house'
+          api: 'rented_house',
+          message_type: '租房'
         },
         'second-hand': {
           url: '/c/second-hand',
           name: '二手公寓',
-          api: 'second_hand_house'
+          api: 'second_hand_house',
+          message_type: '二手公寓'
         }
       }
       return [

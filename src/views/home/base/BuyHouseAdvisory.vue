@@ -5,7 +5,7 @@
       <h3 v-html="buyHouseAdvisory.title"></h3>
       <p>{{ buyHouseAdvisory.des }}</p>
     </div>
-    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="btnClick('/')" />
+    <AdvisoryPopup v-if="showAdvisoryType" page="home" @closePopuo="btnClick('/')" />
   </div>
 </template>
 <script>

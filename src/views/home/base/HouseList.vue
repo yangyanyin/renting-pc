@@ -1,6 +1,6 @@
 <template>
   <div class="home-house-list w1200px mt80">
-    <Title :housesType="housesType" :more="titleMore" />
+    <Title :title="housesType.name" :housesType="housesType" :more="titleMore" />
     <div class="product-list clearfix" v-if="housesData.length > 0">
       <div class="item left" v-for="(item, k) in housesData" :key="k">
         <router-link :to="`${housesType.url}/${item._id}`" class="a-img">

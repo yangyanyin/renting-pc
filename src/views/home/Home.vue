@@ -87,7 +87,7 @@ export default {
         this.newHouses = res.data.newHouses
         this.rentedHouses = res.data.rentedHouses
         this.secondHandedHouses = res.data.secondHandedHouses
-        this.business = res.data.business
+        this.business = res.data.business.splice(0, 3)
         this.homeApiStatus = true
       }
     })

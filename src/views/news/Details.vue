@@ -9,7 +9,7 @@
             <h3>{{ newsData.title }}</h3>
             <p>发布时间：{{ newsData.created_at.split(' ')[0] }}  阅读次数：{{ newsData.read_count }}次</p>
           </div>
-          <div class="new-html" v-html="newsData.content"></div>
+          <div class="new-html" v-html="newContent"></div>
           <div class="context mt80">
             <p v-if="prevNews.title">上一篇：<router-link :to="'/n/d/' + prevNews.id ">{{prevNews.title}}</router-link></p>
             <p v-if="nextNews.title">下一篇：<router-link :to="'/n/d/' + nextNews.id ">{{nextNews.title}}</router-link></p>
@@ -48,6 +48,7 @@ export default {
       newsData: {},
       prevNews: {},
       nextNews: {},
+      newContent: '',
       recommendNews: []
     }
   },
@@ -90,6 +91,7 @@ export default {
     this.$httpApi.newsDetailsApi(params).then(res => {
       if (res.code === 200) {
         this.newsData = res.data.news
+        this.newContent = res.data.news.content.replace(/\/images\/default/g, 'http://web.aicassets.com/images/default/')
         this.prevNews = res.data.prev_news || {}
         this.nextNews = res.data.next_news || {}
       }

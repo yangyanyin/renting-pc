@@ -31,6 +31,11 @@ export default {
   components: {
     SubmitSuccess
   },
+  props: {
+    page: String,
+    type: String,
+    proTitle: String
+  },
   data () {
     return {
       typeList: [
@@ -76,9 +81,16 @@ export default {
       }
       const params = {
         advisory_type: this.fromInfo.advisoryType,
-        name: this.fromInfo.name,
-        contact: this.fromInfo.contact,
+        name: this.fromInfo.advisoryName,
+        contact: this.fromInfo.advisoryContact,
         email: this.fromInfo.advisoryEmail
+      }
+      if (this.page === 'home') {
+        params.email_title = '房产咨询'
+      }
+      if (this.page === 'product_details') {
+        params.email_title = '新楼盘咨询'
+        params.advisory_source = this.proTitle
       }
       if (this.submitLoad) return
       this.submitLoad = true
@@ -91,6 +103,11 @@ export default {
           }
         }
       })
+    }
+  },
+  mounted () {
+    if (this.type) {
+      this.fromInfo.advisoryType = this.type
     }
   }
 }
