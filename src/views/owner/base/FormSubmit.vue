@@ -116,7 +116,7 @@ export default {
         email_title: '来自看公寓网的业主反馈',
         type: this.tabType,
         property_location: this.fromInfo.position,
-        address_type: this.housesType,
+        address_type: this.fromInfo.housesType,
         address: this.fromInfo.address,
         big_house_number: this.fromInfo.bigHouseNumber,
         house_number: this.fromInfo.houseNumber,
