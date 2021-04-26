@@ -11,12 +11,12 @@
           </div>
           <div class="new-html" v-html="newContent"></div>
           <div class="context mt80">
-            <p v-if="prevNews.title">上一篇：<router-link :to="'/n/d/' + prevNews.id ">{{prevNews.title}}</router-link></p>
-            <p v-if="nextNews.title">下一篇：<router-link :to="'/n/d/' + nextNews.id ">{{nextNews.title}}</router-link></p>
+            <p v-if="prevNews.title">上一篇：<router-link :to="`/n/${newsType}/${prevNews.id}`">{{prevNews.title}}</router-link></p>
+            <p v-if="nextNews.title">下一篇：<router-link :to="`/n/${newsType}/${nextNews.id}`">{{nextNews.title}}</router-link></p>
           </div>
           <div class="related">
             <h2>相关推荐</h2>
-            <NewsItem v-for="(item, k) in recommendNews" :item="item" :key="k" />
+            <NewsItem v-for="(item, k) in recommendNews" :item="item" :cUrl="`/n/${newsType}`" :key="k" />
           </div>
 
         </div>
@@ -49,7 +49,8 @@ export default {
       prevNews: {},
       nextNews: {},
       newContent: '',
-      recommendNews: []
+      recommendNews: [],
+      newsType: this.$route.params.name
     }
   },
   computed: {

@@ -80,7 +80,7 @@ export default {
         }
       }
       const params = {
-        advisory_type: this.fromInfo.advisoryType,
+        type: this.fromInfo.advisoryType,
         name: this.fromInfo.advisoryName,
         contact: this.fromInfo.advisoryContact,
         email: this.fromInfo.advisoryEmail

@@ -114,7 +114,7 @@ export default {
       
       const params = {
         email_title: '来自看公寓网的业主反馈',
-        entrust_type: this.tabType,
+        type: this.tabType,
         property_location: this.fromInfo.position,
         address_type: this.housesType,
         address: this.fromInfo.address,
