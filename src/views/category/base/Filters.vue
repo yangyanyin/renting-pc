@@ -130,6 +130,10 @@ export default {
             id: '1'
           },
           {
+            text: '一厅+书房',
+            id: '6'
+          },
+          {
             text: '一室一厅',
             id: '2'
           },
@@ -146,8 +150,12 @@ export default {
             id: '5'
           },
           {
-            text: '一厅+书房',
-            id: '6'
+            text: '三室一厅',
+            id: '10'
+          },
+          {
+            text: '三室一厅+书房',
+            id: '11'
           },
           {
             text: '四室一厅',
