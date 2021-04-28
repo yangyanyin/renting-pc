@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <router-link :to="link + item._id" class="a-img">
-      <rentImg :url="item.image" :alt="item.title" />
+      <rentImg class="img-object" :url="item.image" :alt="item.title" />
     </router-link>
     <router-link :to="link + item._id" tag="h3">{{ item.title }}</router-link>
     <div class="price">{{ item.price }} <i>{{priceType}}</i></div>
@@ -29,6 +29,11 @@ export default {
 <style scoped lang="less">
 .item {
   margin-top: 20px;
+  a {
+    display: block;
+    width: 178px;
+    height: 80px;
+  }
   h3 {
     padding-top: 10px;
     font-size: 14px;
@@ -36,7 +41,7 @@ export default {
     cursor: pointer;
   }
   .price {
-    margin-top: 8px;
+    margin-top: 5px;
     font-size: 16px;
     color: #BF3F3F;
     i {
