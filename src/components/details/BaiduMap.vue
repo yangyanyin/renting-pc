@@ -64,7 +64,7 @@ export default {
       }
     },
     mapSurrounding () {
-      const data = {}
+      let data = {}
       const mapData =  this.mapData
       for (let key in mapData) {
         if (mapData[key].length >0) {

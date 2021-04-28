@@ -9,31 +9,30 @@
       <strong>周边配套</strong>
       <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.matching"/>
     </div>
-    <div class="big-img" v-if="bigImgUrl">
-      <div class="content">
-        <span class="close" @click="viewBigImg('')"></span>
-        <img :src="bigImgUrl" alt="" />
-      </div>
-    </div>
+    <ImagePopup :bigImgArr="bigImgArr" :imgIndex="imgIndex" @closeBigImg="viewBigImg" v-if="bigImgArr" />
   </div>
 </template>
 <script>
 import HousePhoto from '../../../components/base/HousePhoto'
+import ImagePopup from '../../../components/base/ImagePopup'
 export default {
   components: {
-    HousePhoto
+    HousePhoto,
+    ImagePopup
   },
   props: {
     photoAll: Object
   },
   data () {
     return {
-      bigImgUrl: ''
+      bigImgArr: '',
+      imgIndex: ''
     }
   },
   methods: {
-    viewBigImg (url) {
-      this.bigImgUrl = url
+    viewBigImg (k, imgArr) {
+      this.imgIndex = k
+      this.bigImgArr = imgArr
     }
   }
 }

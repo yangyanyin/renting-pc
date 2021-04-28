@@ -1,19 +1,42 @@
 <template>
   <div class="big-img">
     <div class="content">
+      <VueSlickCarousel v-bind="settings" >
+        <img class="img-object" v-for="(item, k) in bigImgArr" :key="k" :src="item" alt="">
+      </VueSlickCarousel>
       <span class="close" @click="closeBigImg('')"></span>
-      <img :src="bigImgUrl" alt="" />
     </div>
   </div>
 </template>
 <script>
+import VueSlickCarousel from 'vue-slick-carousel'
+import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
 export default {
+  components: {
+    VueSlickCarousel
+  },
   props: {
-    bigImgUrl: String
+    bigImgArr: Array,
+    imgIndex: Number,
+    type: String
+  },
+  data () {
+    return {
+      settings: {
+        accessibility: false,
+        dots: true,
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: this.imgIndex,
+        adaptiveHeight: true
+      }
+    }
   },
   methods: {
     closeBigImg () {
-      this.$emit('closeBigImg', '')
+      this.$emit('closeBigImg', -1)
     }
   }
 }
@@ -72,11 +95,22 @@ export default {
     top: 50%;
     width: 800px;
     height: auto;
+    // max-height: 80%;
+    max-height: 600px;
     margin-left: -400px;
     background: #fff;
     padding: 5px;
     border-radius: 3px;
     transform: translateY(-50%);
+  }
+}
+</style>
+<style lang="less">
+.big-img {
+  .slick-slide {
+    div {
+      max-height: 590px;
+    }
   }
 }
 </style>

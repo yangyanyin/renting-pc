@@ -1,7 +1,7 @@
 <template>
-  <div class="view-image" v-if="imagesArr.length > 0">
+  <div class="view-image" v-if="imagesArr">
     <VueSlickCarousel v-bind="settings">
-      <rentImg class="img-object" v-for="(img, k) in imagesArr" :key="k" :url="img" @click.native="viewBigImg(img)" />
+      <rentImg class="img-object" v-for="(img, k) in imagesArr" :key="k" :url="img" @click.native="viewBigImg(k, imagesArr, img)" />
     </VueSlickCarousel>
   </div>
 </template>
@@ -25,9 +25,10 @@ export default {
     imagesArr: {
       type: Array,
       default: () => {
-        return []
+        return 0
       }
-    }
+    },
+    type: String
   },
   data () {
     return {
@@ -40,8 +41,12 @@ export default {
     }
   },
   methods: {
-    viewBigImg (url) {
-      this.$emit('viewBigImg', url)
+    viewBigImg (k, imagesArr, img) {
+      if (this.type) {
+        this.$emit('viewBigImg', img)
+      } else {
+        this.$emit('viewBigImg', k, imagesArr)
+      }
     }
   }
 }

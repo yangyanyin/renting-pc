@@ -8,7 +8,7 @@
       </a>
     </div>
     <div class="small-img" :class="{'no-btn': imagesArr.length <= 4}">
-      <HousePhoto :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
+      <HousePhoto type="details_img" :imagesArr="imagesArr" :slidesToShow="4" :slidesToScroll="4" :infinite="false" @viewBigImg="viewBigImg" />
     </div>
     <p>100% 真实房源，100%真实物业图片</p>
   </div>
