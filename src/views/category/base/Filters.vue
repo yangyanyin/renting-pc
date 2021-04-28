@@ -8,7 +8,7 @@
       </div>
       <div class="right">
         <span v-for="(text, i) in item" :key="i"
-          :class="{active: filterResult[name] && filterResult[name].split(',').indexOf(text.id) >= 0}"
+          :class="{active: filterResult[name] && filterResult[name].indexOf(text.id) >= 0}"
           @click="filterClick(name, text.id)">
           <i></i> {{ text.text }}
         </span>

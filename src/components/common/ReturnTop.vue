@@ -1,9 +1,31 @@
 <template>
   <div class="return-top">
     <ul>
-      <li>Whats App</li>
-      <li>咨询</li>
-      <li>微信</li>
+      <li>
+        Whats App
+        <div class="app">
+          <img src="../../assets/image/consultant-app.png"> +65 88 139 139
+        </div>
+      </li>
+      <li>
+        咨询
+        <div class="tel">
+          <img src="../../assets/image/tel-green.png"> +65 88 139 139
+        </div>
+      </li>
+      <li>
+        微信
+        <div class="wx">
+          <span>
+            <i> <img src="../../assets/image/wx2.png" alt="扫码关注公众号" /></i>
+            扫码关注公众号
+          </span>
+          <span>
+            <i> <img src="../../assets/image/wx1.png" alt="扫码关注公众号" /></i>
+            新加坡吴洲房产
+          </span>
+        </div>
+      </li>
       <li class="top-btn" :class="{antion: showTopBtn}" @click="backTop">返回顶部</li>
     </ul>
   </div>
@@ -61,6 +83,57 @@ export default {
     margin-top: 15px;
     padding: 23px 0px 18px;
     cursor: pointer;
+    &:hover {
+      div {
+        display: block;
+      }
+    }
+    div {
+      display: none;
+      position: absolute;
+      top: 0;
+      right: 58px;
+      padding: 10px;
+      background: #fff;
+      box-shadow: 0 0 3px 0 #999;
+      border-radius: 5px;
+      font-size: 16px;
+      white-space: nowrap;
+      &:after {
+        content: '';
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        right: -2px;
+        width: 8px;
+        height: 8px;
+        background: #fff;
+        border-top: 1px solid #cecece;
+        border-right: 1px solid #cecece;
+        transform: rotate(45deg) translateY(-50%);
+      }
+      img {
+        display: inline-block;
+        width: 20px;
+      }
+      &.wx {
+        top: -45px;
+        width: 210px;
+        span {
+          display: inline-block;
+          font-size: 12px;
+          text-align: center;
+          color: #444;
+          &:first-child {
+            margin-right: 10px;
+          }
+        }
+        img {
+          width: 85px;
+          display: block;
+        }
+      }
+    }
     &:before {
       content: '';
       position: absolute;
