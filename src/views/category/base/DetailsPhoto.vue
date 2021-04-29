@@ -2,12 +2,12 @@
   <div class="photo">
     <h3 class="other-t">房源相册</h3>
     <div class="list">
-      <strong>效果图</strong>
-      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.effect_picture" />
-      <strong>样板间</strong>
-      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.sample_room"/>
-      <strong>周边配套</strong>
-      <HousePhoto @viewBigImg="viewBigImg" :imagesArr="photoAll.matching"/>
+      <template v-for="(item, name, k) in imgSet">
+        <template v-if="item.length > 0">
+          <strong :key="k">{{name}}</strong>
+          <HousePhoto :key="'p' + k" @viewBigImg="viewBigImg" :imagesArr="item" />
+        </template>
+      </template>
     </div>
     <ImagePopup :bigImgArr="bigImgArr" :imgIndex="imgIndex" @closeBigImg="viewBigImg" v-if="bigImgArr" />
   </div>
@@ -26,7 +26,12 @@ export default {
   data () {
     return {
       bigImgArr: '',
-      imgIndex: ''
+      imgIndex: '',
+      imgSet: {
+        效果图: this.photoAll.effect_picture,
+        样板间: this.photoAll.sample_room,
+        周边配套: this.photoAll.matching
+      }
     }
   },
   methods: {

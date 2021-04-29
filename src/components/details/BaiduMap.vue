@@ -1,14 +1,14 @@
 <template>
   <div class="baidu-map">
     <h3>地理位置及周边配套</h3>
-    <div class="map-tab">
+    <div class="map-tab" v-if="mapSurrounding.status > 0">
       <div class="tab">
-        <span v-for="(item, t, k) in mapSurrounding" :class="{active: surroundingIndex === k}"
+        <span v-for="(item, t, k) in mapSurrounding.map" :class="{active: surroundingIndex === k}"
           :key="k" 
           @click="tabClick(k)">{{ t }}</span>
       </div>
       <div class="sc">
-        <template v-for="(item, t, k) in mapSurrounding">
+        <template v-for="(item, t, k) in mapSurrounding.map">
           <ul :key="k" v-if="surroundingIndex === k">
             <li v-for="(info, i) in item" :key="i" @click="mapClick(info.name)">
               <strong>{{ info.name }}</strong>
@@ -65,13 +65,18 @@ export default {
     },
     mapSurrounding () {
       let data = {}
+      let status = 0
       const mapData =  this.mapData
       for (let key in mapData) {
         if (mapData[key].length >0) {
           data[key] = mapData[key]
+          status = 1
         }
       }
-      return data
+      return {
+        status: status,
+        map: data
+      }
     }
   },
   methods: {

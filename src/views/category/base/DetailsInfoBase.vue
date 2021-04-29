@@ -12,7 +12,7 @@
     <template v-else>
       <p>地区位置：<i>{{ infoBase.region }}</i></p>
       <p>建筑面积：<i>{{ infoBase.area }}</i></p>
-      <p v-if="type !== '二手公寓'">预计落成日期：<i>{{ infoBase.completion_date }}</i></p>
+      <p v-if="type !== '二手公寓' && infoBase.completion_date">预计落成日期：<i>{{ infoBase.completion_date.substring(0, 7) }}</i></p>
       <p>房产地址：<i>{{ infoBase.addr }}</i></p>
     </template>
     <p class="traffic">
