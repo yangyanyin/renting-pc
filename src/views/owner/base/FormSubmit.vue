@@ -57,7 +57,7 @@
       <template v-else>递交</template>
     </button>
     <SubmitSuccess v-if="submitStatus" @close="submitStatus = false" />
-    <AdvisoryPopup v-if="showAdvisoryType" @closePopuo="showAdvisory" />
+    <AdvisoryPopup v-if="showAdvisoryType" type="其他" @closePopuo="showAdvisory" />
   </div>
 </template>
 <script>

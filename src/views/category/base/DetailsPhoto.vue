@@ -3,7 +3,7 @@
     <h3 class="other-t">房源相册</h3>
     <div class="list">
       <template v-for="(item, name, k) in imgSet">
-        <template v-if="item.length > 0">
+        <template v-if="item && item.length > 0">
           <strong :key="k">{{name}}</strong>
           <HousePhoto :key="'p' + k" @viewBigImg="viewBigImg" :imagesArr="item" />
         </template>

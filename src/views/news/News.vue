@@ -19,7 +19,7 @@
         </div>
         <div class="right">
           <HotNews />
-          <DetailsRecommend />
+          <DetailsRecommend :proTitle="breadcrumb[0].name" />
         </div>
       </template>
       

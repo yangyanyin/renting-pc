@@ -92,6 +92,10 @@ export default {
         params.email_title = '新楼盘咨询'
         params.advisory_source = this.proTitle
       }
+      if (this.page === 'estate') {
+        params.email_title = '商业地产咨询'
+        params.advisory_source = this.proTitle
+      }
       if (this.submitLoad) return
       this.submitLoad = true
       this.$httpApi.messageApi(params).then(res => {

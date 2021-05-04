@@ -17,7 +17,7 @@
            <em>页面所载楼盘内容及数据仅供用户参考和借鉴，最终以开发商实际公示为准，如楼盘信息有误或其他疑义，可进行纠错。</em>
         </div>
         <div class="right">
-          <DetailsInfoBase :infoBase="infoBase" :type="breadcrumb[0].name" />
+          <DetailsInfoBase :infoBase="infoBase" :proTitle="proTitle" :type="breadcrumb[0].name" />
           <Consultant />
         </div>
       </div>
