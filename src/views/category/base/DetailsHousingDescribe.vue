@@ -2,7 +2,7 @@
   <div class="housing-info">
     <h3 class="other-t">房屋描述</h3>
     <strong>户型介绍</strong>
-    <p>{{introduction}}</p>
+    <p v-html="introduction">{{introduction}}</p>
 
     <strong>周边配套</strong>
     <p v-html="facilities"></p>
