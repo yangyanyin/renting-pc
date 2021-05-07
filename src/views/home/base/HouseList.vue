@@ -154,8 +154,12 @@ export default {
     }
     h3 {
       font-size: 18px;
-      padding: 14px 0 8px;
+      margin: 14px 0 8px;
       transition: .3s;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
     }
     p {
       font-size: 12px;
