@@ -12,7 +12,10 @@
       <i v-for="(name, k) in item.title_tags" :key="'00' + k">{{name}}</i>
     </router-link>
     <p class="traffic">交通：
-      <i v-for="(item, k) in item.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</i>
+      <template v-if="item.traffic.length > 0">
+        <i v-for="(item, k) in item.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</i>
+      </template>
+      <template v-else>暂无详细信息</template>
     </p>
     <p class="address" v-if="item.addr">地址：{{ item.addr }}</p>
     <p class="type">

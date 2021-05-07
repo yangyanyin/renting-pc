@@ -17,8 +17,13 @@
     </template>
     <p class="traffic">
       交通：
-      <span v-for="(item, k) in infoBase.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</span>
-      <i>{{ infoBase.traffic_tips }}</i>
+      <template v-if="infoBase.traffic.length > 0">
+        <span v-for="(item, k) in infoBase.traffic" :key="k" :style="{background: item.color}">{{ item.name }}</span>
+      </template>
+      <template v-else>
+        <i>暂无详细信息</i>
+      </template>
+      <em>{{ infoBase.traffic_tips }}</em>
     </p>
     <div v-if="houseTypes" class="rule clearfix">
       <ul v-for="(types, name, k) in houseTypes" :key="k">
@@ -122,7 +127,7 @@ export default {
         font-size: 12px;
         color: #fff;
       }
-      i {
+      em {
         display: block;
         margin: 10px 0 0 55px;
         font-size: 12px;
