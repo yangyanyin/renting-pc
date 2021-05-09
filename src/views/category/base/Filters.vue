@@ -175,23 +175,23 @@ export default {
         data.price = [
           {
             text: '500-2000',
-            id: 1
+            id: '1'
           },
           {
             text: '2000-3000',
-            id: 2
+            id: '2'
           },
           {
             text: '3000-5000',
-            id: 3
+            id: '3'
           },
           {
             text: '5000-8000',
-            id: 4
+            id: '4'
           },
           {
             text: '8000以上',
-            id: 5
+            id: '5'
           }
         ]
         data.house = [
