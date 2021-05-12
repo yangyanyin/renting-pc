@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <router-link :to="routerLink + item._id" class="a-img">
-      <rentImg class="img-object" :url="item.images ? item.images[0] : ''" :alt="item.title" />
+      <rentImg class="img-object" :url="item.image" :alt="item.title" />
     </router-link>
     <a class="vr" :href="item.vr_link" target="_blank" v-if="item.vr_link">
       <img src="../../../assets/image/vr_icon.gif">

@@ -92,7 +92,7 @@ export default {
     this.$httpApi.newsDetailsApi(params).then(res => {
       if (res.code === 200) {
         this.newsData = res.data.news
-        this.newsContent = res.data.news.content.replace(/\/images\/default/g, 'http://web.aicassets.com/images/default/')
+        this.newsContent = res.data.news.content.replace(/\/images\/default/g, 'https://cms.kangongyu.cn/images/default/')
         this.prevNews = res.data.prev_news || {}
         this.nextNews = res.data.next_news || {}
       }
