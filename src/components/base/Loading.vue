@@ -1,16 +1,26 @@
 <template>
   <div class="loading">
-    <div class="ball-pulse">
+    <div class="ball-pulse" :class="{'btn-box': btnLogin}">
       <div></div>
       <div></div>
       <div></div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    btnLogin: Boolean
+  }
+}
+</script>
 <style scoped lang="less">
 .ball-pulse {
   padding: 200px 0;
   text-align: center;
+  &.btn-box {
+    padding: 0;
+  }
 }
 .ball-pulse > div:nth-child(1) {
   -webkit-animation: scale 0.75s -0.24s infinite cubic-bezier(0.2, 0.68, 0.18, 1.08);
@@ -32,8 +42,15 @@
   margin: 2px;
   -webkit-animation-fill-mode: both;
           animation-fill-mode: both;
-  display: inline-block; }
-  @-webkit-keyframes scale {
+  display: inline-block; 
+}
+.btn-box > div {
+  background: #fff;
+  width: 10px;
+  height: 10px;
+  margin: 2px 4px;
+}
+@-webkit-keyframes scale {
   0% {
     -webkit-transform: scale(1);
             transform: scale(1);

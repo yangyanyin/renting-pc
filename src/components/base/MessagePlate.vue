@@ -1,12 +1,30 @@
 <template>
   <div class="message w1200px mt80">
-    <p>新加坡侨水资本—Waterland Capital： </p>
-    <p>直营新加坡移民/银行开户/新加坡留学，家族办公室，欧盟&英联邦快速护照，不成功，不收费</p>
-    <a target="_blank" href="https://waterlandcap.com/">点击了解更多详情</a>
+    <p>金牌团队，全岛各区房产买卖租，一条龙服务</p>
+    <p>每日9点更新汇总全岛各区最新房源，专车接送看房。 </p>
+    <a @click="btnClick">即刻来电预约看房</a>
     <img src="../../assets/image/message-bg.png" alt="">
+    <AdvisoryPopup v-if="showAdvisoryType" type="其他" @closePopuo="btnClick" />
   </div>
 </template>
-
+<script>
+import AdvisoryPopup from './AdvisoryPopup'
+export default {
+  components: {
+    AdvisoryPopup
+  },
+  data () {
+    return {
+      showAdvisoryType: false
+    }
+  },
+  methods: {
+    btnClick () {
+      this.showAdvisoryType = !this.showAdvisoryType
+    }
+  }
+}
+</script>
 <style lang="less" scoped>
 .message {
   position: relative;

@@ -17,7 +17,9 @@
       <input type="text" v-model="fromInfo.advisoryEmail" placeholder="您的邮箱地址（必填）" />
       <i v-if="fromError.advisoryEmail">请输入您的邮箱地址。</i>
       <button @click="submitForm">
-        <template v-if="submitLoad">...</template>
+        <template v-if="submitLoad">
+          <Loading :btnLogin="true" />
+        </template>
         <template v-else>确定</template>
       </button>
     </div>
@@ -27,9 +29,11 @@
 </template>
 <script>
 import SubmitSuccess from '../base/SubmitSuccess'
+import Loading from './Loading'
 export default {
   components: {
-    SubmitSuccess
+    SubmitSuccess,
+    Loading
   },
   props: {
     page: String,

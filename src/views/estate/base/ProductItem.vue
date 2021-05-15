@@ -25,7 +25,7 @@ export default {
   width: 386px;
   margin: 30px 20px 0 0;
   text-align: center;
-  &:nth-child(3n+1) {
+  &:nth-child(3n+0) {
     margin-right: 0;
   }
   .a-img {
@@ -41,9 +41,13 @@ export default {
   strong {
     display: block;
     font-size: 20px;
-    padding: 20px 0 10px;
+    margin: 20px 0 10px;
     transition: .3s;
     cursor: pointer;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     &:hover {
       color: #24A10F;
     }

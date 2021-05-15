@@ -45,6 +45,7 @@ export default {
       display: inline-block;
       margin: 0 20px;
       color: #fff;
+      font-size: 16px;
       &:hover {
         color: #21e800;
       }
@@ -53,6 +54,7 @@ export default {
   .hotline {
     padding: 23px 0 0 16px;
     color: #fff;
+    font-size: 16px;
     strong {
       position: relative;
       top: 3px;

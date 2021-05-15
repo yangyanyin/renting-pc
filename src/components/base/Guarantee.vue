@@ -21,7 +21,7 @@
     <div class="list">
       <img src="../../assets/image/guarantee-icon4.png" alt="及时高效" />
       <h3>及时高效</h3>
-      <p>在新查询房价、房型</p>
+      <p>在线查询房价、房型</p>
       <p>随时预约看房</p>
     </div>
   </div>

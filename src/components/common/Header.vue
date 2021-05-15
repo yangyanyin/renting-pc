@@ -47,6 +47,7 @@ header {
     a {
       display: inline-block;
       margin: 0 20px;
+      font-size: 16px;
       &.router-link-active {
         color: #24A10F;
       }
@@ -60,6 +61,7 @@ header {
   }
   .hotline {
     padding: 23px 0  0 16px;
+    font-size: 16px;
     strong {
       position: relative;
       top: 3px;

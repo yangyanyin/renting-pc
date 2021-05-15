@@ -14,15 +14,15 @@
         </li>
         <li>
           <img src="../../../assets/image/estate-advantage-icon3.png" alt="投资商业地产的优势" />
-          <p>银行给予最高 <br /> 商业贷款可高达80%(附带条件)</p>
+          <p>银行给予最高商业贷款高达80% <br />【附带条件】</p>
         </li>
         <li>
           <img src="../../../assets/image/estate-advantage-icon4.png" alt="投资商业地产的优势" />
-          <p>地理位置极其优越 <br /> 位于寸土寸金的金融中心，保值增值性极高</p>
+          <p>地理位置极佳 <br /> 位于新加坡黄金地段，<br />投资回报率可观</p>
         </li>
         <li>
           <img src="../../../assets/image/estate-advantage-icon5.png" alt="投资商业地产的优势" />
-          <p>商业的款利率低，租金回报率高，可以以租养贷，没有房贷压力，这类地产租金回报高</p>
+          <p>商业贷款利率低，租金回报率高 <br /> 可以以租养贷，减轻压力</p>
         </li>
       </ul>
     </div>
