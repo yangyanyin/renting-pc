@@ -21,7 +21,7 @@ export default {
       if (this.$route.name === 'second hand') {
         return '万'
       }
-      return '万起'
+      return '/月'
     }
   }
 }

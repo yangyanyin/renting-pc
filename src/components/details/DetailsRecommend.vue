@@ -86,7 +86,8 @@ export default {
         'renting': {
           title: '租房推荐',
           type: 'renting',
-          link:'/c/renting/'
+          link:'/c/renting/',
+          unit: '/月'
         }
       }
 
