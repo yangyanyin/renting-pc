@@ -1,5 +1,5 @@
 <template>
-  <div class="search-like" v-if="likeData.length > 0">
+  <div class="search-like mt80" v-if="likeData.length > 0">
     <h3> <i>你可能喜欢</i> </h3>
     <ProductItem v-for="(item, k) in likeData" :key="k" :item="item" :type="type"  />
   </div>

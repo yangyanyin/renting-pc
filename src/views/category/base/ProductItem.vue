@@ -20,7 +20,7 @@
     <p class="address" v-if="item.addr">地址：{{ item.addr }}</p>
     <p class="type">
       <template v-if="type === 'renting'">
-        <i>{{ item.house_model[0] }}  {{ item.area}}</i>
+        <i v-if="item.house_model">{{ item.house_model[0] }}  {{ item.area}}</i>
       </template>
       <template >
         <i v-for="(item, k) in item.house_types" :key="k">{{ item.type }}</i>

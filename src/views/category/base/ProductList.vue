@@ -55,7 +55,7 @@ export default {
         },
         'renting': {
           title: '租房推荐',
-          type: 'renting',
+          type: 'rented_house',
           link:'/c/renting/'
         }
       }
