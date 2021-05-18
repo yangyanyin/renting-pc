@@ -14,8 +14,8 @@
         <option value="有地私宅">有地私宅</option>
         <option value="商业地产">商业地产</option>
       </select>
-      <input type="text" placeholder="请输入物业地址" v-model="fromInfo.address" />
-      <em v-if="fromErr.address">请输入物业地址</em>
+      <input type="text" placeholder="请输入物业地址 / 公寓名" v-model="fromInfo.address" />
+      <em v-if="fromErr.address">请输入物业地址 / 公寓名</em>
     </div>
 
     <div class="clearfix">

@@ -40,10 +40,12 @@ export default {
   },
   computed: {
     priceType () {
-      if (this.$route.name === 'new house') {
+      const name = this.$route.name
+      const searchName = this.$route.params.search
+      if (name === 'new house' || searchName === 'new-house') {
         return '万起'
       }
-      if (this.$route.name === 'second hand') {
+      if (name === 'second hand' || searchName === 'second-hand') {
         return '万'
       }
       return '/月'

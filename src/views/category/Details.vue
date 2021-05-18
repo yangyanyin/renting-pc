@@ -216,6 +216,10 @@ export default {
       border-radius: 5px;
       color: #fff;
       cursor: pointer;
+      transition: .3s;
+      &:hover {
+        background: #198407;
+      }
     }
     span {
       display: inline-block;
