@@ -2,7 +2,7 @@
   <div class="big-img">
     <div class="content">
       <VueSlickCarousel v-bind="settings" >
-        <img class="img-object" v-for="(item, k) in bigImgArr" :key="k" :src="item" alt="">
+        <img class="img-object" v-for="(item, k) in images" :key="k" :src="item" alt="">
       </VueSlickCarousel>
       <span class="close" @click="closeBigImg('')"></span>
     </div>
@@ -32,6 +32,15 @@ export default {
         initialSlide: this.imgIndex,
         adaptiveHeight: true
       }
+    }
+  },
+  computed: {
+    images () {
+      const img = []
+      this.bigImgArr.map(src => {
+        img.push(src.replace('http://web.aicassets.com', 'https://cms.kangongyu.cn'))
+      })
+      return img
     }
   },
   methods: {

@@ -3,7 +3,7 @@
     <h3 class="other-t">户型介绍</h3>
     <div class="item" v-for="(item, k) in houseTypes" :key="k">
       <i class="a-img">
-        <rentImg class="img-object" :url="item.image" :alt="item.type" @click.native="viewBigImg(k)" />
+        <rentImg class="img-object" :url="item.image" :alt="item.type" @click.native="viewBigImg(k, item.image)" />
         <a :href="item.vr_link" target="_blank" v-if="item.vr_link">
           <img src="../../../assets/image/vr_icon.gif">
           VR看房
@@ -35,9 +35,9 @@ export default {
     }
   },
   methods: {
-    viewBigImg (index) {
-      console.log(index >= 0)
+    viewBigImg (index, imgSrc) {
       if (index >= 0) {
+        if (!imgSrc) return
         const img = []
         this.houseTypes.map(item => {
           img.push(item.image)
